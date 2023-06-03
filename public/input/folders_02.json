@@ -1,0 +1,808 @@
+{
+    "folderStructure": {
+        "ArtistoFlow": {
+            "frontend": {
+                "components": {
+                    "Auth": {
+                        "Login.jsx": {
+                            "instructions": "Create Login form with email and password, handle validation, and call login API, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "next-auth"
+                            ],
+                            "functions": [
+                                "handleSubmit",
+                                "handleChange"
+                            ],
+                            "Imports": [
+                                "import { signIn } from 'next-auth/client'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default Login"
+                            ]
+                        },
+                        "Register.jsx": {
+                            "instructions": "Create Registration form with user details, handle validation, call registration API, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next"
+                            ],
+                            "functions": [
+                                "handleSubmit",
+                                "handleChange"
+                            ],
+                            "Imports": [
+                                "import Router from 'next/router'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default Register"
+                            ]
+                        },
+                        "SocialLogin.jsx": {
+                            "instructions": "Create Social Login buttons and handle authentication via Google, Facebook, and Twitter, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "next-auth"
+                            ],
+                            "functions": [
+                                "handleSocialLogin"
+                            ],
+                            "Imports": [
+                                "import { signIn } from 'next-auth/client'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default SocialLogin"
+                            ]
+                        },
+                        "ConfirmEmail.jsx": {
+                            "instructions": "Create component for email confirmation, handle confirmation link click, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next"
+                            ],
+                            "functions": [
+                                "handleEmailConfirmation"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "default ConfirmEmail"
+                            ]
+                        }
+                    },
+                    "Dashboard": {
+                        "Analytics.jsx": {
+                            "instructions": "Create Analytics Dashboard displaying insights into artwork performance, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "chart.js"
+                            ],
+                            "functions": [
+                                "renderCharts"
+                            ],
+                            "Imports": [
+                                "import { Line, Pie } from 'react-chartjs-2'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default Analytics"
+                            ]
+                        },
+                        "ImageGallery.jsx": {
+                            "instructions": "Create Image Gallery component to display, organize, and manage user-uploaded images, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "react-grid-gallery"
+                            ],
+                            "functions": [
+                                "handleImageActions"
+                            ],
+                            "Imports": [
+                                "import Gallery from 'react-grid-gallery'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default ImageGallery"
+                            ]
+                        },
+                        "MockupGenerator.jsx": {
+                            "instructions": "Create Mockup Generator component for editing, upscaling, and generating mockups from user-uploaded images, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "fabric"
+                            ],
+                            "functions": [
+                                "handleImageEdit",
+                                "generateMockup"
+                            ],
+                            "Imports": [
+                                "import { fabric } from 'fabric'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default MockupGenerator"
+                            ]
+                        },
+                        "Marketplace.jsx": {
+                            "instructions": "Create In-app Marketplace component for buying and selling digital art assets, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next"
+                            ],
+                            "functions": [
+                                "renderMarketplaceItems",
+                                "handleBuySell"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "default Marketplace"
+                            ]
+                        }
+                    },
+                    "Navigation": {
+                        "Header.jsx": {
+                            "instructions": "Create Header component with navigation menu and user authentication links, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "next-auth"
+                            ],
+                            "functions": [
+                                "renderNavItems",
+                                "handleLogout"
+                            ],
+                            "Imports": [
+                                "import { signOut } from 'next-auth/client'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default Header"
+                            ]
+                        },
+                        "Footer.jsx": {
+                            "instructions": "Create Footer component with links to various pages, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next"
+                            ],
+                            "functions": [
+                                "renderFooterLinks"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "default Footer"
+                            ]
+                        }
+                    },
+                    "Subscription": {
+                        "SubscriptionLanding.jsx": {
+                            "instructions": "Create Subscription Landing Page component displaying subscription plans and pricing, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "stripe-react-js"
+                            ],
+                            "functions": [
+                                "handleSubscriptionSelection"
+                            ],
+                            "Imports": [
+                                "import { CardElement, Elements } from '@stripe/react-stripe-js'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default SubscriptionLanding"
+                            ]
+                        },
+                        "BillingForm.jsx": {
+                            "instructions": "Create Billing Form component for Stripe payment processing, language: JSX",
+                            "implemented": false,
+                            "dependencies": [
+                                "react",
+                                "next",
+                                "stripe-react-js"
+                            ],
+                            "functions": [
+                                "handleSubmit",
+                                "handleChange"
+                            ],
+                            "Imports": [
+                                "import { CardElement } from '@stripe/react-stripe-js'"
+                            ],
+                            "code": "",
+                            "exports": [
+                                "default BillingForm"
+                            ]
+                        }
+                    }
+                },
+                "pages": {
+                    "_app.jsx": {
+                        "instructions": "Create App component for Next.js, import global styles and providers, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next",
+                            "next-auth"
+                        ],
+                        "functions": [],
+                        "Imports": [
+                            "import { Provider } from 'next-auth/client'"
+                        ],
+                        "code": "",
+                        "exports": [
+                            "default MyApp"
+                        ]
+                    },
+                    "index.jsx": {
+                        "instructions": "Create Home Page component with hero section, feature highlights, and CTAs, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "default Home"
+                        ]
+                    },
+                    "about.jsx": {
+                        "instructions": "Create About Page component with information about the company, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "default About"
+                        ]
+                    },
+                    "contact.jsx": {
+                        "instructions": "Create Contact Page component with contact form and company contact information, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next"
+                        ],
+                        "functions": [
+                            "handleSubmit",
+                            "handleChange"
+                        ],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "default Contact"
+                        ]
+                    },
+                    "dashboard.jsx": {
+                        "instructions": "Create Dashboard Page component as a hub for user actions and features, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "default Dashboard"
+                        ]
+                    },
+                    "profile.jsx": {
+                        "instructions": "Create Profile Page component for managing user account information, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next"
+                        ],
+                        "functions": [
+                            "handleSubmit",
+                            "handleChange"
+                        ],
+                        "Imports": [],
+                        "code          ": "",
+                        "exports": [
+                            "default Profile"
+                        ]
+                    },
+                    "subscription.jsx": {
+                        "instructions": "Create Subscription Page component for subscribing to premium plans, language: JSX",
+                        "implemented": false,
+                        "dependencies": [
+                            "react",
+                            "next"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "default Subscription"
+                        ]
+                    }
+                },
+                "styles": {
+                    "global.css": {
+                        "instructions": "Create Global CSS file for styling common elements and layout, language: CSS",
+                        "implemented": false,
+                        "dependencies": [],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": []
+                    },
+                    "components": {
+                        "Auth.css": {
+                            "instructions": "Create CSS file for styling Auth components, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Dashboard.css": {
+                            "instructions": "Create CSS file for styling Dashboard components, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Navigation.css": {
+                            "instructions": "Create CSS file for styling Navigation components, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Subscription.css": {
+                            "instructions": "Create CSS file for styling Subscription components, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        }
+                    },
+                    "pages": {
+                        "Home.css": {
+                            "instructions": "Create CSS file for styling Home Page, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "About.css": {
+                            "instructions": "Create CSS file for styling About Page, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Contact.css": {
+                            "instructions": "Create CSS file for styling Contact Page, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Dashboard.css": {
+                            "instructions": "Create CSS file for styling Dashboard Page, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Profile.css": {
+                            "instructions": "Create CSS file for styling Profile Page, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "Subscription.css": {
+                            "instructions": "Create CSS file for styling Subscription Page, language: CSS",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        }
+                    }
+                },
+                "public": {
+                    "images": {
+                        "logo.png": {
+                            "instructions": "Upload company logo to be used in Header component and other branding elements, language: PNG",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        },
+                        "hero-image.jpg": {
+                            "instructions": "Upload hero image to be used in Home Page hero section, language: JPG",
+                            "implemented": false,
+                            "dependencies": [],
+                            "functions": [],
+                            "Imports": [],
+                            "code": "",
+                            "exports": []
+                        }
+                    }
+                },
+                "package.json": {
+                    "instructions": "Create package.json file to manage project dependencies and scripts, language: JSON",
+                    "implemented": false,
+                    "dependencies": [
+                        "react",
+                        "next",
+                        "next-auth",
+                        "chart.js",
+                        "react-grid-gallery",
+                        "fabric",
+                        "stripe-react-js"
+                    ],
+                    "functions": [],
+                    "Imports": [],
+                    "code": "",
+                    "exports": []
+                },
+                "README.md": {
+                    "instructions": "Create README.md file with project description, parameters, usage, examples, target audience, and license, language: Markdown",
+                    "implemented": false,
+                    "dependencies": [],
+                    "functions": [],
+                    "Imports": [],
+                    "code": "",
+                    "exports": []
+                }
+            },
+            "backend": {
+                "api": {
+                    "auth": {
+                        "login.py": {
+                            "instructions": "Create login API endpoint for user authentication, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "bcrypt"
+                            ],
+                            "functions": [
+                                "login_user"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        },
+                        "register.py": {
+                            "instructions": "Create registration API endpoint for user registration, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "bcrypt"
+                            ],
+                            "functions": [
+                                "register_user"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        },
+                        "social_login.py": {
+                            "instructions": "Create social login API endpoint for user authentication via Google, Facebook, and Twitter, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "social-auth-app-fastapi"
+                            ],
+                            "functions": [
+                                "social_login_user"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        },
+                        "confirm_email.py": {
+                            "instructions": "Create email confirmation API endpoint, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy"
+                            ],
+                            "functions": [
+                                "confirm_email"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        }
+                    },
+                    "dashboard": {
+                        "analytics.py": {
+                            "instructions": "Create analytics API endpoint for fetching user artwork insights, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy"
+                            ],
+                            "functions": [
+                                "get_artwork_insights"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        },
+                        "image_gallery.py": {
+                            "instructions": "Create image gallery API endpoint for uploading, organizing, and managing user images, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "fastapi-uploads"
+                            ],
+                            "functions": [
+                                "upload_image",
+                                "delete_image",
+                                "get_images"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        },
+                        "mockup_generator.py": {
+                            "instructions": "Create mockup generator API endpoint for editing, upscaling, and generating mockups from user-uploaded images, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "PIL",
+                                "image-magic"
+                            ],
+                            "functions": [
+                                "generate_mockup",
+                                "edit_image",
+                                "upscale_image"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        }
+                    },
+                    "subscription": {
+                        "stripe_webhook.py": {
+                            "instructions": "Create Stripe webhook API endpoint for handling subscription events, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "stripe"
+                            ],
+                            "functions": [
+                                "stripe_webhook_handler"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        },
+                        "billing.py": {
+                            "instructions": "Create billing API endpoint for processing and managing user payments, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy",
+                                "stripe"
+                            ],
+                            "functions": [
+                                "process_payment",
+                                "update_payment_info"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        }
+                    },
+                    "user": {
+                        "profile.py": {
+                            "instructions": "Create profile API endpoint for managing user account information, language: Python",
+                            "implemented": false,
+                            "dependencies": [
+                                "fastapi",
+                                "sqlalchemy"
+                            ],
+                            "functions": [
+                                "get_user_info",
+                                "update_user_info",
+                                "delete_user"
+                            ],
+                            "Imports": [],
+                            "code": "",
+                            "exports": [
+                                "router"
+                            ]
+                        }
+                    }
+                },
+                "models": {
+                    "user.py": {
+                        "instructions": "Create user model for managing user data in the database, language: Python",
+                        "implemented": false,
+                        "dependencies": [
+                            "sqlalchemy"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "User"
+                        ]
+                    },
+                    "subscription.py": {
+                        "instructions": "Create subscription model for managing user subscription data in the database, language: Python",
+                        "implemented": false,
+                        "dependencies": [
+                            "sqlalchemy"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "Subscription"
+                        ]
+                    },
+                    "image.py": {
+                        "instructions": "Create image model for managing user image data in the database, language: Python",
+                        "implemented": false,
+                        "dependencies": [
+                            "sqlalchemy"
+                        ],
+                        "functions": [],
+                        "Imports": [],
+                        "code": "",
+                        "exports": [
+                            "Image"
+                        ]
+                    }
+                },
+                "main.py": {
+                    "instructions": "Create main.py file for running FastAPI backend server, language: Python",
+                    "implemented": false,
+                    "dependencies": [
+                        "fastapi",
+                        "sqlalchemy",
+                        "uvicorn"
+                    ],
+                    "functions": [],
+                    "Imports": [],
+                    "code": "",
+                    "exports": []
+                }
+            }
+        }
+    },
+    "meta": {
+        "name": "ArtworkMockupPlatform",
+        "seo": {
+            "keywords": [
+                "artwork",
+                "mockup",
+                "image editing",
+                "upscale",
+                "gallery",
+                "subscription",
+                "analytics"
+            ],
+            "title": "Artwork Mockup Platform - Create Stunning Artwork Mockups Online",
+            "article": "Artwork Mockup Platform is a web application that helps artists and designers create stunning artwork mockups with just a few clicks...",
+            "tags": "artwork, mockup, image editing, upscale, gallery, subscription, analytics"
+        },
+        "description": "A web platform for artists and designers to create artwork mockups, upscale images, manage image galleries, and analyze artwork performance.",
+        "dependences": [
+            "react",
+            "next",
+            "next-auth",
+            "chart.js",
+            "react-grid-gallery",
+            "fabric",
+            "stripe-react-js",
+            "fastapi",
+            "sqlalchemy",
+            "bcrypt",
+            "social-auth-app-fastapi",
+            "fastapi-uploads",
+            "PIL",
+            "image-magic",
+            "stripe"
+        ],
+        "summary": "A platform for creating artwork mockups, upscaling images, and analyzing performance.",
+        "tags": "artwork, mockup, image editing, upscale, gallery, subscription, analytics"
+    },
+    "messages": [
+        {
+            "role": "system",
+            "content": "The user needs strong skills in React, Next.js, FastAPI, and SQL databases to implement the Artwork Mockup Platform."
+        },
+        {
+            "role": "system",
+            "content": "Artwork Mockup Platform is a web app for artists and designers to create mockups, upscale images, manage galleries, and analyze artwork performance."
+        },
+        {
+            "role": "system",
+            "content": "Run 'npm install react next next-auth chart.js react-grid-gallery fabric stripe-react-js' to install the required dependencies."
+        },
+        {
+            "role": "system",
+            "content": "Implementation steps: 1. Set up the frontend using React and Next.js. 2. Develop the backend using FastAPI and SQL databases. 3. Integrate frontend and backend."
+        },
+        {
+            "role": "system",
+            "content": "Folder structure: ArtworkMockupPlatform/{frontend/{components, pages, styles, public}, backend/{api, models, main.py, package.json, README.md}}"
+        },
+        {
+            "role": "system",
+            "content": "Features: 1. User authentication and registration. 2. Social login. 3. Image uploading and management. 4. Artwork mockup generation. 5. Image upscaling. 6. Analytics dashboard. 7. Subscription management."
+        }
+    ]
+}

@@ -1,0 +1,554 @@
+{
+    "system": {
+        "messages": [
+            "Project Summary: Scalable Chat Memory for Chat GPT-4, an Express app that mimics human memory processes to provide context awareness and handle complex, large-scale coding tasks.",
+            "Command to install dependencies: `npm install express nextjs next-auth stripe redux-toolkit rtk-query tailwindcss postgres pg-promise dotenv`",
+            "Implementation Steps: 1. Set up Express server, 2. Configure database, 3. Create routes and controllers, 4. Integrate with GPT-4, 5. Implement memory structure, 6. Implement response generation and memory updates, 7. Optimize for scalability and performance.",
+            "Folder Structure: `chat-gpt-memory-app/{src/{api/{controllers/{promptsController.js,memoryController.js},middlewares/{errorHandler.js},routes/{promptsRoutes.js,memoryRoutes.js},services/{gpt4Service.js,memoryService.js,taskService.js,searchService.js}},config/{database.js,gpt4.js},db/{migrations/{create_tables.sql},models/{prompt.js,feature.js,task.js,memory.js},repositories/{promptRepository.js,featureRepository.js,taskRepository.js,memoryRepository.js}},utils/{cache.js,promptProcessor.js}},.env.example,.gitignore,Dockerfile,package.json,README.md}`",
+            "List of Features: 1. Prompt Processing, 2. Hierarchical Memory Structure, 3. Database Storage, 4. Memory Retrieval, 5. GPT-4 Integration, 6. Response Generation, 7. Scalability and Performance Optimization."
+        ],
+        "folderStructure": {
+            "chat-gpt-memory-app": {
+                "src": {
+                    "api": {
+                        "controllers": {
+                            "promptsController.js": {
+                                "instructions": "Handle user prompts, process them, and send responses; includes GPT-4 integration and prompt processing; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Prompt Processing",
+                                    "GPT-4 Integration",
+                                    "Response Generation"
+                                ],
+                                "dependencies": [
+                                    "express",
+                                    "gpt4Service",
+                                    "memoryService",
+                                    "promptProcessor"
+                                ],
+                                "functions": [
+                                    "getPrompts",
+                                    "createPrompt",
+                                    "updatePrompt"
+                                ],
+                                "imports": [
+                                    "express",
+                                    "gpt4Service",
+                                    "memoryService",
+                                    "promptProcessor"
+                                ],
+                                "exports": [
+                                    "promptsController"
+                                ]
+                            },
+                            "memoryController.js": {
+                                "instructions": "Manage memory retrieval, search, and updates; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Memory Retrieval",
+                                    "Memory Update"
+                                ],
+                                "dependencies": [
+                                    "express",
+                                    "memoryService",
+                                    "searchService"
+                                ],
+                                "functions": [
+                                    "getMemory",
+                                    "updateMemory",
+                                    "searchMemory"
+                                ],
+                                "imports": [
+                                    "express",
+                                    "memoryService",
+                                    "searchService"
+                                ],
+                                "exports": [
+                                    "memoryController"
+                                ]
+                            }
+                        },
+                        "middlewares": {
+                            "errorHandler.js": {
+                                "instructions": "Handle and respond to errors in the Express app; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Error Handling"
+                                ],
+                                "dependencies": [
+                                    "express"
+                                ],
+                                "functions": [
+                                    "errorHandler"
+                                ],
+                                "imports": [
+                                    "express"
+                                ],
+                                "exports": [
+                                    "errorHandler"
+                                ]
+                            }
+                        },
+                        "routes": {
+                            "promptsRoutes.js": {
+                                "instructions": "Define API routes for user prompts; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "API Routes"
+                                ],
+                                "dependencies": [
+                                    "express",
+                                    "promptsController"
+                                ],
+                                "functions": [],
+                                "imports": [
+                                    "express",
+                                    "promptsController"
+                                ],
+                                "exports": [
+                                    "promptsRoutes"
+                                ]
+                            },
+                            "memoryRoutes.js": {
+                                "instructions": "Define API routes for memory management; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "API Routes"
+                                ],
+                                "dependencies": [
+                                    "express",
+                                    "memoryController"
+                                ],
+                                "functions": [],
+                                "imports": [
+                                    "express",
+                                    "memoryController"
+                                ],
+                                "exports": [
+                                    "memoryRoutes"
+                                ]
+                            }
+                        },
+                        "services": {
+                            "gpt4Service.js": {
+                                "instructions": "Handle interactions with Chat GPT-4 API; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "GPT-4 Integration"
+                                ],
+                                "dependencies": [
+                                    "axios",
+                                    "config"
+                                ],
+                                "functions": [
+                                    "processInput"
+                                ],
+                                "imports": [
+                                    "axios",
+                                    "config"
+                                ],
+                                "exports": [
+                                    "gpt4Service"
+                                ]
+                            },
+                            "memoryService.js": {
+                                "instructions": "Manage memory storage, retrieval, and updates; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Memory Management"
+                                ],
+                                "dependencies": [
+                                    "promptRepository",
+                                    "featureRepository",
+                                    "taskRepository",
+                                    "memoryRepository"
+                                ],
+                                "functions": [
+                                    "createMemory",
+                                    "getMemory",
+                                    "updateMemory"
+                                ],
+                                "imports": [
+                                    "promptRepository",
+                                    "featureRepository",
+                                    "taskRepository",
+                                    "memoryRepository"
+                                ],
+                                "exports": [
+                                    "memoryService"
+                                ]
+                            },
+                            "taskService.js": {
+                                "instructions": "Handle task decomposition and management; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Task Decomposition"
+                                ],
+                                "dependencies": [],
+                                "functions": [
+                                    "decomposeTask"
+                                ],
+                                "imports": [],
+                                "exports": [
+                                    "taskService"
+                                ]
+                            },
+                            "searchService.js": {
+                                "instructions": "Handle context-aware memory search and retrieval; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Memory Retrieval"
+                                ],
+                                "dependencies": [
+                                    "memoryRepository"
+                                ],
+                                "functions": [
+                                    "searchMemory"
+                                ],
+                                "imports": [
+                                    "memoryRepository"
+                                ],
+                                "exports": [
+                                    "searchService"
+                                ]
+                            }
+                        }
+                    },
+                    "config": {
+                        "database.js": {
+                            "instructions": "Configure and connect to the PostgreSQL database; implemented in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "features tackled in this code": [
+                                "Database Configuration"
+                            ],
+                            "dependencies": [
+                                "pg",
+                                "dotenv"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "pg",
+                                "dotenv"
+                            ],
+                            "exports": [
+                                "dbConnection"
+                            ]
+                        },
+                        "gpt4.js": {
+                            "instructions": "Configure GPT-4 API settings; implemented in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "features tackled in this code": [
+                                "GPT-4 Configuration"
+                            ],
+                            "dependencies": [
+                                "dotenv"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "dotenv"
+                            ],
+                            "exports": [
+                                "gpt4Config"
+                            ]
+                        }
+                    },
+                    "db": {
+                        "migrations": {
+                            "create_tables.sql": {
+                                "instructions": "SQL script to create the database schema; implemented in SQL.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "Database Schema"
+                                ],
+                                "dependencies": [],
+                                "functions": [],
+                                "imports": [],
+                                "exports": []
+                            }
+                        },
+                        "models": {
+                            "prompt.js": {
+                                "instructions": "ORM model representing the 'prompts' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "ORM Model"
+                                ],
+                                "dependencies": [
+                                    "sequelize"
+                                ],
+                                "functions": [],
+                                "imports": [
+                                    "sequelize"
+                                ],
+                                "exports": [
+                                    "Prompt"
+                                ]
+                            },
+                            "feature.js": {
+                                "instructions": "ORM model representing the features' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "ORM Model"
+                                ],
+                                "dependencies": [
+                                    "sequelize"
+                                ],
+                                "functions": [],
+                                "imports": [
+                                    "sequelize"
+                                ],
+                                "exports": [
+                                    "Feature"
+                                ]
+                            },
+                            "task.js": {
+                                "instructions": "ORM model representing the 'tasks' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "ORM Model"
+                                ],
+                                "dependencies": [
+                                    "sequelize"
+                                ],
+                                "functions": [],
+                                "imports": [
+                                    "sequelize"
+                                ],
+                                "exports": [
+                                    "Task"
+                                ]
+                            },
+                            "memory.js": {
+                                "instructions": "ORM model representing the 'memory' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "ORM Model"
+                                ],
+                                "dependencies": [
+                                    "sequelize"
+                                ],
+                                "functions": [],
+                                "imports": [
+                                    "sequelize"
+                                ],
+                                "exports": [
+                                    "Memory"
+                                ]
+                            }
+                        },
+                        "repositories": {
+                            "promptRepository.js": {
+                                "instructions": "Database CRUD operations for the 'prompts' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "CRUD Operations"
+                                ],
+                                "dependencies": [
+                                    "Prompt"
+                                ],
+                                "functions": [
+                                    "getPrompts",
+                                    "createPrompt",
+                                    "updatePrompt"
+                                ],
+                                "imports": [
+                                    "Prompt"
+                                ],
+                                "exports": [
+                                    "promptRepository"
+                                ]
+                            },
+                            "featureRepository.js": {
+                                "instructions": "Database CRUD operations for the 'features' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "CRUD Operations"
+                                ],
+                                "dependencies": [
+                                    "Feature"
+                                ],
+                                "functions": [
+                                    "getFeatures",
+                                    "createFeature",
+                                    "updateFeature"
+                                ],
+                                "imports": [
+                                    "Feature"
+                                ],
+                                "exports": [
+                                    "featureRepository"
+                                ]
+                            },
+                            "taskRepository.js": {
+                                "instructions": "Database CRUD operations for the 'tasks' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "CRUD Operations"
+                                ],
+                                "dependencies": [
+                                    "Task"
+                                ],
+                                "functions": [
+                                    "getTasks",
+                                    "createTask",
+                                    "updateTask"
+                                ],
+                                "imports": [
+                                    "Task"
+                                ],
+                                "exports": [
+                                    "taskRepository"
+                                ]
+                            },
+                            "memoryRepository.js": {
+                                "instructions": "Database CRUD operations for the 'memory' table; implemented in JavaScript.",
+                                "implemented": false,
+                                "code": "",
+                                "features tackled in this code": [
+                                    "CRUD Operations"
+                                ],
+                                "dependencies": [
+                                    "Memory"
+                                ],
+                                "functions": [
+                                    "getMemory",
+                                    "createMemory",
+                                    "updateMemory",
+                                    "searchMemory"
+                                ],
+                                "imports": [
+                                    "Memory"
+                                ],
+                                "exports": [
+                                    "memoryRepository"
+                                ]
+                            }
+                        }
+                    },
+                    "app.js": {
+                        "instructions": "Set up the Express app, middleware, and routes; implemented in JavaScript.",
+                        "implemented": false,
+                        "code": "",
+                        "features tackled in this code": [
+                            "Express App Setup"
+                        ],
+                        "dependencies": [
+                            "express",
+                            "body-parser",
+                            "cors",
+                            "errorHandler",
+                            "promptsRoutes",
+                            "memoryRoutes"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "express",
+                            "body-parser",
+                            "cors",
+                            "errorHandler",
+                            "promptsRoutes",
+                            "memoryRoutes"
+                        ],
+                        "exports": [
+                            "app"
+                        ]
+                    }
+                },
+                "public": {
+                    "index.html": {
+                        "instructions": "Main HTML file of the frontend interface; implemented in HTML.",
+                        "implemented": false,
+                        "code": "",
+                        "features tackled in this code": [
+                            "Frontend Interface"
+                        ],
+                        "dependencies": [],
+                        "functions": [],
+                        "imports": [],
+                        "exports": []
+                    },
+                    "css": {
+                        "styles.css": {
+                            "instructions": "Main CSS file for styling the frontend interface; implemented in CSS.",
+                            "implemented": false,
+                            "code": "",
+                            "features tackled in this code": [
+                                "Styling"
+                            ],
+                            "dependencies": [],
+                            "functions": [],
+                            "imports": [],
+                            "exports": []
+                        }
+                    },
+                    "js": {
+                        "main.js": {
+                            "instructions": "Main JavaScript file for frontend functionality and communication with the backend API; implemented in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "features tackled in this code": [
+                                "Frontend Functionality",
+                                "API Communication"
+                            ],
+                            "dependencies": [],
+                            "functions": [],
+                            "imports": [],
+                            "exports": []
+                        }
+                    }
+                },
+                "package.json": {
+                    "instructions": "Project's package configuration, includes dependencies and scripts; implemented in JSON.",
+                    "implemented": false,
+                    "code": "",
+                    "features tackled in this code": [
+                        "Package Configuration"
+                    ],
+                    "dependencies": [
+                        "express",
+                        "body-parser",
+                        "cors",
+                        "axios",
+                        "pg",
+                        "sequelize",
+                        "dotenv"
+                    ],
+                    "functions": [],
+                    "imports": [],
+                    "exports": []
+                },
+                "README.md": {
+                    "instructions": "Project documentation in Markdown format, includes description, parameters, usage examples, target audience, and license.",
+                    "implemented": false,
+                    "code": "",
+                    "features tackled in this code": [
+                        "Documentation"
+                    ],
+                    "dependencies": [],
+                    "functions": [],
+                    "imports": [],
+                    "exports": []
+                }
+            }
+        }
+    }
+}

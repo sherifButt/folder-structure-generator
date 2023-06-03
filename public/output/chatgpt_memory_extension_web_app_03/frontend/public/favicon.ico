@@ -1,0 +1,3 @@
+As mentioned, the `favicon.ico` file is a standard ICO file and does not require any coding implementation. You just need to make sure that the file is placed in the root directory of your website.
+
+Assuming you have the `favicon.ico` file ready, simply place it in the root directory of your website and it should automatically be picked up by the browser and displayed in the tab.

@@ -1,0 +1,136 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
+import { pgsql } from "../../../../lib/db";
+import { sendAlertSettingUpdate } from "../../../../lib/mail";
+import { getUserByEmailAndOrPortfolioId } from "../../../../util/serverSideHelpers/alerts/sqlRawQuires";
+
+type Subscription = {
+  email: string | null;
+  first_name: string | null;
+  portfolio_id: number;
+  portfolio_name: string;
+  unsubscribe_all: boolean;
+  subscribe_all: boolean;
+  action: number;
+};
+
+/**
+ *  This API is responsible about managing the subscription flow, via both email and portfolio_id.
+ *  There is authentication layer that checks if the email and portfolio_id are valid and belongs to user
+ *  via a crypto secure uuid stored in the request header.
+ *  there is support for hot toggling the subscriptions with immediate effect by removing `action`
+ *  parameter form url, as it dose'nt need a submit button or save seedings.
+ *  It also supports bulk subscribe/un-subscribe using `subscribe_all` or `unsubscribe_all` params for
+ *  all portfolios at once. and it also supports sending email to user confirming the subscription
+ *  or un-subscription.
+ * @param req
+ * @param res
+ */
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const {
+    email,
+    first_name,
+
+    portfolio_name,
+    unsubscribe_all = req.query.unsubscribe_all || false,
+    subscribe_all = req.query.subscribe_all || false,
+  }: any = req.query;
+
+  let { portfolio_id, action } = req.query;
+  console.log(req.query);
+  try {
+    if (!email || !/@/.test(email)) throw new Error("No user email found!");
+
+    if (!portfolio_id) throw new Error("No portfolio id found!");
+
+    if (unsubscribe_all || subscribe_all) portfolio_id = null!;
+    // check if email and  portfolio_id are valid and belongs to user
+    const { rows: user }: any = await pgsql.query(
+      getUserByEmailAndOrPortfolioId(email, portfolio_id)
+    );
+
+    if (!user[0])
+      throw new Error(
+        "Invalid email or portfolio id, please check your email and portfolio id and try again"
+      );
+
+    // if no action is provided toggle user's subscription status from false to true and vice versa
+    // !true = false and +true = 1 +false = 0
+    if (!action) action = +!user[0].is_alert;
+    if (unsubscribe_all) action = 0;
+    if (subscribe_all) action = 1;
+
+    // toggle user's subscription status from false to true and vice versa based on action
+    if (unsubscribe_all || subscribe_all) {
+      const { rows: updatePortfolio }: any = await pgsql.query(
+        "UPDATE webapp.user_webapp_portfolio SET is_alert = " +
+          !!+action +
+          " WHERE webapp.user_webapp_portfolio.user_id = " +
+          user[0].user_id +
+          " ;"
+      );
+    } else {
+      const { rows: updatePortfolio }: any = await pgsql.query(
+        "UPDATE webapp.user_webapp_portfolio SET is_alert = " +
+          !!+action +
+          " WHERE webapp.user_webapp_portfolio.portfolio_id = " +
+          portfolio_id +
+          " ;"
+      );
+    }
+
+    let successMessage;
+    const subject = !+action
+      ? "Un-subscription Confirmation!"
+      : "Subscription Confirmation!";
+    const preheader = !+action
+      ? "Un-subscription Confirmation from Controversy Alerts!"
+      : "Controversy alerts subscription Confirmation!";
+
+    if (unsubscribe_all || subscribe_all) {
+      successMessage = `you've just ${
+        !+action
+          ? "un-subscribed successfully from All your portfolio controversy alerts at once!"
+          : "subscribed successfully to All your portfolio controversy alerts at once!"
+      }`;
+    } else {
+      successMessage = `you've just ${
+        !+action
+          ? "un-subscribed successfully from " +
+            portfolio_name +
+            " portfolio controversy alerts"
+          : "subscribed successfully to " +
+            portfolio_name +
+            " portfolio controversy alerts"
+      }`;
+    }
+
+    // send email to user confirming subscription or un-subscription
+    const sentEmail = await sendAlertSettingUpdate(
+      email,
+      first_name,
+      subject,
+      preheader,
+      successMessage
+    );
+    console.log("first", sentEmail.body);
+    res.status(200).json({
+      succuss: true,
+      status: 200,
+      message: successMessage,
+      query: req.query,
+    });
+  } catch (e: any) {
+    console.error(e);
+    res.status(400).json({
+      success: false,
+      error: e.message,
+      status: 400,
+      message: e.message,
+      query: req.query,
+    });
+  }
+}

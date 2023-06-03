@@ -1,0 +1,119 @@
+// Sure, here's an example of global.css:
+
+```css
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set default font family and size */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Set default link styles */
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Set default heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* Set default list styles */
+ul,
+ol {
+  margin: 1rem 0;
+  padding: 0 0 0 2rem;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+/* Set default blockquote styles */
+blockquote {
+  font-style: italic;
+  margin: 1rem 0;
+  padding: 0 0 0 2rem;
+  border-left: 0.25rem solid #0070f3;
+}
+
+/* Set default code styles */
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.875rem;
+  background-color: #f5f7ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+pre {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.875rem;
+  background-color: #f5f7ff;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+}

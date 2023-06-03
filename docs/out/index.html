@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super docs Home</title>
+  
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="shortcut icon" type="" href="./favicon.png"/>
+    <link rel="icon" type="" href="./favicon.png"/>
+  
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css2?family=Muli&family=Libre+Barcode+39+Text&family=Anton&family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css" />
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="styles/style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <script src="scripts/img-alt-caption.js"></script>
+    <script src="scripts/jsdoc-mermaid.js"></script>
+    
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.png" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Super Docs</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                    <a
+                        href="changelog.html"
+                        class="link"
+                    >
+                      LOG
+                    </a>
+                
+                
+                    <a
+                        href="swagger.html"
+                        class="link"
+                    >
+                       API
+                    </a>
+                
+                
+                <div class="dropdown is-hoverable is-right">
+                    <a class="dropdown-trigger link">
+                        Tutorials
+                        <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                        
+                            <a class="dropdown-item" href="tutorial-my-awesome-tutorial.html">
+                                my-awesome-tutorial
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://app.gaia-lens.com/login"
+                        >
+                            🚀 webapp
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.gaia-lens.com"
+                        >
+                            website
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/GaiaLens/web-app-react"
+                        >
+                            <svg xmlns='http://www.w3.org/2000/svg' width='24' marginTop='10' height='24' viewBox='0 0 24 24'><path d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/></svg>
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-cooldown.html">cooldown</a></li><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See howtouse</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Super Docs theme for JsDocs</h1>
+<p>Documentation toolbox for your <strong>javascript</strong> / <strong>typescript</strong> projects based on JSDoc3 with <strong>@category</strong>, <strong>@component</strong> and <strong>@optional</strong> plugins.</p>
+<p>This how it looks:</p>
+<div class='mdc' >
+<div class='ic'>
+<p><img src="images/class.png" alt="mobile version change log page" title="mobile version mockup"></p>
+</div>
+<div class='ic'>
+<p><img src="images/with-mermaid.png" alt="pc version/ with mermaid" title="pc version with mermaid integration"></p>
+</div>
+</div>
+<h2>Example</h2>
+<p>Example documentation can be found here: https://softwarebrothers.github.io/example-design-system/index.html</p>
+<h2>OpenSource sherifButt community</h2>
+<ul>
+<li><a href="https://join.slack.com/t/adminbro/shared_invite/zt-czfb79t1-0U7pn_KCqd5Ts~lbJK0_RA">Join the community</a> to get help and be inspired.</li>
+<li>subscribe to our <a href="http://opensource.softwarebrothers.co">newsletter</a></li>
+</ul>
+<h2>Installation</h2>
+<pre class="prettyprint source lang-sh"><code>npm install --save-dev super-docs
+</code></pre>
+<h2>Theme Usage</h2>
+<h3>With command line</h3>
+<p>Assuming that you have <a href="https://github.com/jsdoc/jsdoc">jsdoc</a> installed globally:</p>
+<pre class="prettyprint source"><code>jsdoc your-documented-file.js -t ./node_modules/super-docs
+</code></pre>
+<h3>With npm and configuration file</h3>
+<p>In your projects package.json file - add a new script:</p>
+<pre class="prettyprint source"><code>&quot;script&quot;: {
+  &quot;docs&quot;: &quot;jsdoc -c jsdoc.json&quot;
+}
+</code></pre>
+<p>in your <code>jsdoc.json</code> file, set the template:</p>
+<pre class="prettyprint source lang-json"><code>&quot;opts&quot;: {
+  &quot;template&quot;: &quot;node_modules/super-docs&quot;
+}
+</code></pre>
+<h2>TypeScript support</h2>
+<p>super-docs has a plugin which allows you to generate documentation from your TypeScript codebase.</p>
+<h3>Usage</h3>
+<p>To use it update your <code>jsdoc.json</code> file</p>
+<pre class="prettyprint source"><code>...
+&quot;tags&quot;: {
+    &quot;allowUnknownTags&quot;: [&quot;optional&quot;] //or true
+},
+&quot;plugins&quot;: [
+    &quot;node_modules/super-docs/typescript&quot;
+],
+&quot;source&quot;: {
+    &quot;includePattern&quot;: &quot;\\.(jsx|js|ts|tsx)$&quot;,
+},
+...
+</code></pre>
+<p>And now you can run your <code>jsdoc</code> command and parse TypeScript files.</p>
+<h3>How it works?</h3>
+<p>It performs 4 operations:</p>
+<ul>
+<li>First of all it transpiles all .ts and .tsx files to .js, so that all comments used by you are treated
+as a regular JSDoc comments.</li>
+</ul>
+<p>Furthermore it:</p>
+<ul>
+<li>Converts all your commented <code>type</code> aliases to <code>@typedef</code></li>
+<li>Converts all your commented <code>interface</code> definitions to <code>@interface</code>,</li>
+<li>Converts descriptions for your public, protected, static class members</li>
+</ul>
+<p>so they can be printed by JSDoc automatically.</p>
+<h3>Examples</h3>
+<pre class="prettyprint source"><code>/**
+ * ActionRequest
+ * @memberof Action
+ * @alias ActionRequest
+ */
+export type ActionRequest = {
+  /**
+   * parameters passed in an URL
+   */
+  params: {
+    /**
+     * Id of current resource
+     */
+    resourceId: string;
+    /**
+     * Id of current record
+     */
+    recordId?: string;
+    /**
+     * Name of an action
+     */
+    action: string;
+
+    [key: string]: any;
+  };
+}
+</code></pre>
+<p>is converted to:</p>
+<pre class="prettyprint source"><code>/**
+ * ActionRequest'
+ * @memberof Action'
+ * @alias ActionRequest'
+ * @typedef {object} ActionRequest'
+ * @property {object} params   parameters passed in an URL'
+ * @property {string} params.resourceId   Id of current resource'
+ * @property {string} [params.recordId]   Id of current record'
+ * @property {string} params.action   Name of an action'
+ * @property {any} params.{...}'
+ */
+</code></pre>
+<p>Also you can comment the interface in a similar fashion:</p>
+<pre class="prettyprint source"><code>/**
+ * JSON representation of an <code>Action</code>
+ * @see Action
+ */
+export default interface ActionJSON {
+  /**
+   * Unique action name
+   */
+  name: string;
+  /**
+   * Type of an action
+   */
+  actionType: 'record' | 'resource' | Array&lt;'record' | 'resource'>;
+  /**
+   * Action icon
+   */
+  icon?: string;
+  /**
+   * Action label - visible on the frontend
+   */
+  label: string;
+  /**
+   * Guarding message
+   */
+  guard?: string;
+  /**
+   * If action should have a filter (for resource actions)
+   */
+  showFilter: boolean;
+  /**
+   * Action component. When set to false action will be invoked immediately after clicking it,
+   * to put in another words: there wont be an action view
+   */
+  component?: string | false | null;
+}
+</code></pre>
+<p>or describe your class properties like that:</p>
+<pre class="prettyprint source"><code>/**
+ * Class name
+ */
+class ClassName {
+  /**
+   * Some private member which WONT be in jsdoc (because it is private)
+   */
+  private name: string
+
+  /**
+   * Some protected member which will go to the docs
+   */
+  protected somethingIsA: number
+
+  /**
+   * And static member which will goes to the docs.
+   */
+  static someStaticMember: number
+
+  public notCommentedWontBeInJSDoc: string
+
+  constructor(color: string) {}
+}
+</code></pre>
+<h2>@category plugin</h2>
+<p>super-docs also allows you to nest your documentation into categories and subcategories in the sidebar menu.</p>
+<h3>Usage</h3>
+<p>To add a plugin - update <code>plugins</code> section in your <code>jsdoc.json</code> file:</p>
+<pre class="prettyprint source"><code>...
+&quot;tags&quot;: {
+    &quot;allowUnknownTags&quot;: [&quot;category&quot;] //or true
+},
+&quot;plugins&quot;: [
+    &quot;node_modules/super-docs/category&quot;
+],
+...
+</code></pre>
+<p>and then you can use <code>@category</code> and/or <code>@subcategory</code> tag in your code:</p>
+<pre class="prettyprint source"><code>/**
+ * Class description
+ * @category Category
+ * @subcategory All
+ */
+class YourClass {
+  ....
+}
+</code></pre>
+<h2>@component plugin [BETA]</h2>
+<p>Super-docs also allows you to document your <a href="https://reactjs.org/">React</a> and <a href="https://vuejs.org/">Vue</a> components automatically. The only thing you have to do is to add a <code>@component</code> tag. It will take all props from your components and along with an <code>@example</code> tag - will generate a <strong>live preview</strong>.</p>
+<h3>Installation instructions</h3>
+<p>Similar as before to add a plugin - you have to update the <code>plugins</code> section in your <code>jsdoc.json</code> file:</p>
+<pre class="prettyprint source"><code>...
+&quot;tags&quot;: {
+    &quot;allowUnknownTags&quot;: [&quot;component&quot;] //or true
+},
+&quot;plugins&quot;: [
+    &quot;node_modules/super-docs/component&quot;
+],
+...
+</code></pre>
+<p>Since <strong>component</strong> plugin uses <a href="https://parceljs.org">parcel</a> as a bundler you have to install it globally. To do this run:</p>
+<pre class="prettyprint source"><code>## if you use npm
+npm install -g parcel-bundler
+
+## or yarn
+yarn global add parcel-bundler
+</code></pre>
+<h3>Usage</h3>
+<p>To document components simply add <code>@component</code> in your JSDoc documentation:</p>
+<pre class="prettyprint source lang-jsx"><code>/**
+ * Some documented component
+ *
+ * @component
+ */
+const Documented = (props) => {
+  const { text } = props
+  return (
+    &lt;div>{text}&lt;/div>
+  )
+}
+
+Documented.propTypes = {
+  /**
+   * Text is a text
+   */
+  text: PropTypes.string.isRequired,
+}
+
+export default Documented
+</code></pre>
+<p>The plugin will take the information from your <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">PropTypes</a> and put them into an array.</p>
+<p>For Vue it looks similar:</p>
+<pre class="prettyprint source lang-vue"><code>&lt;script>
+/**
+ * @component
+ */
+export default {
+  name: 'ExampleComponent',
+  props: {
+    spent: {
+      type: Number,
+      default: 30,
+    },
+    remaining: {
+      type: Number,
+      default: 40,
+    }
+  },
+}
+&lt;/script>
+</code></pre>
+<p>In this case, props will be taken from <code>props</code> property.</p>
+<h3>Preview</h3>
+<p><code>@component</code> plugin also modifies the behaviour of <code>@example</code> tag in a way that it can generate an actual <strong>component preview</strong>. What you have to do is to add an <code>@example</code> tag and return component from it:</p>
+<p><strong>React example:</strong></p>
+<pre class="prettyprint source lang-jsx"><code>/**
+ * Some documented component
+ *
+ * @component
+ * @example
+ * const text = 'some example text'
+ * return (
+ *   &lt;Documented text={text} />
+ * )
+ */
+const Documented = (props) => {
+  ///...
+}
+</code></pre>
+<p><strong>Vue example 1:</strong></p>
+<pre class="prettyprint source lang-vue"><code>&lt;script>
+/**
+ * @component
+ * @example
+ * &lt;ExampleComponent :spent=&quot;100&quot; :remaining=&quot;50&quot;>&lt;/ExampleComponent>
+ */
+export default {
+  name: 'ExampleComponent',
+  //...
+}
+&lt;/script>
+</code></pre>
+<p><strong>Vue example 2:</strong></p>
+<pre class="prettyprint source lang-vue"><code>&lt;script>
+/**
+ * @component
+ * @example
+ * {
+ *   template: `&lt;Box>
+ *     &lt;ProgressBar :spent=&quot;spent&quot; :remaining=&quot;50&quot;>&lt;/ProgressBar>
+ *     &lt;ProgressBar :spent=&quot;50&quot; :remaining=&quot;50&quot; style=&quot;margin-top: 20px&quot;>&lt;/ProgressBar>
+ *   &lt;/Box>`,
+ *   data: function() {
+ *     return {spent: 223};
+ *   }
+ * }
+ */
+export default {
+  name: 'ExampleComponent',
+  //...
+}
+&lt;/script>
+</code></pre>
+<p>You can put as many <code>@example</code> tags as you like in one component and &quot;caption&quot; each of them like this:</p>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * @component
+ * @example &lt;caption>Example usage of method1.&lt;/caption>
+ * // your example here
+ */
+</code></pre>
+<h3>Mixing components in preview</h3>
+<p>Also you can use multiple components which are documented with <code>@component</code> tag together. So lets say you have 2 components and in the second component you want to use the first one as a wrapper like this:</p>
+<pre class="prettyprint source lang-javascript"><code>// component-1.js
+/**
+ * Component 1
+ * @component
+ *
+ */
+const Component1 = (props) => {...}
+
+// component-2.js
+/**
+ * Component 2
+ * @component
+ * @example
+ * return (
+ *   &lt;Component1>
+ *     &lt;Component2 prop1={'some value'}/>
+ *     &lt;Component2 prop1={'some other value'}/>
+ *   &lt;/Component1>
+ * )
+ */
+const Component2 = (props) => {...}
+</code></pre>
+<h3>Wrapper component [only React]</h3>
+<p>Most probably your components will have to be run within a particular context, like within redux store provider or with custom CSS libraries.
+You can simulate this by passing a <code>component.wrapper</code> in your <code>jsdoc.json</code>:
+<em>(To read more about passing options - scroll down to <strong>Customization</strong> section)</em></p>
+<pre class="prettyprint source lang-json"><code>// jsdoc.json
+{
+    &quot;opts&quot;: {...},
+    &quot;templates&quot;: {
+        &quot;super-docs&quot;: {
+            &quot;name&quot;: &quot;Sample Documentation&quot;,
+            &quot;component&quot;: {
+              &quot;wrapper&quot;: &quot;./path/to/your/wrapper-component.js&quot;,
+            },
+            &quot;...&quot;: &quot;...&quot;,
+        }
+    }
+}
+</code></pre>
+<p>Wrapper component can look like this:</p>
+<pre class="prettyprint source lang-javascript"><code>// wrapper-component.js
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+const store = createStore(() => ({}), {})
+
+const Component = (props) => {
+  return (
+    &lt;React.Fragment>
+      &lt;head>
+        &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css&quot; />
+      &lt;/head>
+      &lt;Provider store={store}>
+        &lt;BrowserRouter>
+          {props.children}
+        &lt;/BrowserRouter>
+      &lt;/Provider>
+    &lt;/React.Fragment>
+  )
+}
+
+export default Component
+</code></pre>
+<h3>Styling React examples</h3>
+<p>Super-docs inserts all examples within an <code>iframe</code>. This results in the following styling options:</p>
+<ol>
+<li>
+<p>If you pass styles inline - they will work right away.</p>
+</li>
+<li>
+<p>For <code>css modules</code> to work with <code>parcel</code> bundler - you have to install <code>postcss-modules</code> package:</p>
+</li>
+</ol>
+<pre class="prettyprint source"><code>yarn add postcss-modules
+</code></pre>
+<p>and create a <code>.postcssrc</code> file:</p>
+<pre class="prettyprint source lang-json"><code>// .postcssrc
+{
+	&quot;modules&quot;: true
+}
+</code></pre>
+<ol start="3">
+<li>For <a href="https://www.styled-components.com/">styled-components</a> you have to use wrapper component which looks like this:</li>
+</ol>
+<pre class="prettyprint source lang-jsx"><code>import React from 'react'
+import { StyleSheetManager } from 'styled-components'
+
+const Component = (props) => {
+  const { frameContext } = props
+  return (
+    &lt;StyleSheetManager target={frameContext.document.head}>
+      {props.children}
+    &lt;/StyleSheetManager>
+  )
+}
+
+export default Component
+</code></pre>
+<h3>Adding commands to bundle entry file</h3>
+<p><code>@component</code> plugin creates an entry file: <code>.entry.js</code> in your <em>docs</em> output folder. Sometimes you might want to add something to it. You can do this by passing: <code>component.entry</code> option, which is an array of strings.</p>
+<p>So let's say you want to add <code>babel-polyfill</code> and 'bulma.css' framework to your bundle. You can do it like this:</p>
+<pre class="prettyprint source lang-json"><code>// jsdoc.json
+{
+    &quot;opts&quot;: {...},
+    &quot;templates&quot;: {
+        &quot;super-docs&quot;: {
+            &quot;name&quot;: &quot;Sample Documentation&quot;,
+            &quot;component&quot;: {
+                &quot;entry&quot;: [
+                    &quot;import 'babel-polyfill';&quot;,
+                    &quot;import 'bulma/css/bulma.css';&quot;
+                ]
+            },
+            &quot;...&quot;: &quot;...&quot;,
+        }
+    }
+}
+</code></pre>
+<h2>Customization</h2>
+<p>First of all, let me state that super-docs extends the <code>default</code> template. That is why default template parameters are also handled.</p>
+<p>[BETA]: You must explicitly set the <code>search</code> option of the <code>default</code> template to <code>true</code> to enable search</p>
+<p>To customize the super-docs pass <code>options</code> to <code>templates['super-docs']</code>. section in your <code>jsdoc configuration file</code>.</p>
+<p>Example configuration file with settings for both <code>default</code> and <code>super-docs</code> templates:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;tags&quot;: {
+        &quot;allowUnknownTags&quot;: [&quot;category&quot;]
+    },
+    &quot;source&quot;: {
+        &quot;include&quot;: [&quot;./src&quot;],
+        &quot;includePattern&quot;: &quot;.js$&quot;,
+        &quot;excludePattern&quot;: &quot;(node_modules/|docs)&quot;
+    },
+    &quot;plugins&quot;: [
+        &quot;plugins/markdown&quot;,
+        &quot;jsdoc-mermaid&quot;,
+        &quot;node_modules/super-docs/category&quot;
+    ],
+    &quot;opts&quot;: {
+        &quot;encoding&quot;: &quot;utf8&quot;,
+        &quot;destination&quot;: &quot;docs/&quot;,
+        &quot;readme&quot;: &quot;readme.md&quot;,
+        &quot;recurse&quot;: true,
+        &quot;verbose&quot;: true,
+        &quot;tutorials&quot;: &quot;./docs-src/tutorials&quot;,
+        &quot;template&quot;: &quot;super-docs&quot;
+    },
+    &quot;templates&quot;: {
+        &quot;cleverLinks&quot;: false,
+        &quot;monospaceLinks&quot;: false,
+        &quot;search&quot;: true,
+        &quot;default&quot;: {
+            &quot;staticFiles&quot;: {
+              &quot;include&quot;: [
+                  &quot;./docs-src/statics&quot;
+              ]
+            }
+        },
+        &quot;super-docs&quot;: {
+            &quot;name&quot;: &quot;Sample Documentation&quot;,
+            &quot;logo&quot;: &quot;images/logo.png&quot;,
+            &quot;title&quot;: &quot;&quot;, // HTML title
+            &quot;css&quot;: &quot;style.css&quot;,
+            &quot;trackingCode&quot;: &quot;tracking-code-which-will-go-to-the-HEAD&quot;,
+	    &quot;hideGenerator&quot;: false,
+            &quot;navLinks&quot;: [
+                {
+                    &quot;label&quot;: &quot;Github&quot;,
+                    &quot;href&quot;: &quot;https://github.com/sherifButt/admin-bro&quot;
+                },
+                {
+                    &quot;label&quot;: &quot;Example Application&quot;,
+                    &quot;href&quot;: &quot;https://admin-bro-example-app-staging.herokuapp.com/admin&quot;
+                }
+            ]
+        }
+    }
+}
+</code></pre>
+<h3>Extras</h3>
+<h4>typedef(import(...))</h4>
+<p>super-docs also has one extra plugin for handling typescript'like types imports like (it has to be one-liner):</p>
+<pre class="prettyprint source"><code>/** @typedef {import('./some-other-file').ExportedType} ExportedType */
+</code></pre>
+<p>It simply removes that from the code so JSDoc wont throw an error. In order to use it add this plugin to your plugins section:</p>
+<pre class="prettyprint source"><code>  &quot;plugins&quot;: [
+        &quot;node_modules/super-docs/typedef-import&quot;
+    ],
+</code></pre>
+<h2>Setting up for the development</h2>
+<p>If you want to change the theme locally follow the steps:</p>
+<ol>
+<li>Clone the repo to the folder where you have the project:</li>
+</ol>
+<pre class="prettyprint source"><code>cd your-project
+git clone git@github.com:sherifButt/super-docs.git
+</code></pre>
+<p>or add it as a git submodule:</p>
+<pre class="prettyprint source"><code>git submodule add git@github.com:sherifButt/super-docs.git
+</code></pre>
+<ol start="2">
+<li>Install the packages</li>
+</ol>
+<pre class="prettyprint source"><code>cd super-docs
+
+npm install
+
+## or
+
+yarn
+</code></pre>
+<ol start="3">
+<li>Within the super-docs folder run the gulp script. It will regenerate documentation every time you change something.</li>
+</ol>
+<p>It supports following EVN variables:</p>
+<ul>
+<li><code>DOCS_COMMAND</code> - a command in your root repo which you use to generate documentation: i.e. <code>DOCS_COMMAND='jsdoc -c jsdoc.json'</code> or <code>npm run docs</code> if you have <code>docs</code> command defined in <code>package.json</code> file</li>
+<li><code>DOCS_OUTPUT</code> - where your documentation is generated. It should point to the same folder your jsdoc <code>--destination</code> conf. But make sure that it is relative to the path where you cloned <code>super-docs</code>.</li>
+<li><code>DOCS</code> - list of folders from your original repo what you want to watch for changes. Separated by comma.</li>
+</ul>
+<pre class="prettyprint source"><code>cd super-docs
+DOCS_COMMAND='npm run docs' DOCS=../src/**/*,../config/**/* DOCS_OUTPUT=../docs cd super-docs && gulp
+</code></pre>
+<p>The script should launch the browser and refresh it whenever you change something in the template or in <code>DOCS</code>.</p>
+<h2>Setting up the jsdoc in your project</h2>
+<p>If you want to see how to setup jsdoc in your project - take a look at these brief tutorials:</p>
+<ul>
+<li>JSDoc - https://www.youtube.com/watch?v=Yl6WARA3IhQ</li>
+<li>super-docs and Mermaid: https://www.youtube.com/watch?v=UBMYogTzsBk</li>
+</ul>
+<h2>License</h2>
+<p>super-docs is Copyright © 2019 sherifButt.co. It is free software and may be redistributed under the terms specified in the <a href="LICENSE">LICENSE</a> file - MIT.</p>
+<h2>About sherifButt.co</h2>
+<img src="https://softwarebrothers.co/assets/images/software-brothers-logo-full.svg" width=240>
+<p>We're an open, friendly team that helps clients from all over the world to transform their businesses and create astonishing products.</p>
+<ul>
+<li>We are available for <a href="https://softwarebrothers.co/contact">hire</a>.</li>
+<li>If you want to work for us - check out the <a href="https://softwarebrothers.co/career">career page</a>.</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>app.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>This file defines the routes for the Express server.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Sherif Butt</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://expressjs.com/en/guide/routing.html">Express Routing</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="app.js.html" class="button">View Source</a>
+            <span>
+                <a href="app.js.html">app.js</a>, <a href="app.js.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>helpers/getGpt.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>This file defines the function that retrieves generated code from the OpenAI ChatGPT API based on the provided prompt.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Sherif Butt</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://beta.openai.com/docs/api-reference/create-completion">OpenAI API Reference: Create Completion</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_getGpt.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line5">line 5</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+<script src="scripts/copycode.js"></script>
+
+<script src="scripts/search.js"> </script>
+
+
+
+</body>
+</html>

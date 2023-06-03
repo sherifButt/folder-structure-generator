@@ -1,0 +1,312 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "ArtistoFlow is a powerful, all-in-one platform for digital artists that automates the process of preparing and submitting artwork to online marketplaces while providing valuable insights, resources, and collaboration tools."
+    },
+    {
+      "role": "system",
+      "content": "npm install next react react-dom tailwindcss @reduxjs/toolkit react-redux next-auth axios react-toastify react-query express stripe pg pg-hstore sequelize sequelize-cli cors helmet cookie-parser bcrypt jsonwebtoken multer nodemailer dotenv sharp"
+    },
+    {
+      "role": "system",
+      "content": "Start by setting up the development environment, install dependencies, and then proceed to implement the features one by one, following the folder structure provided."
+    },
+    {
+      "role": "system",
+      "content": "The key features of ArtistoFlow include user account management, image gallery, image editing and processing, mockup generation and customization, AI-assisted content generation, automated submission to online marketplaces, social media integration, analytics dashboard, in-app marketplace, collaboration tools, educational resources, and an affiliate program."
+    },
+    {
+      "role": "system",
+      "content": "artisto-flow/{components/{Auth/{Login.js, Register.js, SocialLogin.js, ConfirmEmail.js}, Dashboard/{Analytics.js, ImageGallery.js, MockupGenerator.js, Marketplace.js}, Navigation/{Header.js, Footer.js}, Subscription/{SubscriptionCard.js, PaymentForm.js}, Collaboration/{ProjectList.js, Project.js, Feedback.js}, Shared/{Button.js, Input.js, Modal.js, Loader.js}}, pages/{_app.js, _document.js, index.js, dashboard.js, subscription.js, login.js, register.js, confirm-email.js, marketplace.js, collaboration.js, resources.js, affiliate.js}, public/{images/{logo.png, ...}, static/{css/{main.css}, js/{main.js}}}, styles/{global.css, tailwind.config.js}, lib/{api/{auth.js, images.js, mockups.js, subscriptions.js, marketplace.js, collaboration.js, analytics.js}, utils/{imageProcessing.js, mockupGeneration.js, contentGeneration.js, marketplaceIntegration.js, socialMediaIntegration.js}, middleware/{authMiddleware.js, rolesMiddleware.js}}, models/{User.js, Image.js, Mockup.js, Subscription.js, Marketplace.js, Collaboration.js, Affiliate.js}, services/{emailService.js}, next.config.js, package.json}"
+    }
+  ],
+  "folderStructure": {
+    "artisto-flow": {
+      "components": {
+        "Auth": {
+          "Login.js": {
+            "instructions": "Create a login component using Next.js and Next-Auth.",
+            "implemented": false
+          },
+          "Register.js": {
+            "instructions": "Create a registration component using Next.js and Next-Auth.",
+            "implemented": false
+          },
+          "SocialLogin.js": {
+            "instructions": "Create a social login component using Next.js and Next-Auth.",
+            "implemented": false
+          },
+          "ConfirmEmail.js": {
+            "instructions": "Create a component for email confirmation using Next.js and Next-Auth.",
+            "implemented": false
+          }
+        },
+        "Dashboard": {
+          "Analytics.js": {
+            "instructions": "Create an analytics dashboard component using Next.js and React-Query.",
+            "implemented": false
+          },
+          "ImageGallery.js": {
+            "instructions": "Create an image gallery component using Next.js and React-Query.",
+            "implemented": false
+          },
+          "MockupGenerator.js": {
+            "instructions": "Create a mockup generator component using Next.js, React-Query, and Sharp.",
+            "implemented": false
+          },
+          "Marketplace.js": {
+            "instructions": "Create an in-app marketplace component using Next.js and React-Query.",
+            "implemented": false
+          }
+        },
+        "Navigation": {
+          "Header.js": {
+            "instructions": "Create a header component using Next.js and Tailwind CSS.",
+            "implemented": false
+          },
+          "Footer.js": {
+            "instructions": "Create a footer component using Next.js and Tailwind CSS.",
+            "implemented": false
+          }
+        },
+        "Subscription": {
+          "SubscriptionCard.js": {
+            "instructions": "Create a subscription card component using Next.js and Stripe.",
+            "implemented": false
+          },
+          "PaymentForm.js": {
+            "instructions": "Create a payment form component using Next.js and Stripe.",
+            "implemented": false
+          }
+        },
+        "Collaboration": {
+          "ProjectList.js": {
+            "instructions": "Create a project list component for collaboration using Next.js and React-Query.",
+            "implemented": false
+          },
+          "Project.js": {
+            "instructions": "Create an individual project component for collaboration using Next.js and React-Query.",
+            "implemented": false
+          },
+          "Feedback.js": {
+            "instructions": "Create a feedback component for collaboration using Next.js and React-Query.",
+            "implemented": false
+          }
+        },
+        "Shared": {
+          "Button.js": {
+            "instructions": "Create a shared button component using Next.js and Tailwind CSS.",
+            "implemented": false
+          },
+          "Input.js": {
+            "instructions": "Create a shared input component using Next.js and Tailwind CSS.",
+            "implemented": false
+          },
+          "Modal.js": {
+            "instructions": "Create a shared modal component using Next.js and Tailwind CSS.",
+            "implemented": false
+          },
+          "Loader.js": {
+            "instructions": "Create a shared loader component using Next.js and Tailwind CSS.",
+            "implemented": false
+          }
+        }
+      },
+      "pages": {
+        "_app.js": {
+          "instructions": "Create a custom _app.js file using Next.js, Redux, and global styles.",
+          "implemented": false
+        },
+        "_document.js": {
+          "instructions": "Create a custom _document.js file using Next.js for server-rendered styles.",
+          "implemented": false
+        },
+        "index.js": {
+          "instructions": "Create the landing page using Next.js and Tailwind CSS.",
+          "implemented": false
+        },
+        "dashboard.js": {
+          "instructions": "Create the dashboard page using Next.js and the Dashboard components.",
+          "implemented": false
+        },
+        "subscription.js": {
+          "instructions": "Create the subscription page using Next.js and the Subscription components.",
+          "implemented": false
+        },
+        "login.js": {
+          "instructions": "Create the login page using Next.js and the Auth components.",
+          "implemented": false
+        },
+        "register.js": {
+          "instructions": "Create the registration page using Next.js and the Auth components.",
+          "implemented": false
+        },
+        "confirm-email.js": {
+          "instructions": "Create the email confirmation page using Next.js and the Auth components.",
+          "implemented": false
+        },
+        "marketplace.js": {
+          "instructions": "Create the in-app marketplace page using Next.js and the Marketplace component.",
+          "implemented": false
+        },
+        "collaboration.js": {
+          "instructions": "Create the collaboration page using Next.js and the Collaboration components.",
+          "implemented": false
+        },
+        "resources.js": {
+          "instructions": "Create the educational resources page using Next.js and Tailwind CSS.",
+          "implemented": false
+        },
+        "affiliate.js": {
+          "instructions": "Create the affiliate program page using Next.js and Tailwind CSS.",
+          "implemented": false
+        }
+      },
+      "public": {
+        "images": {
+          "logo.png": {
+            "instructions": "Add the logo image for the website.",
+            "implemented": false
+          }
+        },
+        "static": {
+          "css": {
+            "main.css": {
+              "instructions": "Create a main CSS file for global styles.",
+              "implemented": false
+            }
+          },
+          "js": {
+            "main.js": {
+              "instructions": "Create a main JavaScript file for global scripts.",
+              "implemented": false
+            }
+          }
+        }
+      },
+      "styles": {
+        "global.css": {
+          "instructions": "Create a global CSS file for custom styles.",
+          "implemented": false
+        },
+        "tailwind.config.js": {
+          "instructions": "Create a Tailwind CSS configuration file.",
+          "implemented": false
+        }
+      },
+      "lib": {
+        "api": {
+          "auth.js": {
+            "instructions": "Create an API module for authentication using Next-Auth.",
+            "implemented": false
+          },
+          "images.js": {
+            "instructions": "Create an API module for handling image uploads and management.",
+            "implemented": false
+          },
+          "mockups.js": {
+            "instructions": "Create an API module for generating and managing mockups.",
+            "implemented": false
+          },
+          "subscriptions.js": {
+            "instructions": "Create an API module for managing user subscriptions.",
+            "implemented": false
+          },
+          "marketplace.js": {
+            "instructions": "Create an API module for the in-app marketplace.",
+            "implemented": false
+          },
+          "collaboration.js": {
+            "instructions": "Create an API module for collaboration features.",
+            "implemented": false
+          },
+          "analytics.js": {
+            "instructions": "Create an API module for analytics.",
+            "implemented": false
+          }
+        },
+        "utils": {
+          "imageProcessing.js": {
+            "instructions": "Create a utility module for image processing.",
+            "implemented": false
+          },
+          "mockupGeneration.js": {
+            "instructions": "Create a utility module for mockup generation.",
+            "implemented": false
+          },
+          "contentGeneration.js": {
+            "instructions": "Create a utility module for content generation using ChatGPT-4.",
+            "implemented": false
+          },
+          "marketplaceIntegration.js": {
+            "instructions": "Create a utility module for integration with online marketplaces.",
+            "implemented": false
+          },
+          "socialMediaIntegration.js": {
+            "instructions": "Create a utility module for social media integration.",
+            "implemented": false
+          }
+        },
+        "middleware": {
+          "authMiddleware.js": {
+            "instructions": "Create authentication middleware for protected routes.",
+            "implemented": false
+          },
+          "rolesMiddleware.js": {
+            "instructions": "Create a roles-based middleware for user access control.",
+            "implemented": false
+          }
+        }
+      },
+      "models": {
+        "User.js": {
+          "instructions": "Create a User model using Sequelize.",
+          "implemented": false
+        },
+        "Image.js": {
+          "instructions": "Create an Image model using Sequelize.",
+          "implemented": false
+        },
+        "Mockup.js": {
+          "instructions": "Create a Mockup model using Sequelize.",
+          "implemented": false
+        },
+        "Subscription.js": {
+          "instructions": "Create a Subscription model using Sequelize.",
+          "implemented": false
+        },
+        "Marketplace.js": {
+          "instructions": "Create a Marketplace model using Sequelize.",
+          "implemented": false
+        },
+        "Collaboration.js": {
+          "instructions": "Create a Collaboration model using Sequelize.",
+          "implemented": false
+        },
+        "Affiliate.js": {
+          "instructions": "Create an Affiliate model using Sequelize.",
+          "implemented": false
+        }
+      },
+      "services": {
+        "emailService.js": {
+          "instructions": "Create an email service module using Nodemailer.",
+          "implemented": false
+        }
+      },
+      "next.config.js": {
+        "instructions": "Create a Next.js configuration file.",
+        "implemented": false
+      },
+      "package.json": {
+        "instructions": "Create a package.json file with the list of dependencies used in this project.",
+        "implemented": false
+      },
+      "README.md": {
+        "instructions": "Create a README.md file with the project description, parameters, usage instructions, examples, target audience, and license.",
+        "implemented": false
+      }
+    }
+  }
+}

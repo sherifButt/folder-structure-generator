@@ -1,0 +1,481 @@
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Project Summary: Scalable Chat Memory for Chat GPT-4, an Express app that mimics human memory processes to provide context awareness and handle complex, large-scale coding tasks."
+        },
+        {
+            "role": "system",
+            "content": "Command to install dependencies: `npm install express nextjs next-auth stripe redux-toolkit rtk-query tailwindcss postgres pg-promise dotenv`"
+        },
+        {
+            "role": "system",
+            "content": "Implementation Steps: 1. Set up Express server, 2. Configure database, 3. Create routes and controllers, 4. Integrate with GPT-4, 5. Implement memory structure, 6. Implement response generation and memory updates, 7. Optimize for scalability and performance."
+        },
+        {
+            "role": "system",
+            "content": "Folder Structure: `chat-gpt-memory-app/{src/{api/{controllers/{promptsController.js,memoryController.js},middlewares/{errorHandler.js},routes/{promptsRoutes.js,memoryRoutes.js},services/{gpt4Service.js,memoryService.js,taskService.js,searchService.js}},config/{database.js,gpt4.js},db/{migrations/{create_tables.sql},models/{prompt.js,feature.js,task.js,memory.js},repositories/{promptRepository.js,featureRepository.js,taskRepository.js,memoryRepository.js}},utils/{cache.js,promptProcessor.js}},.env.example,.gitignore,Dockerfile,package.json,README.md}`"
+        },
+        {
+            "role": "system",
+            "content": "List of Features: 1. Prompt Processing, 2. Hierarchical Memory Structure, 3. Database Storage, 4. Memory Retrieval, 5. GPT-4 Integration, 6. Response Generation, 7. Scalability and Performance Optimization."
+        }
+    ],
+    "folderStructure": {
+        "chat-gpt-memory-app": {
+            "src": {
+                "api": {
+                    "controllers": {
+                        "promptsController.js": {
+                            "instructions": "Handle incoming prompt requests, extract title and description, and call corresponding services. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "gpt4Service",
+                                "memoryService"
+                            ],
+                            "functions": [
+                                "getPrompt",
+                                "postPrompt"
+                            ],
+                            "imports": [
+                                "gpt4Service",
+                                "memoryService"
+                            ],
+                            "exports": [
+                                "promptsController"
+                            ]
+                        },
+                        "memoryController.js": {
+                            "instructions": "Handle memory-related requests, retrieve and update memory, and call corresponding services. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [ 
+                                "memoryService",
+                                "searchService"
+                            ],
+                            "functions": [
+                                "getMemory",
+                                "updateMemory"
+                            ],
+                            "imports": [
+                                "memoryService",
+                                "searchService"
+                            ],
+                            "exports": [
+                                "memoryController"
+                            ]
+                        }
+                    },
+                    "middlewares": {
+                        "errorHandler.js": {
+                            "instructions": "Custom error handling middleware to handle errors and return appropriate responses. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [],
+                            "functions": [
+                                "errorHandler"
+                            ],
+                            "imports": [],
+                            "exports": [
+                                "errorHandler"
+                            ]
+                        }
+                    },
+                    "routes": {
+                        "promptsRoutes.js": {
+                            "instructions": "Define routes for prompt-related endpoints and bind them to their respective controllers. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "express",
+                                "promptsController"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "express",
+                                "promptsController"
+                            ],
+                            "exports": [
+                                "promptsRoutes"
+                            ]
+                        },
+                        "memoryRoutes.js": {
+                            "instructions": "Define routes for memory-related endpoints and bind them to their respective controllers. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "express",
+                                "memoryController"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "express",
+                                "memoryController"
+                            ],
+                            "exports": [
+                                "memoryRoutes"
+                            ]
+                        }
+                    },
+                    "services": {
+                        "gpt4Service.js": {
+                            "instructions": "Process user inputs using GPT-4, store responses in memory, and handle GPT-4 API integration. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "axios"
+                            ],
+                            "functions": [
+                                "processInput",
+                                "storeResponse"
+                            ],
+                            "imports": [
+                                "axios"
+                            ],
+                            "exports": [
+                                "gpt4Service"
+                            ]
+                        },
+                        "memoryService.js": {
+                            "instructions": "Manage memory structure, store and retrieve features and tasks, and handle the mind map creation. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "promptRepository",
+                                "featureRepository",
+                                "taskRepository",
+                                "memoryRepository"
+                            ],
+                            "functions": [
+                                "createMindMap",
+                                "storeFeature",
+                                "storeTask",
+                                "retrieveMemory"
+                            ],
+                            "imports": [
+                                "promptRepository",
+                                "featureRepository",
+                                "taskRepository",
+                                "memoryRepository"
+                            ],
+                            "exports": [
+                                "memoryService"
+                            ]
+                        },
+                        "taskService.js": {
+                            "instructions": "Handle task decomposition and generation from the simplest features. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [],
+                            "functions": [
+                                "generateTasks"
+                            ],
+                            "imports": [],
+                            "exports": [
+                                "taskService"
+                            ]
+                        },
+                        "searchService.js": {
+                            "instructions": "Implement context-aware search and machine learning-based prediction for memory retrieval. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [],
+                            "functions": [
+                                "searchMemory",
+                                "predictRelevantInfo"
+                            ],
+                            "imports": [],
+                            "exports": [
+                                "searchService"
+                            ]
+                        }
+                    }
+                },
+                "config": {
+                    "database.js": {
+                        "instructions": "Configure PostgreSQL database connection and settings. Written in JavaScript.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "pg-promise",
+                            "dotenv"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "pg-promise",
+                            "dotenv"
+                        ],
+                        "exports": [
+                            "db"
+                        ]
+                    },
+                    "gpt4.js": {
+                        "instructions": "Configure GPT-4 API settings and credentials. Written in JavaScript.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "dotenv"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "dotenv"
+                        ],
+                        "exports": [
+                            "gpt4Config"
+                        ]
+                    }
+                },
+                "db": {
+                    "migrations": {
+                        "create_tables.sql": {
+                            "instructions": "SQL script to create the database schema for prompts, features, tasks, and memory tables. Written in SQL.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [],
+                            "functions": [],
+                            "imports": [],
+                            "exports": []
+                        }
+                    },
+                    "models": {
+                        "prompt.js": {
+                            "instructions": "ORM model representing the prompt table in the database. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "pg-promise"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "pg-promise"
+                            ],
+                            "exports": [
+                                "Prompt"
+                            ]
+                        },
+                        "feature.js": {
+                            "instructions": "ORM model representing the feature table in the database. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "pg-promise"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "pg-promise"
+                            ],
+                            "exports": [
+                                "Feature"
+                            ]
+                        },
+                        "task.js": {
+                            "instructions": "ORM model representing the task table in the database. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "pg-promise"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "pg-promise"
+                            ],
+                            "exports": [
+                                "Task"
+                            ]
+                        },
+                        "memory.js": {
+                            "instructions": "ORM model representing the memory table in the database. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "pg-promise"
+                            ],
+                            "functions": [],
+                            "imports": [
+                                "pg-promise"
+                            ],
+                            "exports": [
+                                "Memory"
+                            ]
+                        }
+                    },
+                    "repositories": {
+                        "promptRepository.js": {
+                            "instructions": "Define database operations for the prompt table. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "db",
+                                "Prompt"
+                            ],
+                            "functions": [
+                                "addPrompt",
+                                "findPrompt",
+                                "updatePrompt"
+                            ],
+                            "imports": [
+                                "db",
+                                "Prompt"
+                            ],
+                            "exports": [
+                                "promptRepository"
+                            ]
+                        },
+                        "featureRepository.js": {
+                            "instructions": "Define database operations for the feature table. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "db",
+                                "Feature"
+                            ],
+                            "functions": [
+                                "addFeature",
+                                "findFeature",
+                                "updateFeature"
+                            ],
+                            "imports": [
+                                "db",
+                                "Feature"
+                            ],
+                            "exports": [
+                                "featureRepository"
+                            ]
+                        },
+                        "taskRepository.js": {
+                            "instructions": "Define database operations for the task table. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "db",
+                                "Task"
+                            ],
+                            "functions": [
+                                "addTask",
+                                "findTask",
+                                "updateTask"
+                            ],
+                            "imports": [
+                                "db",
+                                "Task"
+                            ],
+                            "exports": [
+                                "taskRepository"
+                            ]
+                        },
+                        "memoryRepository.js": {
+                            "instructions": "Define database operations for the memory table. Written in JavaScript.",
+                            "implemented": false,
+                            "code": "",
+                            "dependencies": [
+                                "db",
+                                "Memory"
+                            ],
+                            "functions": [
+                                "addMemory",
+                                "findMemory",
+                                "updateMemory"
+                            ],
+                            "imports": [
+                                "db",
+                                "Memory"
+                            ],
+                            "exports": [
+                                "memoryRepository"
+                            ]
+                        }
+                    }
+                },
+                "utils": {
+                    "cache.js": {
+                        "instructions": "Utility for caching memory data for performance optimization. Written in JavaScript.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [],
+                        "functions": [
+                            "getFromCache",
+                            "setToCache",
+                            "clearCache"
+                        ],
+                        "imports": [],
+                        "exports": [
+                            "cache"
+                        ]
+                    },
+                    "promptProcessor.js": {
+                        "instructions": "Utility for processing prompts, extracting titles and descriptions, and breaking down features. Written in JavaScript.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [],
+                        "functions": [
+                            "processPrompt",
+                            "extractTitleAndDescription",
+                            "breakDownFeatures"
+                        ],
+                        "imports": [],
+                        "exports": [
+                            "promptProcessor"
+                        ]
+                    }
+                }
+            },
+            ".env.example": {
+                "instructions": "Example configuration file containing environment variables for the app. Written in plain text.",
+                "implemented": false,
+                "code": "",
+                "dependencies": [],
+                "functions": [],
+                "imports": [],
+                "exports": []
+            },
+            ".gitignore": {
+                "instructions": "File containing patterns to ignore by Git version control system. Written in plain text.",
+                "implemented": false,
+                "code": "",
+                "dependencies": [],
+                "functions": [],
+                "imports": [],
+                "exports": []
+            },
+            "Dockerfile": {
+                "instructions": "Docker configuration file for container          izing the app. Written in plain text.",
+                "implemented": false,
+                "code": "",
+                "dependencies": [],
+                "functions": [],
+                "imports": [],
+                "exports": []
+            },
+            "package.json": {
+                "instructions": "File containing project metadata, scripts, and dependency information. Include the list of dependencies used in this project. Written in JSON.",
+                "implemented": false,
+                "code": "",
+                "dependencies": [
+                    "express",
+                    "nextjs",
+                    "next-auth",
+                    "stripe",
+                    "redux-toolkit",
+                    "rtk-query",
+                    "tailwindcss",
+                    "postgres",
+                    "pg-promise",
+                    "dotenv"
+                ],
+                "functions": [],
+                "imports": [],
+                "exports": []
+            },
+            "README.md": {
+                "instructions": "Markdown file containing project description, usage instructions, examples, target audience, and license information. Written in Markdown.",
+                "implemented": false,
+                "code": "",
+                "dependencies": [],
+                "functions": [],
+                "imports": [],
+                "exports": []
+            }
+        }
+    }
+} 

@@ -1,0 +1,287 @@
+{
+    "meta": {
+        "name": "ChatGPT Memory Extension Web App",
+        "seo": {
+            "keywords": [
+                "ChatGPT",
+                "Memory Extension",
+                "Web App",
+                "AI",
+                "Long-Term Memory",
+                "Coding Support"
+            ],
+            "title": "Boost Your AI's Efficiency with Our ChatGPT Memory Extension Web App",
+            "article": "With the exponential growth of AI complexity, a common challenge that arises is maintaining context in long conversations or complex tasks. Imagine an AI that can remember past interactions, allowing for a more engaging, efficient coding process. Introducing the ChatGPT Memory Extension Web App, a revolutionary solution designed to extend the memory capabilities of ChatGPT. This state-of-the-art application simulates human memory processes, providing long-term memory support for ChatGPT when dealing with complex tasks such as coding a large application. Key benefits include increased AI efficiency, better context maintenance across sessions, and improved coding support. Try the ChatGPT Memory Extension Web App today and experience the future of AI.",
+            "tags": "ChatGPT, AI, Memory Extension, Web App"
+        },
+        "description": "An app that simulates human memory processes to provide long-term memory support for ChatGPT when dealing with complex tasks such as coding a large application.",
+        "dependencies": [
+            "Nextjs",
+            "NextAuth",
+            "Stripe",
+            "Redux RTK Query",
+            "Tailwind",
+            "PostgreSQL",
+            "Express",
+            "Swagger"
+        ],
+        "summary": "Web app providing long-term memory support for ChatGPT.",
+        "tags": "ChatGPT, Memory, AI, Coding, Task Management"
+    },
+    "messages": [
+        "This project, ChatGPT Memory Extension Web App, aims to simulate human memory processes to provide long-term memory support for ChatGPT, particularly when dealing with complex tasks such as coding a large application.",
+        "To set up your development environment, install the following dependencies: Nextjs, NextAuth, Stripe, Redux RTK Query, Tailwind, PostgreSQL, Express, and Swagger. You can do this with the command: 'npm install next next-auth stripe @reduxjs/toolkit tailwindcss pg express swagger-ui-express'.",
+        "The implementation will involve setting up a Nextjs frontend with NextAuth for authentication, Redux RTK Query for state management, and Tailwind for styling. The backend will be built on Express with PostgreSQL for data persistence. API documentation will be handled by Swagger.",
+        "The file structure will be as follows: 'ChatGPT-Memory-Extension-Web-App/{frontend/{components, pages, redux, public, styles}, backend/{controllers, middlewares, models, routes}, package.json, README.md}'.",
+        "Key features of the app include Input Processing, Title and Description Extraction, Hierarchical Feature Breakdown, Recursive Feature Decomposition, Task List Generation, Mind Map Storage, Context-aware Query Mechanism, Retrieval and Updating Mechanism, Automatic Pruning and Forgetting, and Integration with ChatGPT."
+    ],
+    "folderStructure": {
+        "chatgpt_memory_extension_web_app": {
+            "frontend": {
+                "README.md": {
+                    "instructions": "This file contains markdown about the project, its description, parameters, usage instructions, examples, target audience, and license.",
+                    "implemented": false,
+                    "code": "",
+                    "dependencies": [],
+                    "functions": [],
+                    "imports": [],
+                    "exports": []
+                }
+            },
+            "backend": {
+                "controllers": {
+                    "authController.js": {
+                        "instructions": "This file contains the authentication controllers for user sign-in and sign-up. Implemented using JavaScript, Express, and NextAuth.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "NextAuth"
+                        ],
+                        "functions": [
+                            "signIn",
+                            "signUp"
+                        ],
+                        "imports": [
+                            "Express",
+                            "NextAuth"
+                        ],
+                        "exports": [
+                            "signIn",
+                            "signUp"
+                        ]
+                    },
+                    "mindmapController.js": {
+                        "instructions": "This file contains the controllers for creating, reading, updating, and deleting mind maps. Implemented using JavaScript, Express, and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "functions": [
+                            "createMindmap",
+                            "getMindmap",
+                            "updateMindmap",
+                            "deleteMindmap"
+                        ],
+                        "imports": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "exports": [
+                            "createMindmap",
+                            "getMindmap",
+                            "updateMindmap",
+                            "deleteMindmap"
+                        ]
+                    },
+                    "taskController.js": {
+                        "instructions": "This file contains the controllers for creating, reading, updating, and deleting tasks. Implemented using JavaScript, Express, and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "functions": [
+                            "createTask",
+                            "getTask",
+                            "updateTask",
+                            "deleteTask"
+                        ],
+                        "imports": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "exports": [
+                            "createTask",
+                            "getTask",
+                            "updateTask",
+                            "deleteTask"
+                        ]
+                    }
+                },
+                "middlewares": {
+                    "authMiddleware.js": {
+                        "instructions": "This file contains the authentication middleware for protecting routes. Implemented using JavaScript, Express, and NextAuth.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "NextAuth"
+                        ],
+                        "functions": [
+                            "protect"
+                        ],
+                        "imports": [
+                            "Express",
+                            "NextAuth"
+                        ],
+                        "exports": [
+                            "protect"
+                        ]
+                    }
+                },
+                "models": {
+                    "User.js": {
+                        "instructions": "This file defines the User model schema using Sequelize ORM. Implemented using JavaScript and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Sequelize",
+                            "PostgreSQL"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "Sequelize"
+                        ],
+                        "exports": [
+                            "User"
+                        ]
+                    },
+                    "Mindmap.js": {
+                        "instructions": "This file defines the Mindmap model schema using Sequelize ORM. Implemented using JavaScript and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Sequelize",
+                            "PostgreSQL"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "Sequelize"
+                        ],
+                        "exports": [
+                            "Mindmap"
+                        ]
+                    },
+                    "Task.js": {
+                        "instructions": "This file defines the Task model schema using Sequelize ORM. Implemented using JavaScript and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Sequelize",
+                            "PostgreSQL"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "Sequelize"
+                        ],
+                        "exports": [
+                            "Task"
+                        ]
+                    }
+                },
+                "routes": {
+                    "authRoutes.js": {
+                        "instructions": "This file sets up the routes for authentication. Implemented using JavaScript, Express, and NextAuth.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "NextAuth"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "Express",
+                            "NextAuth"
+                        ],
+                        "exports": [
+                            "authRoutes"
+                        ]
+                    },
+                    "mindmapRoutes.js": {
+                        "instructions": "This file sets up the routes for mind maps. Implemented using JavaScript, Express, and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "exports": [
+                            "mindmapRoutes"
+                        ]
+                    },
+                    "taskRoutes.js": {
+                        "instructions": "This file sets up the routes for tasks. Implemented using JavaScript, Express, and PostgreSQL.",
+                        "implemented": false,
+                        "code": "",
+                        "dependencies": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "functions": [],
+                        "imports": [
+                            "Express",
+                            "PostgreSQL"
+                        ],
+                        "exports": [
+                            "taskRoutes"
+                        ]
+                    }
+                },
+                "server.js": {
+                    "instructions": "This file sets up the Express server and includes all middleware. Implemented using JavaScript and Express.",
+                    "implemented": false,
+                    "code": "",
+                    "dependencies": [
+                        "Express"
+                    ],
+                    "functions": [],
+                    "imports": [
+                        "Express"
+                    ],
+                    "exports": []
+                },
+                "package.json": {
+                    "instructions": "This file contains the list of dependencies used in this project. Implemented using NPM.",
+                    "implemented": false,
+                    "code": "",
+                    "dependencies": [
+                        "NPM"
+                    ],
+                    "functions": [],
+                    "imports": [
+                        "NPM"
+                    ],
+                    "exports": []
+                },
+                "README.md": {
+                    "instructions": "This file contains markdown about the project, its description, parameters, usage instructions, examples, target audience, and license.",
+                    "implemented": false,
+                    "code": "",
+                    "dependencies": [],
+                    "functions": [],
+                    "imports": [],
+                    "exports": []
+                }
+            }
+        }
+    }
+}
