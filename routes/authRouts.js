@@ -11,7 +11,7 @@ const router = express.Router();
  * @swagger
  * /api/auth/login:
  *  post:
- *    tags: [Auth]
+ *    tags: [Auths]
  *    summary: Login a user.
  *    description: Login a user.    
  *    requestBody:
@@ -60,7 +60,7 @@ router.post('/login', authController.loginUser);
  * /api/auth/register:
  *   post:
  *     tags:
- *       - Auth
+ *       - Auths
  *     summary: Register a new user.
  *     description: Register a new user and return a JWT token.
  *     requestBody:

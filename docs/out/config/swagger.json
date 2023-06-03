@@ -1,0 +1,1025 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Express API for JSONPlaceholder",
+    "version": "1.0.0",
+    "description": "This is a REST API application made with Express. It retrieves data from JSONPlaceholder.",
+    "license": {
+      "name": "Licensed Under MIT",
+      "url": "https://spdx.org/licenses/MIT.html"
+    },
+    "contact": {
+      "name": "JSONPlaceholder",
+      "url": "https://jsonplaceholder.typicode.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development server"
+    },
+    {
+      "url": "http://localhost:3001",
+      "description": "Production server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auths"
+        ],
+        "summary": "Login a user.",
+        "description": "Login a user.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "The user's username, should be at least 3 characters and contain only letters or numbers with no space between",
+                    "example": "JohnDoe"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "The user's password, Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character of @$!%*?&",
+                    "example": "password123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Logged in successfully, returns token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXCVI9..."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Username and password must be provided."
+          },
+          "401": {
+            "description": "Invalid username or password."
+          },
+          "404": {
+            "description": "User not found."
+          },
+          "500": {
+            "description": "Server error."
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auths"
+        ],
+        "summary": "Register a new user.",
+        "description": "Register a new user and return a JWT token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "email",
+                  "password",
+                  "confirmPassword"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "The user's username, should be at least 3 characters and contain only letters or numbers with no space between",
+                    "example": "JohnDoe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "The user's email, a valid email address should look like this (youremail@domain.com)",
+                    "example": "johndoe@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "The user's password, Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character of @$!%*?&",
+                    "example": "Pa$*word123"
+                  },
+                  "confirmPassword": {
+                    "type": "string",
+                    "description": "Password confirmation , Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character of @$!%*?&",
+                    "example": "Pa$*word123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully registered user and returned JWT token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "The JWT token.",
+                      "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXCVI9..."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Username and password are required."
+          },
+          "409": {
+            "description": "Username or email is already taken."
+          },
+          "500": {
+            "description": "Error in processing the request."
+          }
+        }
+      }
+    },
+    "/api/dependencies": {
+      "get": {
+        "tags": [
+          "Dependencies"
+        ],
+        "summary": "Get all dependencies.",
+        "description": "Get all dependencies.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Dependencies"
+        ],
+        "summary": "Create a new dependence.",
+        "description": "Create a new dependence, and return a token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug",
+                  "description",
+                  "projects"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "projects": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Dependence created successfully!"
+          },
+          "400": {
+            "description": "No dependence created!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/dependencies/{id}": {
+      "get": {
+        "tags": [
+          "Dependencies"
+        ],
+        "summary": "Get a single dependence.",
+        "description": "Get a single dependence.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The dependence id.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "No dependence found!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Dependencies"
+        ],
+        "summary": "Update a dependence by id.",
+        "description": "Update a dependence by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The dependence id."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug",
+                  "description",
+                  "projects"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "projects": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dependence updated successfully!"
+          },
+          "400": {
+            "description": "No dependence updated!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Dependencies"
+        ],
+        "summary": "Delete a dependence by ID.",
+        "description": "Delete a dependence by its unique ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the dependence to delete.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dependence deleted successfully!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "The status code.",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No dependence deleted!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/generate-structure": {
+      "post": {
+        "tags": [
+          "GenerateStructure"
+        ],
+        "summary": "Create a new folder structure.",
+        "description": "Create a new folder structure.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "folderStructure",
+            "description": "The folder structure to create.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "structureFile"
+              ],
+              "properties": {
+                "structureFile": {
+                  "type": "file",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Folder structure created successfully!"
+          },
+          "400": {
+            "description": "No folder structure created!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "GenerateStructure"
+        ],
+        "summary": "Get all folders.",
+        "description": "Get all folders.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get all projects.",
+        "description": "Get all projects.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Create a new project.",
+        "description": "Create a new project.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "project",
+            "description": "The project to create.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "description"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Project created successfully!"
+          },
+          "400": {
+            "description": "No project created!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/projects/{id}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Get a single project.",
+        "description": "Get a single project.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The project id.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "No project found!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Update a project by id.",
+        "description": "Update a project by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The project id."
+          },
+          {
+            "in": "body",
+            "name": "project",
+            "description": "The project to update.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "user_id",
+                "meta",
+                "messages",
+                "folderStructure"
+              ],
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "messages": {
+                  "type": "array"
+                },
+                "folderStructure": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project updated successfully!"
+          },
+          "400": {
+            "description": "No project updated!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "Delete a project by ID.",
+        "description": "Delete a project by its unique ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the project to delete.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project deleted successfully!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "The status code.",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No project deleted!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/tags": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Get all tags.",
+        "description": "Get all tags.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Create a new tag.",
+        "description": "Create a new tag, and return a token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug",
+                  "description",
+                  "projects",
+                  "owners"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "projects": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "owners": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tag created successfully!"
+          },
+          "400": {
+            "description": "No tag created!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/tags/{id}": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Get a single tag.",
+        "description": "Get a single tag.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The tag id.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "No tag found!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Update a tag by id.",
+        "description": "Update a tag by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The tag id."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug",
+                  "description",
+                  "projects",
+                  "owners"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "projects": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "owners": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tag updated successfully!"
+          },
+          "400": {
+            "description": "No tag updated!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "Delete a tag by ID.",
+        "description": "Delete a tag by its unique ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the tag to delete.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tag deleted successfully!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "The status code.",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No tag deleted!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users.",
+        "description": "Get all users.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a single user.",
+        "description": "Get a single user.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The user id.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "No user found!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a user by id.",
+        "description": "Update a user by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id."
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The user to update.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "user_id",
+                "meta",
+                "messages",
+                "folderStructure"
+              ],
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "messages": {
+                  "type": "array"
+                },
+                "folderStructure": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated successfully!"
+          },
+          "400": {
+            "description": "No user updated!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete a user by ID.",
+        "description": "Delete a user by its unique ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the user to delete.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted successfully!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "The status code.",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No user deleted!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}
