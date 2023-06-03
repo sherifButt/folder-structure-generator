@@ -1,6 +1,0 @@
-To implement the favicon.ico file, simply add the file to your project's root directory. The browser will automatically detect and use this file as the favicon for your website. There is no need to add any code to your application. 
-
-However, if you need to reference the favicon.ico file in your HTML code, you can add the following line to the head section of your HTML file:
-
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-</head>
