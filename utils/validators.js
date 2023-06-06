@@ -11,6 +11,9 @@
  * // returns true
  * const { validateEmail } = require('../utils/validators');
  * validateEmail('email@gmail.com');
+ * // returns true
+ * validateEmail('email_gmail.com');
+ * // returns false
  */
 exports.validateEmail = function (email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -25,9 +28,15 @@ exports.validateEmail = function (email) {
  * @returns {Boolean} True if the password is valid, false otherwise 
  * @see {@link https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a|Stackoverflow - Regex for password must contain at least eight characters, at least one number and both lower and uppercase letters and special characters}
  * @example
- * // returns true
  * const { validatePassword } = require('../utils/validators');
  * validatePassword('Password1');
+ * // returns false
+ * validatePassword('password');
+ * // returns false
+ * validatePassword('Pa$');
+ * // returns false
+ * validatePassword('Pa$sword');
+ * // returns true
  */
 exports.validatePassword = function (password) {
     var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -45,11 +54,14 @@ exports.validatePassword = function (password) {
  * // returns true
  * const { validateUsername } = require('../utils/validators');
  * validateUsername('username');
+ * // returns true
+ * validateUsername('us');
+ * // returns false
  */
 exports.validateUsername = function (username) {
     // Check if the username is at least 3 characters long
-    if (username.length < 3)  return false;
-    
+    if (username.length < 3) return false;
+
     // Check if the username contains only letters or numbers
     var re = /^[a-zA-Z0-9]+$/;
     return re.test(username)
@@ -66,8 +78,14 @@ exports.validateUsername = function (username) {
  * // returns true
  * const { validateProjectName } = require('../utils/validators');
  * validateProjectName('projectName');
+ * // returns true
+ * validateProjectName('pr');
+ * // returns false
  */
 exports.validateProjectName = function (projectName) {
+    // Check if the username is at least 3 characters long
+    if (projectName.length < 3) return false;
+
     var re = /^[a-zA-Z0-9]+$/;
     return re.test(projectName)
 }
@@ -83,8 +101,14 @@ exports.validateProjectName = function (projectName) {
  * // returns true
  * const { validateProjectMetaName } = require('../utils/validators');
  * validateProjectMetaName('metaName');
+ * // returns true
+ * validateProjectMetaName('me');
+ * // returns false
  */
 exports.validateProjectMetaName = function (metaName) {
+    // Check if the username is at least 3 characters long
+    if (metaName.length < 3) return false;
+
     var re = /^[a-zA-Z0-9]+$/;
     return re.test(metaName)
 }
@@ -101,8 +125,14 @@ exports.validateProjectMetaName = function (metaName) {
  * // returns true
  * const { validateTag } = require('../utils/validators');
  * validateTag('tag');
+ * // returns false
+ * validateTag('ta');
+ * // returns false
  */
 exports.validateTag = function (tag) {
+    // Check if the username is at least 3 characters long
+    if (tag.length < 3) return false;
+
     // alphanumeric characters and spaces
     var re = /^[a-zA-Z0-9 ]+$/;
     return re.test(tag)
@@ -120,8 +150,14 @@ exports.validateTag = function (tag) {
  * // returns true
  * const { validateTagSlug } = require('../utils/validators');
  * validateTagSlug('tag-slug');
+ * // returns true
+ * validateTagSlug('ta');
+ * // returns false
  */
 exports.validateTagSlug = function (tagSlug) {
+    // Check if the username is at least 3 characters long
+    if (tagSlug.length < 3) return false;
+
     var re = /^[a-zA-Z0-9-]+$/;
     return re.test(tagSlug)
 }
@@ -136,6 +172,7 @@ exports.validateTagSlug = function (tagSlug) {
  * // returns true
  * const { validateDependence } = require('../utils/validators');
  * validateDependence('dependence');
+ * // returns false
  */
 exports.validateDependence = function (dependence) {
     // alphanumeric characters and spaces
@@ -151,10 +188,11 @@ exports.validateDependence = function (dependence) {
  * @param {String} dependenceSlug  The dependence slug to validate
  * @returns {Boolean} True if the dependence slug is valid, false otherwise 
  * @see {@link https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username|Stackoverflow - Regular expression to validate username}
- * @example
+ * @example javascript
  * // returns true
  * const { validateDependenceSlug } = require('../utils/validators');
  * validateDependenceSlug('dependence-slug');
+ * // returns false
  */
 exports.validateDependenceSlug = function (dependenceSlug) {
     var re = /^[a-zA-Z0-9-]+$/;

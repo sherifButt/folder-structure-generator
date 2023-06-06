@@ -1,17 +1,11 @@
- require( 'dotenv').config(); 
- const { Configuration, OpenAIApi }=require("openai")
-const   cooldown =require('../utils/cooldown'); // Wait for a random time between min and max seconds
+require('dotenv').config();
+const { Configuration, OpenAIApi } = require("openai")
+const cooldown = require('../utils/cooldown'); // Wait for a random time between min and max seconds
 
-/**
- * @file This file defines the function that retrieves generated code from the OpenAI ChatGPT API based on the provided prompt.
- * @see {@link https://beta.openai.com/docs/api-reference/create-completion|OpenAI API Reference: Create Completion}
- * @author Sherif Butt
- * 
- */
 /**
  * Retrieves response from the OpenAI ChatGPT API based on the provided prompt.
  * @async
- * @function
+ * @function getGpt
  * @param {Array<Object>} prompt - The array of message objects to be sent as the prompt for the ChatGPT API.
  * @returns {Promise<GptResponse>} 
  *  - response: The generated response.
@@ -20,6 +14,27 @@ const   cooldown =require('../utils/cooldown'); // Wait for a random time betwee
  *      - ompletion_tokens: representing the number of tokens used for the completion.
  *      - total_token: representing the API usage information.
  * @throws {Error} If an error occurs while connecting to the ChatGPT API or processing the response.
+ * @see {@link https://beta.openai.com/docs/api-reference/create-completion|OpenAI API Reference: Create Completion}
+ * @author Sherif Butt
+ * @example
+ * const prompt = [
+ *    { speaker: 'Human', text: 'Hello, who are you?' },
+ *    { speaker: 'AI', text: 'I am an AI created by OpenAI. How can I help you today?' },
+ *    { speaker: 'Human', text: 'I need help with my code.' },
+ *    { speaker: 'AI', text: 'What kind of help do you need?' },
+ *    { speaker: 'Human', text: 'I need help with a function.' },
+ *    { speaker: 'AI', text: 'How can I help you with a function?' },
+ * ]
+ * const responses = await getGpt(prompt);
+ * console.log(responses);
+ * // {
+ * //   response: 'function() {\n  return "Hello, world!";\n}',
+ * //   usage: {
+ * //     prompt_tokens: 32,
+ * //     completion_tokens: 32,
+ * //     total_tokens: 64
+ * //   }
+ * // }
  */
 
 async function getGpt(prompt) {
@@ -34,11 +49,11 @@ async function getGpt(prompt) {
     }
 
     // return initailResponse if prompt is empty
-    if (!prompt) { 
+    if (!prompt) {
         return initailResponse;
     }
 
-    const configuration = new Configuration({ 
+    const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
     });
 
@@ -98,13 +113,13 @@ module.exports = getGpt;
 
 /**
  * @typedef {Object} Usage
- * @property {number} prompt_tokens - The number of tokens used for the prompt.
- * @property {number} completion_tokens - The number of tokens used for the completion.
- * @property {number} total_tokens - The total number of tokens used.
+ * @property {number} Usage.prompt_tokens - The number of tokens used for the prompt.
+ * @property {number} Usage.completion_tokens - The number of tokens used for the completion.
+ * @property {number} Usage.total_tokens - The total number of tokens used.
  */
 
 /**
  * @typedef {Object} GptResponse
- * @property {string} response - The generated response.
- * @property {Usage} usage - An object containing prompt_tokens, completion_tokens, and total_tokens, representing the API usage information.
+ * @property {string} GptResponse.response - The generated response.
+ * @property {Usage} GptResponse.usage - An object containing prompt_tokens, completion_tokens, and total_tokens, representing the API usage information.
  */

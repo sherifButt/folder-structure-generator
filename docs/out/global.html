@@ -31,7 +31,7 @@
 
 
 
-<body class="layout small-header">
+<body class="layout">
     <script src="scripts/img-alt-caption.js"></script>
     <script src="scripts/jsdoc-mermaid.js"></script>
     
@@ -91,8 +91,8 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
                         
-                            <a class="dropdown-item" href="tutorial-my-awesome-tutorial.html">
-                                my-awesome-tutorial
+                            <a class="dropdown-item" href="tutorial-howtouse.html">
+                                01. How to use
                             </a>
                         
                         </div>
@@ -140,7 +140,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-cooldown.html">cooldown</a></li><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See howtouse</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See <a href="tutorial-howtouse.html">01. How to use</a></a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
@@ -574,6 +574,274 @@
   cleanCode:  "const a = 1;\nconst b = 2;\nconst c = a + b;\nconsole.log(c);",
   noMarkdown: "const a = 1;\nconst b = 2;\nconst c = a + b;\nconsole.log(c);"
   };</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="cooldown">
+        <a class="href-link" href="#cooldown">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                cooldown<span class="signature">(message, min, max)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Waits for a random amount of time between a specified minimum and maximum duration.
+If environment variables <code>GPT_COOLDOWN_TIME_MIN</code> and <code>GPT_COOLDOWN_TIME_MAX</code> are set,
+they will be used as the minimum and maximum wait time respectively.
+Otherwise, the provided min and max arguments will be used.</p><div class="mermaid">graph TB
+A((Input:<br>response)) -->|if check| B{Is<br><b>response</b><br>valid?}
+B -->|Yes| C(Create startMarker<br>and endMarker)
+B -->|No| L(Return empty<br>codeBlocks,<br>cleanedResponse,<br>noMarkdown)
+L --> O((fa:fa-car<br>End))
+C --> D(Find startMarkerIndex<br>in response)
+D --> E(Create cleanedInput by<br> removing content<br>before startMarker)
+E --> F(Find endMarkerIndex<br>in cleanedInput)
+F --> G(Remove everything<br>after endMarker<br>in cleanedInput)
+G --> H(Match code blocks with regex)
+H --> I(Create codeBlocks<br>and cleanedResponse)
+I --> J(Match any unmatched<br>backticks in cleanedResponse)
+J --> K(Create final<br>cleanedResponse<br>and noMarkdown)
+K --> M(Output: CodeBlocks,<br>cleanedResponse, noMarkdown)
+M --> O</div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>message</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">null</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The message to log to the console before waiting.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>min</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+|
+
+<code class="param-type">null</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The minimum amount of time to wait, in seconds. Defaults to 5 seconds.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>max</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+|
+
+<code class="param-type">null</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The maximum amount of time to wait, in seconds. Defaults to 15 seconds.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Add example</li>
+        </ul>
+    </dd>
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_cooldown.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_cooldown.js.html">utils/cooldown.js</a>, <a href="utils_cooldown.js.html#line1">line 1</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A promise that resolves after a random amount of time between the minimum and maximum wait times.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Promise.&lt;void></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>await cooldown('Waiting for 5-15 seconds...');
+// ⏳ Too many requests to GPT API. Waiting for 5 seconds...</code></pre>
     
 
 
@@ -1303,14 +1571,28 @@ representing the API usage information.</li>
     
 
     
-
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Sherif Butt</li>
+        </ul>
+    </dd>
     
 
     
 
     
+
+    
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://beta.openai.com/docs/api-reference/create-completion">OpenAI API Reference: Create Completion</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -1319,7 +1601,7 @@ representing the API usage information.</li>
         <p class="tag-source">
             <a href="helpers_getGpt.js.html" class="button">View Source</a>
             <span>
-                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line25">line 25</a>
+                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line5">line 5</a>
             </span>
         </p>
     
@@ -1398,6 +1680,30 @@ representing the API usage information.</li>
     </div>
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const prompt = [
+   { speaker: 'Human', text: 'Hello, who are you?' },
+   { speaker: 'AI', text: 'I am an AI created by OpenAI. How can I help you today?' },
+   { speaker: 'Human', text: 'I need help with my code.' },
+   { speaker: 'AI', text: 'What kind of help do you need?' },
+   { speaker: 'Human', text: 'I need help with a function.' },
+   { speaker: 'AI', text: 'How can I help you with a function?' },
+]
+const responses = await getGpt(prompt);
+console.log(responses);
+// {
+//   response: 'function() {\n  return "Hello, world!";\n}',
+//   usage: {
+//     prompt_tokens: 32,
+//     completion_tokens: 32,
+//     total_tokens: 64
+//   }
+// }</code></pre>
+    
 
 
 </div>
@@ -2293,7 +2599,7 @@ representing the API usage information.</li>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>response</code></td>
+        <td class="name"><code>GptResponse.response</code></td>
     
 
     <td class="type">
@@ -2316,7 +2622,7 @@ representing the API usage information.</li>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>usage</code></td>
+        <td class="name"><code>GptResponse.usage</code></td>
     
 
     <td class="type">
@@ -2377,7 +2683,7 @@ representing the API usage information.</li>
         <p class="tag-source">
             <a href="helpers_getGpt.js.html" class="button">View Source</a>
             <span>
-                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line106">line 106</a>
+                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line121">line 121</a>
             </span>
         </p>
     
@@ -2445,7 +2751,7 @@ representing the API usage information.</li>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>prompt_tokens</code></td>
+        <td class="name"><code>Usage.prompt_tokens</code></td>
     
 
     <td class="type">
@@ -2468,7 +2774,7 @@ representing the API usage information.</li>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>completion_tokens</code></td>
+        <td class="name"><code>Usage.completion_tokens</code></td>
     
 
     <td class="type">
@@ -2491,7 +2797,7 @@ representing the API usage information.</li>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>total_tokens</code></td>
+        <td class="name"><code>Usage.total_tokens</code></td>
     
 
     <td class="type">
@@ -2552,7 +2858,7 @@ representing the API usage information.</li>
         <p class="tag-source">
             <a href="helpers_getGpt.js.html" class="button">View Source</a>
             <span>
-                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line99">line 99</a>
+                <a href="helpers_getGpt.js.html">helpers/getGpt.js</a>, <a href="helpers_getGpt.js.html#line114">line 114</a>
             </span>
         </p>
     
@@ -2585,11 +2891,10 @@ representing the API usage information.</li>
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
-<script src="scripts/copycode.js"></script>
-
-<script src="scripts/search.js"> </script>
+<script src="scripts/codeHeader.js"></script>
 <script src="scripts/tapMenueDropDown.js"> </script>
 
+<script src="scripts/search.js"> </script>
 
 
 </body>

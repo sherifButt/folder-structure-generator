@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Super docs helpers/zipUtil.js</title>
+  <title>Super docs 01. How to use</title>
   
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="shortcut icon" type="" href="./favicon.png"/>
@@ -132,7 +130,7 @@
 </div>
     <div id="main">
         <div
-            class="sidebar "
+            class="sidebar tutorials"
             id="sidebarNav"
         >
             
@@ -142,63 +140,142 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-howtouse.html">01. How to use</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>helpers/zipUtil.js</h1>
+                    <p>Tutorial</p>
+                    <h1>01. How to use</h1>
                 </header>
-                
+                <section>
 
+<article>
+    <h1>ChatGPT Memory Extension Web App</h1>
+<p>This project aims to simulate human memory processes to provide long-term memory support for ChatGPT, particularly when dealing with complex tasks such as coding a large application.</p>
+<h2>Description</h2>
+<p>The ChatGPT Memory Extension Web App is a web application that provides long-term memory support for ChatGPT. It uses various memory processes such as input processing, title and description extraction, hierarchical feature breakdown, recursive feature decomposition, task list generation, mind map storage, context-aware query mechanism, retrieval and updating mechanism, automatic pruning and forgetting, and integration with ChatGPT.</p>
+<div></div>
+## Parameters
+<ul>
+<li>Nextjs</li>
+<li>NextAuth</li>
+<li>Stripe</li>
+<li>Redux RTK Query</li>
+<li>Tailwind</li>
+<li>PostgreSQL</li>
+<li>Express</li>
+<li>Swagger</li>
+</ul>
+<h2>Usage Instructions</h2>
+<p>To use this project, follow these steps:</p>
+<ol>
+<li>Clone the repository to your local machine.</li>
+<li>Install the dependencies using <code>npm install</code>.</li>
+<li>Start the development server using <code>npm run dev</code>.</li>
+<li>Open your browser and navigate to <code>http://localhost:3000</code>.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Syntax</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:right">Test Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Header</td>
+<td style="text-align:center">Title</td>
+<td style="text-align:right">Here's this</td>
+</tr>
+<tr>
+<td style="text-align:left">Paragraph</td>
+<td style="text-align:center">Text</td>
+<td style="text-align:right">And more</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:center">In Stock</th>
+<th style="text-align:right">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Python Hat</td>
+<td style="text-align:center">True</td>
+<td style="text-align:right">23.99</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL Hat</td>
+<td style="text-align:center">True</td>
+<td style="text-align:right">23.99</td>
+</tr>
+<tr>
+<td style="text-align:left">Codecademy Tee</td>
+<td style="text-align:center">False</td>
+<td style="text-align:right">19.99</td>
+</tr>
+<tr>
+<td style="text-align:left">Codecademy Hoodie</td>
+<td style="text-align:center">False</td>
+<td style="text-align:right">42.99</td>
+</tr>
+</tbody>
+</table>
+<h2>Examples</h2>
+<p>Here are some examples of how to use this project:</p>
+<ul>
+<li>To authenticate a user, use the NextAuth library.</li>
+<li>To manage state, use the Redux RTK Query library.</li>
+<li>To style the UI, use the Tailwind library.</li>
+<li>To store data, use the PostgreSQL database.</li>
+<li>To document the API, use the Swagger library.</li>
+</ul>
+<pre class="prettyprint source lang-javascript"><code>function hashToLink(doclet, hash) {
+  var url
 
+  if ( !/^(#.+)/.test(hash) ) {
+    return hash
+  }
 
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const fs = require('fs');
-const archiver = require('archiver');
-const path = require('path');
+  url = helper.createLink(doclet)
+  url = url.replace(/(#.+|$)/, hash)
 
-/**
- *  Zip a folder
- * @param {string} folderPath - Path of the folder to zip
- * @returns {Promise&lt;string>} - Path of the zipped folder
- * @throws {Error} - If the folder does not exist
- */
-
-async function zipFolder(folderPath) {
-  const zipFileName = `generated_structure_${Date.now()}.zip`;
-  const zipFilePath = path.join(__dirname, zipFileName);
-
-  return new Promise((resolve, reject) => {
-    const output = fs.createWriteStream(zipFilePath);
-    const archive = archiver('zip');
-
-    output.on('close', () => {
-      resolve(zipFilePath);
-    });
-
-    archive.on('error', (err) => {
-      reject(err);
-    });
-
-    archive.pipe(output);
-    archive.directory(folderPath, false);
-    archive.finalize();
-  });
+  return '&lt;a href=&quot;' + url + '&quot;>' + hash + '&lt;/a>'
 }
-
-module.exports = { zipFolder };
 </code></pre>
-        </article>
-    </section>
+<h2>Target Audience</h2>
+<p>This project is intended for developers who use ChatGPT and need long-term memory support for complex tasks such as coding a large application.</p>
+<h2>chart</h2>
+<pre class="prettyprint source lang-mermaid"><code>sequenceDiagram
+    participant U as User
+    participant F as Function
+    U->>F: Calls cleanCode(response)
+    F->>F: Checks validity of response
+    Note over F: If response is invalid, returns empty codeBlocks, cleanedResponse, noMarkdown
+    F->>F: Creates startMarker and endMarker
+    F->>F: Finds startMarkerIndex in response
+    F->>F: Creates cleanedInput by removing content before startMarker
+    F->>F: Finds endMarkerIndex in cleanedInput
+    F->>F: Removes everything after endMarker in cleanedInput
+    F->>F: Matches code blocks with regex
+    F->>F: Creates codeBlocks and cleanedResponse
+    F->>F: Matches any unmatched backticks in cleanedResponse
+    F->>F: Creates final cleanedResponse and noMarkdown
+    F-->>U: Returns CodeBlocks, cleanedResponse, noMarkdown
+</code></pre>
+<h2>License</h2>
+<p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
+</article>
 
-
-
+</section>
 
             </div>
             

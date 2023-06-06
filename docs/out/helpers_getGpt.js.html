@@ -33,7 +33,7 @@
 
 
 
-<body class="layout small-header">
+<body class="layout">
     <script src="scripts/img-alt-caption.js"></script>
     <script src="scripts/jsdoc-mermaid.js"></script>
     
@@ -93,8 +93,8 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
                         
-                            <a class="dropdown-item" href="tutorial-my-awesome-tutorial.html">
-                                my-awesome-tutorial
+                            <a class="dropdown-item" href="tutorial-howtouse.html">
+                                01. How to use
                             </a>
                         
                         </div>
@@ -142,7 +142,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-cooldown.html">cooldown</a></li><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
@@ -159,20 +159,14 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code> require( 'dotenv').config(); 
- const { Configuration, OpenAIApi }=require("openai")
-const   cooldown =require('../utils/cooldown'); // Wait for a random time between min and max seconds
+            <pre class="prettyprint source linenums"><code>require('dotenv').config();
+const { Configuration, OpenAIApi } = require("openai")
+const cooldown = require('../utils/cooldown'); // Wait for a random time between min and max seconds
 
-/**
- * @file This file defines the function that retrieves generated code from the OpenAI ChatGPT API based on the provided prompt.
- * @see {@link https://beta.openai.com/docs/api-reference/create-completion|OpenAI API Reference: Create Completion}
- * @author Sherif Butt
- * 
- */
 /**
  * Retrieves response from the OpenAI ChatGPT API based on the provided prompt.
  * @async
- * @function
+ * @function getGpt
  * @param {Array&lt;Object>} prompt - The array of message objects to be sent as the prompt for the ChatGPT API.
  * @returns {Promise&lt;GptResponse>} 
  *  - response: The generated response.
@@ -181,6 +175,27 @@ const   cooldown =require('../utils/cooldown'); // Wait for a random time betwee
  *      - ompletion_tokens: representing the number of tokens used for the completion.
  *      - total_token: representing the API usage information.
  * @throws {Error} If an error occurs while connecting to the ChatGPT API or processing the response.
+ * @see {@link https://beta.openai.com/docs/api-reference/create-completion|OpenAI API Reference: Create Completion}
+ * @author Sherif Butt
+ * @example
+ * const prompt = [
+ *    { speaker: 'Human', text: 'Hello, who are you?' },
+ *    { speaker: 'AI', text: 'I am an AI created by OpenAI. How can I help you today?' },
+ *    { speaker: 'Human', text: 'I need help with my code.' },
+ *    { speaker: 'AI', text: 'What kind of help do you need?' },
+ *    { speaker: 'Human', text: 'I need help with a function.' },
+ *    { speaker: 'AI', text: 'How can I help you with a function?' },
+ * ]
+ * const responses = await getGpt(prompt);
+ * console.log(responses);
+ * // {
+ * //   response: 'function() {\n  return "Hello, world!";\n}',
+ * //   usage: {
+ * //     prompt_tokens: 32,
+ * //     completion_tokens: 32,
+ * //     total_tokens: 64
+ * //   }
+ * // }
  */
 
 async function getGpt(prompt) {
@@ -195,11 +210,11 @@ async function getGpt(prompt) {
     }
 
     // return initailResponse if prompt is empty
-    if (!prompt) { 
+    if (!prompt) {
         return initailResponse;
     }
 
-    const configuration = new Configuration({ 
+    const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
     });
 
@@ -259,15 +274,15 @@ module.exports = getGpt;
 
 /**
  * @typedef {Object} Usage
- * @property {number} prompt_tokens - The number of tokens used for the prompt.
- * @property {number} completion_tokens - The number of tokens used for the completion.
- * @property {number} total_tokens - The total number of tokens used.
+ * @property {number} Usage.prompt_tokens - The number of tokens used for the prompt.
+ * @property {number} Usage.completion_tokens - The number of tokens used for the completion.
+ * @property {number} Usage.total_tokens - The total number of tokens used.
  */
 
 /**
  * @typedef {Object} GptResponse
- * @property {string} response - The generated response.
- * @property {Usage} usage - An object containing prompt_tokens, completion_tokens, and total_tokens, representing the API usage information.
+ * @property {string} GptResponse.response - The generated response.
+ * @property {Usage} GptResponse.usage - An object containing prompt_tokens, completion_tokens, and total_tokens, representing the API usage information.
  */</code></pre>
         </article>
     </section>
@@ -284,11 +299,10 @@ module.exports = getGpt;
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
-<script src="scripts/copycode.js"></script>
-
-<script src="scripts/search.js"> </script>
+<script src="scripts/codeHeader.js"></script>
 <script src="scripts/tapMenueDropDown.js"> </script>
 
+<script src="scripts/search.js"> </script>
 
 
 </body>

@@ -33,7 +33,7 @@
 
 
 
-<body class="layout small-header">
+<body class="layout">
     <script src="scripts/img-alt-caption.js"></script>
     <script src="scripts/jsdoc-mermaid.js"></script>
     
@@ -93,8 +93,8 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
                         
-                            <a class="dropdown-item" href="tutorial-my-awesome-tutorial.html">
-                                my-awesome-tutorial
+                            <a class="dropdown-item" href="tutorial-howtouse.html">
+                                01. How to use
                             </a>
                         
                         </div>
@@ -142,7 +142,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-cooldown.html">cooldown</a></li><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
@@ -172,6 +172,9 @@
  * // returns true
  * const { validateEmail } = require('../utils/validators');
  * validateEmail('email@gmail.com');
+ * // returns true
+ * validateEmail('email_gmail.com');
+ * // returns false
  */
 exports.validateEmail = function (email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -186,9 +189,15 @@ exports.validateEmail = function (email) {
  * @returns {Boolean} True if the password is valid, false otherwise 
  * @see {@link https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a|Stackoverflow - Regex for password must contain at least eight characters, at least one number and both lower and uppercase letters and special characters}
  * @example
- * // returns true
  * const { validatePassword } = require('../utils/validators');
  * validatePassword('Password1');
+ * // returns false
+ * validatePassword('password');
+ * // returns false
+ * validatePassword('Pa$');
+ * // returns false
+ * validatePassword('Pa$sword');
+ * // returns true
  */
 exports.validatePassword = function (password) {
     var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,}$/;
@@ -206,11 +215,14 @@ exports.validatePassword = function (password) {
  * // returns true
  * const { validateUsername } = require('../utils/validators');
  * validateUsername('username');
+ * // returns true
+ * validateUsername('us');
+ * // returns false
  */
 exports.validateUsername = function (username) {
     // Check if the username is at least 3 characters long
-    if (username.length &lt; 3)  return false;
-    
+    if (username.length &lt; 3) return false;
+
     // Check if the username contains only letters or numbers
     var re = /^[a-zA-Z0-9]+$/;
     return re.test(username)
@@ -227,8 +239,14 @@ exports.validateUsername = function (username) {
  * // returns true
  * const { validateProjectName } = require('../utils/validators');
  * validateProjectName('projectName');
+ * // returns true
+ * validateProjectName('pr');
+ * // returns false
  */
 exports.validateProjectName = function (projectName) {
+    // Check if the username is at least 3 characters long
+    if (projectName.length &lt; 3) return false;
+
     var re = /^[a-zA-Z0-9]+$/;
     return re.test(projectName)
 }
@@ -244,8 +262,14 @@ exports.validateProjectName = function (projectName) {
  * // returns true
  * const { validateProjectMetaName } = require('../utils/validators');
  * validateProjectMetaName('metaName');
+ * // returns true
+ * validateProjectMetaName('me');
+ * // returns false
  */
 exports.validateProjectMetaName = function (metaName) {
+    // Check if the username is at least 3 characters long
+    if (metaName.length &lt; 3) return false;
+
     var re = /^[a-zA-Z0-9]+$/;
     return re.test(metaName)
 }
@@ -262,8 +286,14 @@ exports.validateProjectMetaName = function (metaName) {
  * // returns true
  * const { validateTag } = require('../utils/validators');
  * validateTag('tag');
+ * // returns false
+ * validateTag('ta');
+ * // returns false
  */
 exports.validateTag = function (tag) {
+    // Check if the username is at least 3 characters long
+    if (tag.length &lt; 3) return false;
+
     // alphanumeric characters and spaces
     var re = /^[a-zA-Z0-9 ]+$/;
     return re.test(tag)
@@ -281,8 +311,14 @@ exports.validateTag = function (tag) {
  * // returns true
  * const { validateTagSlug } = require('../utils/validators');
  * validateTagSlug('tag-slug');
+ * // returns true
+ * validateTagSlug('ta');
+ * // returns false
  */
 exports.validateTagSlug = function (tagSlug) {
+    // Check if the username is at least 3 characters long
+    if (tagSlug.length &lt; 3) return false;
+
     var re = /^[a-zA-Z0-9-]+$/;
     return re.test(tagSlug)
 }
@@ -297,6 +333,7 @@ exports.validateTagSlug = function (tagSlug) {
  * // returns true
  * const { validateDependence } = require('../utils/validators');
  * validateDependence('dependence');
+ * // returns false
  */
 exports.validateDependence = function (dependence) {
     // alphanumeric characters and spaces
@@ -312,10 +349,11 @@ exports.validateDependence = function (dependence) {
  * @param {String} dependenceSlug  The dependence slug to validate
  * @returns {Boolean} True if the dependence slug is valid, false otherwise 
  * @see {@link https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username|Stackoverflow - Regular expression to validate username}
- * @example
+ * @example javascript
  * // returns true
  * const { validateDependenceSlug } = require('../utils/validators');
  * validateDependenceSlug('dependence-slug');
+ * // returns false
  */
 exports.validateDependenceSlug = function (dependenceSlug) {
     var re = /^[a-zA-Z0-9-]+$/;
@@ -337,11 +375,10 @@ exports.validateDependenceSlug = function (dependenceSlug) {
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
-<script src="scripts/copycode.js"></script>
-
-<script src="scripts/search.js"> </script>
+<script src="scripts/codeHeader.js"></script>
 <script src="scripts/tapMenueDropDown.js"> </script>
 
+<script src="scripts/search.js"> </script>
 
 
 </body>
