@@ -41,7 +41,7 @@
     "/api/auth/login": {
       "post": {
         "tags": [
-          "Auths"
+          "🔓 Auth"
         ],
         "summary": "Login a user.",
         "description": "Login a user.",
@@ -64,7 +64,7 @@
                   "password": {
                     "type": "string",
                     "description": "The user's password, Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character of @$!%*?&",
-                    "example": "password123"
+                    "example": "Pa$*word123"
                   }
                 }
               }
@@ -106,7 +106,7 @@
     "/api/auth/register": {
       "post": {
         "tags": [
-          "Auths"
+          "🔓 Auth"
         ],
         "summary": "Register a new user.",
         "description": "Register a new user and return a JWT token.",
@@ -400,7 +400,7 @@
     "/api/generate-structure": {
       "post": {
         "tags": [
-          "GenerateStructure"
+          "🗂 GenerateStructure"
         ],
         "summary": "Create a new folder structure.",
         "description": "Create a new folder structure.",
@@ -440,7 +440,7 @@
       },
       "get": {
         "tags": [
-          "GenerateStructure"
+          "🗂 GenerateStructure"
         ],
         "summary": "Get all folders.",
         "description": "Get all folders.",
@@ -460,7 +460,7 @@
     "/api/projects": {
       "get": {
         "tags": [
-          "Projects"
+          "📦 Projects"
         ],
         "summary": "Get all projects.",
         "description": "Get all projects.",
@@ -475,7 +475,7 @@
       },
       "post": {
         "tags": [
-          "Projects"
+          "📦 Projects"
         ],
         "summary": "Create a new project.",
         "description": "Create a new project.",
@@ -517,7 +517,7 @@
     "/api/projects/{id}": {
       "get": {
         "tags": [
-          "Projects"
+          "📦 Projects"
         ],
         "summary": "Get a single project.",
         "description": "Get a single project.",
@@ -544,7 +544,7 @@
       },
       "patch": {
         "tags": [
-          "Projects"
+          "📦 Projects"
         ],
         "summary": "Update a project by id.",
         "description": "Update a project by id.",
@@ -601,7 +601,7 @@
       },
       "delete": {
         "tags": [
-          "Projects"
+          "📦 Projects"
         ],
         "summary": "Delete a project by ID.",
         "description": "Delete a project by its unique ID.",
@@ -651,7 +651,7 @@
     "/api/tags": {
       "get": {
         "tags": [
-          "Tags"
+          "🏷 Tags"
         ],
         "summary": "Get all tags.",
         "description": "Get all tags.",
@@ -666,7 +666,7 @@
       },
       "post": {
         "tags": [
-          "Tags"
+          "🏷 Tags"
         ],
         "summary": "Create a new tag.",
         "description": "Create a new tag, and return a token.",
@@ -726,7 +726,7 @@
     "/api/tags/{id}": {
       "get": {
         "tags": [
-          "Tags"
+          "🏷 Tags"
         ],
         "summary": "Get a single tag.",
         "description": "Get a single tag.",
@@ -753,7 +753,7 @@
       },
       "put": {
         "tags": [
-          "Tags"
+          "🏷 Tags"
         ],
         "summary": "Update a tag by id.",
         "description": "Update a tag by id.",
@@ -822,7 +822,7 @@
       },
       "delete": {
         "tags": [
-          "Tags"
+          "🏷 Tags"
         ],
         "summary": "Delete a tag by ID.",
         "description": "Delete a tag by its unique ID.",
@@ -869,10 +869,438 @@
         }
       }
     },
+    "/api/technologies": {
+      "get": {
+        "tags": [
+          "📱 Technologies"
+        ],
+        "summary": "Get all technologies.",
+        "description": "Get all technologies.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "403": {
+            "description": "Forbidden!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "📱 Technologies"
+        ],
+        "summary": "Create a new technology.",
+        "description": "Create a new technology, and return a token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug",
+                  "description",
+                  "Projects"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "projects": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Technology created successfully!"
+          },
+          "400": {
+            "description": "No technology created!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "403": {
+            "description": "Forbidden!"
+          },
+          "404": {
+            "description": "Not found!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/technologies/{id}": {
+      "get": {
+        "tags": [
+          "📱 Technologies"
+        ],
+        "summary": "Get a single technology.",
+        "description": "Get a single technology.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The technology id.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "No technology found!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "403": {
+            "description": "Forbidden!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "📱 Technologies"
+        ],
+        "summary": "Update a technology by id.",
+        "description": "Update a technology by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The technology id."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug",
+                  "description",
+                  "Projects"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "projects": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Technology updated successfully!"
+          },
+          "400": {
+            "description": "No technology updated!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "403": {
+            "description": "Forbidden!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "📱 Technologies"
+        ],
+        "summary": "Delete a technology by ID.",
+        "description": "Delete a technology by its unique ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the technology to delete.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Technology deleted successfully!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "The status code.",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No technology deleted!"
+          },
+          "401": {
+            "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/types": {
+      "get": {
+        "tags": [
+          "🎫 Types"
+        ],
+        "summary": "Get all types.",
+        "description": "Get all types.",
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "🎫 Types"
+        ],
+        "summary": "Create a new type.",
+        "description": "Create a new type.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "type",
+            "description": "The type to create.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "description"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "type created successfully!"
+          },
+          "400": {
+            "description": "No type created!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
+    "/api/types/{id}": {
+      "get": {
+        "tags": [
+          "🎫 Types"
+        ],
+        "summary": "Get a single type.",
+        "description": "Get a single type.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The type id.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success!"
+          },
+          "400": {
+            "description": "No type found!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "🎫 Types"
+        ],
+        "summary": "Update a type by id.",
+        "description": "Update a type by id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The type id."
+          },
+          {
+            "in": "body",
+            "name": "type",
+            "description": "The type to update.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "user_id",
+                "meta",
+                "messages",
+                "folderStructure"
+              ],
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                },
+                "messages": {
+                  "type": "array"
+                },
+                "folderStructure": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "type updated successfully!"
+          },
+          "400": {
+            "description": "No type updated!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "🎫 Types"
+        ],
+        "summary": "Delete a type by ID.",
+        "description": "Delete a type by its unique ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the type to delete.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "type deleted successfully!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "The status code.",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No type deleted!"
+          },
+          "500": {
+            "description": "Error!"
+          }
+        }
+      }
+    },
     "/api/users": {
       "get": {
         "tags": [
-          "Users"
+          "👥 Users"
         ],
         "summary": "Get all users.",
         "description": "Get all users.",
@@ -889,7 +1317,7 @@
     "/api/users/{id}": {
       "get": {
         "tags": [
-          "Users"
+          "👥 Users"
         ],
         "summary": "Get a single user.",
         "description": "Get a single user.",
@@ -916,7 +1344,7 @@
       },
       "patch": {
         "tags": [
-          "Users"
+          "👥 Users"
         ],
         "summary": "Update a user by id.",
         "description": "Update a user by id.",
@@ -973,7 +1401,7 @@
       },
       "delete": {
         "tags": [
-          "Users"
+          "👥 Users"
         ],
         "summary": "Delete a user by ID.",
         "description": "Delete a user by its unique ID.",

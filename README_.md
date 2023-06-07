@@ -1,6 +1,7 @@
 # GaiaLens Controversy Alerts
 
 ## About Gaialens
+
 GaiaLens® provides a real-time ESG analytics platform for institutional investors who acknowledge and embrace the true power of technology to make better decisions.
 
 A dashboard granting live access to accurate and scientifically curated ESG data on 18,000 companies, calculating comprehensive, objective and unbiased real-time scores across E, S and G pillars.
@@ -8,11 +9,13 @@ A dashboard granting live access to accurate and scientifically curated ESG data
 ![Sonny and Mariel high fiving.](https:static.wixstatic.com/media/11062b_4daa8bdb13034c7d89bf5a394a27b9ebf000.jpg/v1/fill/w_1479,h_401,al_c,q_85,usm_0.33_1.00_0.00,enc_auto/11062b_4daa8bdb13034c7d89bf5a394a27b9ebf000.jpg 'High Five')
 
 ![Sonny and Mariel high fiving.](https://docs.swimm.io/assets/images/mermaidSwimm-531b57f971f5ab159ebbca77536e8605.gif 'High Five')
+
 ### What is Controversy alerts feature?
 
-This feature is a part ofan alerting system for GaiaLens main application. It controls the sending of emails to users based on different controvercies triggers and maintains an email queue.
+This feature is a part often alerting system for GaiaLens main application. It controls the sending of emails to users based on different controversies triggers and maintains an email queue.
 
 ### How it works?
+
 The main functionality can be summarized as follows:
 
 1. **Email Queue Management**: The script checks if there are unsent emails in the queue and whether it's the appropriate time to send them (between 9 am and 5 pm). If the queue is empty and it's within the specified time frame, new emails are composed and inserted into the queue.
@@ -28,8 +31,6 @@ The main functionality can be summarized as follows:
 6. **Error Handling**: The script includes error handling measures. If an error occurs at any stage of the process, an error message is sent to a support email address for further investigation.
 
 Planned features for version V1.1 include support for generic types (subscriptions_types), storing the trigger id in the queue log, adding a trigger type table to the database, and adjusting trigger times from a dashboard.
-
-
 
 ```mermaid
     sequenceDiagram
@@ -49,7 +50,7 @@ Planned features for version V1.1 include support for generic types (subscriptio
     Server-->>GCP cron: Return response
 ```
 
-The feature  is a part of an automated email notification system. It's responsible for composing, queuing, and sending emails to users based on specific triggers. It's used in situations where applications need to notify users about controvercies related to companies, and in the futrue will be used to updates, and send alerts regarding news, ESG information and more.
+The feature  is a part of an automated email notification system. It's responsible for composing, queuing, and sending emails to users based on specific triggers. It's used in situations where applications need to notify users about controversies related to companies, and in the future will be used to updates, and send alerts regarding news, ESG information and more.
 
 This feature is designed to function within a specific timeframe (9 am to 5 pm), manage the email queue (add new emails when the queue is empty, and send them when it's time), and handle errors that might occur in the process.
 
@@ -83,7 +84,6 @@ author: FirstName LastName
      Y->>C: If the file name does not have a valid extension, create a folder.
 ```
 
-
 ```mermaid
 ---
 title: this is a title
@@ -106,7 +106,6 @@ flowchart TD
      O --> P(Error while creating )
 ```
 
-
 ```js
 // returns a string
 htmlPart({
@@ -127,8 +126,6 @@ htmlPart({
     ],
 });
 ```
-
-
 
 # Example email
 

@@ -11,7 +11,7 @@ const router = express.Router();
  * @swagger
  * /api/auth/login:
  *  post:
- *    tags: [Auths]
+ *    tags: [🔓 Auth]
  *    summary: Login a user.
  *    description: Login a user.    
  *    requestBody:
@@ -31,7 +31,7 @@ const router = express.Router();
  *              password:
  *                type: string
  *                description: The user's password, Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character of @$!%*?&
- *                example: password123
+ *                example: Pa$*word123
  *    responses:
  *      201:
  *        description: Logged in successfully, returns token.
@@ -59,8 +59,7 @@ router.post('/login', authController.loginUser);
  * @swagger
  * /api/auth/register:
  *   post:
- *     tags:
- *       - Auths
+ *     tags: [🔓 Auth]
  *     summary: Register a new user.
  *     description: Register a new user and return a JWT token.
  *     requestBody:

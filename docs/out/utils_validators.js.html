@@ -27,6 +27,7 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   
 </head>
@@ -162,6 +163,60 @@
             <pre class="prettyprint source linenums"><code>/**
  * @module validators
  */
+/**
+ *  name validator,  name should be at least 3 characters 
+ * long and contain only letters or numbers.
+ * @function validateName
+ * @param {String} Name  The  name to validate
+ * @returns {Boolean} True if the  name is valid, false otherwise 
+ * @see {@link https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username|Stackoverflow - Regular expression to validate username}
+ * @example
+ * // returns true
+ * const { validateName } = require('../utils/validators');
+ * validateName('name');
+ * // returns true
+ * validateName('pr');
+ * // returns false
+ */
+exports.validateName = function (name) {
+    // Check if the username is at least 3 characters long
+    if (name.length &lt; 3) return false;
+
+    var re = /^[a-zA-Z0-9]+$/;
+    return re.test(name)
+}
+/**
+ * Slug validator, Slug should be at least 3 characters 
+ * long and contain only letters, numbers or dashes, but
+ * dashes not at the beginning or end.
+ * @function validateSlug
+ * @param {String} slug  The  slug to validate
+ * @returns {Boolean} True if the  slug is valid, false otherwise 
+ * @see {@link https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username|Stackoverflow - Regular expression to validate username}
+ * @example
+ * // returns true
+ * const { validateSlug } = require('../utils/validators');
+ * validateSlug('-slug');
+ * // returns false
+ * validateSlug('ta');
+ * // returns false
+ * validateSlug('slug-');
+ * // returns false
+ * validateSlug('slug');
+ * // returns true
+ * validateSlug('slug-slug');
+ * // returns true
+ * 
+ */
+
+exports.validateSlug = function (slug) {
+    // Check if the username is at least 3 characters long
+
+    if (slug.length &lt; 3) return false;
+// alphanumeric characters and dashes, but dashes not at the beginning or end
+    var re = /^[a-zA-Z0-9]+$/;
+    return re.test(slug)
+}
 /**
  * email validator, email should be in the form of "example@domain.com"
  * @function validateEmail

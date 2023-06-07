@@ -13,7 +13,7 @@ const upload = multer({ storage: storage });
  * @swagger
  * /api/generate-structure:
  *  post:
- *    tags: [GenerateStructure]
+ *    tags: [🗂 GenerateStructure]
  *    summary: Create a new folder structure.
  *    description: Create a new folder structure.
  *    parameters:
@@ -45,7 +45,7 @@ router.post('/',upload.single('structureFile'), uploadedFileHandler, payloadHand
  * @swagger
  * /api/generate-structure:
  *  get:
- *    tags: [GenerateStructure]
+ *    tags: [🗂 GenerateStructure]
  *    summary: Get all folders.
  *    description: Get all folders.
  *    responses:

@@ -75,9 +75,16 @@ const MetaSchema = new mongoose.Schema({
 
 ProjectSchema.pre('save', next => {
   if (!this.slug) {
-    this.slug = this.projectName.replace(/\s+/g, '-').toLowerCase();
-  }
-  next();
+    let slug
+    // remove any ting that is not a letter or a number or a space
+    slug = this.name.replace(/[^a-zA-Z0-9 ]/g, "");
+    // trim the name 
+    slug = slug.trim();
+    slug = slug.toLowerCase().split(' ').join('-');
+    // only keep one dash between words
+    this.slug = slug.replace(/-+/g, '-');
+}
+next();
 });
 
 const Project = mongoose.model('Project', ProjectSchema);

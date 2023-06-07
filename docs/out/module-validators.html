@@ -25,6 +25,7 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   
 </head>
@@ -368,7 +369,7 @@ long and contain only letters or numbers.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line164">line 164</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line218">line 218</a>
             </span>
         </p>
     
@@ -563,7 +564,7 @@ long and contain only letters, numbers or dashes.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line184">line 184</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line238">line 238</a>
             </span>
         </p>
     
@@ -758,7 +759,7 @@ validateDependenceSlug('dependence-slug');
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line4">line 4</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line58">line 58</a>
             </span>
         </p>
     
@@ -817,6 +818,203 @@ const { validateEmail } = require('../utils/validators');
 validateEmail('email@gmail.com');
 // returns true
 validateEmail('email_gmail.com');
+// returns false</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="~validateName">
+        <a class="href-link" href="#~validateName">#</a>
+        
+            
+                <span class='tag'>inner</span>
+            
+        
+        <span class="code-name">
+            
+                validateName<span class="signature">(Name)</span><span class="type-signature"> &rarr; {Boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>name validator,  name should be at least 3 characters
+long and contain only letters or numbers.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>Name</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The  name to validate</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username">Stackoverflow - Regular expression to validate username</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_validators.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line4">line 4</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>True if the  name is valid, false otherwise</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// returns true
+const { validateName } = require('../utils/validators');
+validateName('name');
+// returns true
+validateName('pr');
 // returns false</code></pre>
     
 
@@ -955,7 +1153,7 @@ letter, one lowercase letter, one number and one special character</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line23">line 23</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line77">line 77</a>
             </span>
         </p>
     
@@ -1155,7 +1353,7 @@ long and contain only letters or numbers.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line93">line 93</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line147">line 147</a>
             </span>
         </p>
     
@@ -1352,7 +1550,7 @@ long and contain only letters or numbers.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line70">line 70</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line124">line 124</a>
             </span>
         </p>
     
@@ -1412,6 +1610,210 @@ validateProjectName('projectName');
 // returns true
 validateProjectName('pr');
 // returns false</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="~validateSlug">
+        <a class="href-link" href="#~validateSlug">#</a>
+        
+            
+                <span class='tag'>inner</span>
+            
+        
+        <span class="code-name">
+            
+                validateSlug<span class="signature">(slug)</span><span class="type-signature"> &rarr; {Boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Slug validator, Slug should be at least 3 characters
+long and contain only letters, numbers or dashes, but
+dashes not at the beginning or end.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>slug</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The  slug to validate</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username">Stackoverflow - Regular expression to validate username</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_validators.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>True if the  slug is valid, false otherwise</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// returns true
+const { validateSlug } = require('../utils/validators');
+validateSlug('-slug');
+// returns false
+validateSlug('ta');
+// returns false
+validateSlug('slug-');
+// returns false
+validateSlug('slug');
+// returns true
+validateSlug('slug-slug');
+// returns true</code></pre>
     
 
 
@@ -1549,7 +1951,7 @@ long and contain only letters or numbers.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line117">line 117</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line171">line 171</a>
             </span>
         </p>
     
@@ -1746,7 +2148,7 @@ long and contain only letters, numbers or dashes.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line142">line 142</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line196">line 196</a>
             </span>
         </p>
     
@@ -1943,7 +2345,7 @@ long and contain only letters or numbers.</p>
         <p class="tag-source">
             <a href="utils_validators.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line46">line 46</a>
+                <a href="utils_validators.js.html">utils/validators.js</a>, <a href="utils_validators.js.html#line100">line 100</a>
             </span>
         </p>
     

@@ -6,7 +6,7 @@ const { getAllProjects, createProject, getProjectById, updateProjectById, delete
  * @swagger
  * /api/projects:
  *  get:
- *    tags: [Projects]
+ *    tags: [📦 Projects]
  *    summary: Get all projects.
  *    description: Get all projects.
  *    responses:
@@ -21,7 +21,7 @@ router.get('/', getAllProjects);
  * @swagger
  * /api/projects:
  *  post:
- *    tags: [Projects]
+ *    tags: [📦 Projects]
  *    summary: Create a new project.
  *    description: Create a new project.
  *    parameters:
@@ -52,7 +52,7 @@ router.post('/', createProject);
  * @swagger
  * /api/projects/{id}:
  *  get:
- *    tags: [Projects]
+ *    tags: [📦 Projects]
  *    summary: Get a single project.
  *    description: Get a single project.
  *    parameters:
@@ -75,7 +75,7 @@ router.get('/:id', getProjectById);
  * @swagger
  * /api/projects/{id}:
  *  patch:
- *    tags: [Projects]
+ *    tags: [📦 Projects]
  *    summary: Update a project by id.
  *    description: Update a project by id.
  *    parameters:
@@ -118,7 +118,7 @@ router.put('/:id', updateProjectById);
  * @swagger
  * /api/projects/{id}:
  *   delete:
- *     tags: [Projects]
+ *     tags: [📦 Projects]
  *     summary: Delete a project by ID.
  *     description: Delete a project by its unique ID.
  *     produces:

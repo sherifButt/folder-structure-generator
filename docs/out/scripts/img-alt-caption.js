@@ -74,8 +74,8 @@ let count = 1;
 
             // Create a new div element for each caption
             var div = document.createElement('div');
-            div.innerHTML = `<b>Diagram ${count} -</b> ${caption}`;
-            div.classList.add('chart-caption');  // Add a class to style with CSS
+            // div.innerHTML = `<b>Diagram ${count} -</b> ${caption}`;
+            // div.classList.add('chart-caption');  // Add a class to style with CSS
 
             // Append the div as a sibling element after the SVG
             graph.parentNode.insertBefore(div, graph.nextSibling);

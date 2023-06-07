@@ -25,6 +25,7 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   
 </head>
@@ -198,11 +199,11 @@
 <h2>Theme Usage</h2>
 <h3>With command line</h3>
 <p>Assuming that you have <a href="https://github.com/jsdoc/jsdoc">jsdoc</a> installed globally:</p>
-<pre class="prettyprint source"><code>jsdoc your-documented-file.js -t ./node_modules/super-docs
+<pre class="prettyprint source lang-sh"><code>jsdoc your-documented-file.js -t ./node_modules/super-docs
 </code></pre>
 <h3>With npm and configuration file</h3>
 <p>In your projects package.json file - add a new script:</p>
-<pre class="prettyprint source"><code>&quot;script&quot;: {
+<pre class="prettyprint source lang-json"><code>&quot;script&quot;: {
   &quot;docs&quot;: &quot;jsdoc -c jsdoc.json&quot;
 }
 </code></pre>
@@ -215,7 +216,7 @@
 <p>super-docs has a plugin which allows you to generate documentation from your TypeScript codebase.</p>
 <h3>Usage</h3>
 <p>To use it update your <code>jsdoc.json</code> file</p>
-<pre class="prettyprint source"><code>...
+<pre class="prettyprint source lang-json"><code>...
 &quot;tags&quot;: {
     &quot;allowUnknownTags&quot;: [&quot;optional&quot;] //or true
 },
@@ -242,7 +243,7 @@ as a regular JSDoc comments.</li>
 </ul>
 <p>so they can be printed by JSDoc automatically.</p>
 <h3>Examples</h3>
-<pre class="prettyprint source"><code>/**
+<pre class="prettyprint source lang-jsx"><code>/**
  * ActionRequest
  * @memberof Action
  * @alias ActionRequest
@@ -270,7 +271,7 @@ export type ActionRequest = {
 }
 </code></pre>
 <p>is converted to:</p>
-<pre class="prettyprint source"><code>/**
+<pre class="prettyprint source lang-javascript"><code>/**
  * ActionRequest'
  * @memberof Action'
  * @alias ActionRequest'
@@ -283,7 +284,7 @@ export type ActionRequest = {
  */
 </code></pre>
 <p>Also you can comment the interface in a similar fashion:</p>
-<pre class="prettyprint source"><code>/**
+<pre class="prettyprint source lang-typescript"><code>/**
  * JSON representation of an <code>Action</code>
  * @see Action
  */
@@ -320,7 +321,7 @@ export default interface ActionJSON {
 }
 </code></pre>
 <p>or describe your class properties like that:</p>
-<pre class="prettyprint source"><code>/**
+<pre class="prettyprint source lang-js"><code>/**
  * Class name
  */
 class ClassName {
@@ -348,7 +349,7 @@ class ClassName {
 <p>super-docs also allows you to nest your documentation into categories and subcategories in the sidebar menu.</p>
 <h3>Usage</h3>
 <p>To add a plugin - update <code>plugins</code> section in your <code>jsdoc.json</code> file:</p>
-<pre class="prettyprint source"><code>...
+<pre class="prettyprint source lang-json"><code>...
 &quot;tags&quot;: {
     &quot;allowUnknownTags&quot;: [&quot;category&quot;] //or true
 },
@@ -358,7 +359,7 @@ class ClassName {
 ...
 </code></pre>
 <p>and then you can use <code>@category</code> and/or <code>@subcategory</code> tag in your code:</p>
-<pre class="prettyprint source"><code>/**
+<pre class="prettyprint source lang-javascript"><code>/**
  * Class description
  * @category Category
  * @subcategory All

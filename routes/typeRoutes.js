@@ -1,33 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers, createUser, getUserById, updateUserById, deleteUserById } = require('../controllers/userController');
+const { getAllTypes, createType, getTypeById, updateTypeById, deleteTypeById } = require('../controllers/typeController');
 
 /**
  * @swagger
- * /api/users:
+ * /api/types:
  *  get:
- *    tags: [👥 Users]
- *    summary: Get all users.
- *    description: Get all users.
+ *    tags: [🎫 Types]
+ *    summary: Get all types.
+ *    description: Get all types.
  *    responses:
  *      200:
  *        description: Success!
  *      500:
  *        description: Error!
  */
-router.get('/', getAllUsers);
+router.get('/', getAllTypes);
 
 /**
- * swagger
- * /api/users:
+ * @swagger
+ * /api/types:
  *  post:
- *    tags: [👥 Users]
- *    summary: Create a new user.
- *    description: Create a new user.
+ *    tags: [🎫 Types]
+ *    summary: Create a new type.
+ *    description: Create a new type.
  *    parameters:
  *      - in: body
- *        name: user
- *        description: The user to create.
+ *        name: type
+ *        description: The type to create.
  *        schema:
  *          type: object
  *          required:
@@ -40,54 +40,54 @@ router.get('/', getAllUsers);
  *              type: string
  *    responses:
  *      201:
- *        description: User created successfully!
+ *        description: type created successfully!
  *      400:
- *        description: No user created!
+ *        description: No type created!
  *      500:
  *        description: Error!
  */
-// router.post('/', createUser); // creating user is job of auth controller
+router.post('/', createType);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/types/{id}:
  *  get:
- *    tags: [👥 Users]
- *    summary: Get a single user.
- *    description: Get a single user.
+ *    tags: [🎫 Types]
+ *    summary: Get a single type.
+ *    description: Get a single type.
  *    parameters:
  *      - in: path
  *        name: id
- *        description: The user id.
+ *        description: The type id.
  *        type: string
  *        required: true
  *    responses:
  *      200:
  *        description: Success!
  *      400:
- *        description: No user found!
+ *        description: No type found!
  *      500:
  *        description: Error!
  */
-router.get('/:id', getUserById);
+router.get('/:id', getTypeById);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/types/{id}:
  *  patch:
- *    tags: [👥 Users]
- *    summary: Update a user by id.
- *    description: Update a user by id.
+ *    tags: [🎫 Types]
+ *    summary: Update a type by id.
+ *    description: Update a type by id.
  *    parameters:
  *      - in: path
  *        name: id
  *        schema:
  *          type: string
  *        required: true
- *        description: The user id.
+ *        description: The type id.
  *      - in: body
- *        name: user
- *        description: The user to update.
+ *        name: type
+ *        description: The type to update.
  *        schema:
  *          type: object
  *          required:
@@ -106,32 +106,32 @@ router.get('/:id', getUserById);
  *              type: object
  *    responses:
  *      200:
- *        description: User updated successfully!
+ *        description: type updated successfully!
  *      400:
- *        description: No user updated!
+ *        description: No type updated!
  *      500:
  *        description: Error!
  */
-router.put('/:id', updateUserById);
+router.put('/:id', updateTypeById);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/types/{id}:
  *   delete:
- *     tags: [👥 Users]
- *     summary: Delete a user by ID.
- *     description: Delete a user by its unique ID.
+ *     tags: [🎫 Types]
+ *     summary: Delete a type by ID.
+ *     description: Delete a type by its unique ID.
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
  *         in: path
- *         description: ID of the user to delete.
+ *         description: ID of the type to delete.
  *         required: true
  *         type: string
  *     responses:
  *       200:
- *         description: User deleted successfully!
+ *         description: type deleted successfully!
  *         schema:
  *           type: object
  *           properties:
@@ -145,10 +145,10 @@ router.put('/:id', updateUserById);
  *                   description: The status code.
  *                   example: 200
  *       400:
- *         description: No user deleted!
+ *         description: No type deleted!
  *       500:
  *         description: Error!
  */
-router.delete('/:id', deleteUserById);
+router.delete('/:id', deleteTypeById);
 
-module.exports = router; 
+module.exports = router;

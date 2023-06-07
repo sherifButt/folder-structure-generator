@@ -1,29 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const { getAllTags, createTag, getTagById, updateTagById, deleteTagById } = require('../controllers/tagController');
+const { getAllTechnologies, createTechnology, getTechnologyById, updateTechnologyById, deleteTechnologyById } = require('../controllers/technologyController');
 
 /**
  * @swagger
- * /api/tags:
+ * /api/technologies:
  *  get:
- *    tags: [🏷 Tags]
- *    summary: Get all tags.
- *    description: Get all tags.
+ *    tags: [📱 Technologies]
+ *    summary: Get all technologies.
+ *    description: Get all technologies.
  *    responses:
  *      200:
  *        description: Success!
+ *      401:
+ *        description: Unauthorized!
+ *      403:
+ *        description: Forbidden!
  *      500:
  *        description: Error!
  */
-router.get('/', getAllTags);
+router.get('/', getAllTechnologies);
 
 /**
  * @swagger
- * /api/tags:
+ * /api/technologies:
  *  post:
- *    tags: [🏷 Tags]
- *    summary: Create a new tag.
- *    description: Create a new tag, and return a token.  
+ *    tags: [📱 Technologies]
+ *    summary: Create a new technology.
+ *    description: Create a new technology, and return a token.  
  *    requestBody:
  *      required: true
  *      content:
@@ -34,8 +38,7 @@ router.get('/', getAllTags);
  *              - name
  *              - slug
  *              - description
- *              - projects
- *              - owners
+ *              - Projects
  *            properties:
  *              name:
  *                type: string
@@ -47,59 +50,65 @@ router.get('/', getAllTags);
  *               type: array
  *               items: 
  *                 type: string
- *              owners:
- *               type: array
- *               items: 
- *                 type: string
  *    responses:
- *      201:
- *        description: Tag created successfully!
+ *      200:
+ *        description: Technology created successfully!
  *      400:
- *        description: No tag created!
+ *        description: No technology created!
+ *      401:
+ *        description: Unauthorized!
+ *      403:
+ *        description: Forbidden!
+ *      404:
+ *        description: Not found!
  *      500:
  *        description: Error!
  */
 
-router.post('/', createTag);
+router.post('/', createTechnology);
 
 /**
  * @swagger
- * /api/tags/{id}:
+ * /api/technologies/{id}:
  *  get:
- *    tags: [🏷 Tags]
- *    summary: Get a single tag.
- *    description: Get a single tag.
+ *    tags: [📱 Technologies]
+ *    summary: Get a single technology.
+ *    description: Get a single technology.
  *    parameters:
  *      - in: path
  *        name: id
- *        description: The tag id.
+ *        description: The technology id.
  *        type: string
  *        required: true
  *    responses:
  *      200:
  *        description: Success!
  *      400:
- *        description: No tag found!
+ *        description: No technology found!
+ *      401:
+ *        description: Unauthorized!
+ *      403:
+ *        description: Forbidden!
  *      500:
  *        description: Error!
  */
 
-router.get('/:id', getTagById);
+router.get('/:id', getTechnologyById);
 
 /**
  * @swagger
- * /api/tags/{id}:
+ * /api/technologies/{id}:
  *  put:
- *    tags: [🏷 Tags]
- *    summary: Update a tag by id.
- *    description: Update a tag by id.
+ *    tags: [📱 Technologies]
+ *    summary: Update a technology by id.
+ *    description: Update a technology by id.
  *    parameters:
  *      - in: path
  *        name: id
  *        schema:
  *          type: string
  *        required: true
- *        description: The tag id.
+ *        description: The technology id.
  *    requestBody:
  *      required: true
  *      content:
@@ -110,8 +119,7 @@ router.get('/:id', getTagById);
  *              - name
  *              - slug
  *              - description
- *              - projects
- *              - owners
+ *              - Projects
  *            properties:
  *              name:
  *                type: string
@@ -123,38 +131,38 @@ router.get('/:id', getTagById);
  *               type: array
  *               items: 
  *                 type: string
- *              owners:
- *               type: array
- *               items: 
- *                 type: string
  *    responses:
  *      200:
- *        description: Tag updated successfully!
+ *        description: Technology updated successfully!
  *      400:
- *        description: No tag updated!
+ *        description: No technology updated!
+ *      401:
+ *        description: Unauthorized!
+ *      403:
+ *        description: Forbidden!
  *      500:
  *        description: Error!
  */
-router.put('/:id', updateTagById);
+router.put('/:id', updateTechnologyById);
 
 /**
  * @swagger
- * /api/tags/{id}:
+ * /api/technologies/{id}:
  *   delete:
- *     tags: [🏷 Tags]
- *     summary: Delete a tag by ID.
- *     description: Delete a tag by its unique ID.
+ *     tags: [📱 Technologies]
+ *     summary: Delete a technology by ID.
+ *     description: Delete a technology by its unique ID.
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
  *         in: path
- *         description: ID of the tag to delete.
+ *         description: ID of the technology to delete.
  *         required: true
  *         type: string
  *     responses:
  *       200:
- *         description: Tag deleted successfully!
+ *         description: Technology deleted successfully!
  *         schema:
  *           type: object
  *           properties:
@@ -168,10 +176,12 @@ router.put('/:id', updateTagById);
  *                   description: The status code.
  *                   example: 200
  *       400:
- *         description: No tag deleted!
+ *         description: No technology deleted!
+ *       401:
+ *        description: Unauthorized!
  *       500:
  *         description: Error!
  */
-router.delete('/:id', deleteTagById);
+router.delete('/:id', deleteTechnologyById);
 
 module.exports = router; 
