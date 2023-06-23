@@ -1,5 +1,5 @@
 require('dotenv').config();
-const cleanCode = require('./cleanCode');
+const cleanCode = require('./cleanResponse');
 const getGpt = require('./getGpt');
 const { isResponseComplete, isCodeBlock } = require('../utils/isResponseComplete');
 
@@ -63,16 +63,17 @@ async function getGeneratedCode(prompt) {
         }
         */
 
-        if (code) {
-            const { codeBlocks, cleanedResponse, noMarkdown } = cleanCode(code);
+        if (code) { 
+            const { codeBlocks, cleanedResponse, noMarkdown,noGpt } = cleanCode(code);
 
             // return cleanedResponse;
-            // if (prompt[prompt.length - 1].content.toLowerCase().split(' ').includes('markdown')) return code;
+            //  if (prompt[prompt.length - 1].content.includes('README.md')) return code;
+            //  if (/README.md/g.test(prompt[prompt.length - 1].content)) return code;
             
             console.log('\x1b[32m%s\x1b[0m', 'usage:', usage)
             return {
                 cleanCode: noMarkdown,
-                code,
+                code:noGpt,
                 usage
             };
 

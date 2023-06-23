@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Super docs my-awesome-tutorial</title>
+  <title>Super docs utils/convertNameToSlug.js</title>
   
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="shortcut icon" type="" href="./favicon.png"/>
@@ -13,7 +15,7 @@
   
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,13 +27,14 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   
 </head>
 
 
 
-<body class="layout small-header">
+<body class="layout">
     <script src="scripts/img-alt-caption.js"></script>
     <script src="scripts/jsdoc-mermaid.js"></script>
     
@@ -91,8 +94,8 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
                         
-                            <a class="dropdown-item" href="tutorial-my-awesome-tutorial.html">
-                                my-awesome-tutorial
+                            <a class="dropdown-item" href="tutorial-howtouse.html">
+                                01. How to use
                             </a>
                         
                         </div>
@@ -130,7 +133,7 @@
 </div>
     <div id="main">
         <div
-            class="sidebar tutorials"
+            class="sidebar "
             id="sidebarNav"
         >
             
@@ -140,121 +143,73 @@
             
             <nav>
                 
-                    <div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-my-awesome-tutorial.html">my-awesome-tutorial</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#convertNameToSlug">convertNameToSlug</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Tutorial</p>
-                    <h1>my-awesome-tutorial</h1>
+                    <p>Source</p>
+                    <h1>utils/convertNameToSlug.js</h1>
                 </header>
-                <section>
+                
 
-<article>
-    <h1>Memory Extension Web App</h1>
-<p>This project aims to simulate human memory processes to provide long-term memory support for ChatGPT, particularly when dealing with complex tasks such as coding a large application.</p>
-<div class='mdc'>
-<div class='ic'>
-<h3>How to send?</h3>
-<p>particularly when dealing with complex tasks such as coding a large application.</p>
-<pre class="prettyprint source lang-javascript"><code>function hashToLink(doclet, hash) {
-  var url
 
-  if ( !/^(#.+)/.test(hash) ) {
-    return hash
-  }
 
-  url = helper.createLink(doclet)
-  url = url.replace(/(#.+|$)/, hash)
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// create jsdoc for this function
+/**
+ * Create slug from name function, with dash instead of spaces, 
+ * lowercase, remove any special characters from the name, 
+ * remove any spaces from the beginning or the end of the name 
+ * and insure that one dash between words.
+ * @function convertNameToSlug
+ * @param {String} name  The name to create slug from
+ * @returns {String} The slug created from the name
+ * @example
+ * // returns 'tag-slug'
+ * const { convertNameToSlug } = require('../utils/convertNameToSlug');
+ * convertNameToSlug('tag slug');
+ * // returns 'tag-slug'
+ * console.log(convertNameToSlug('  JavaScript &amp; Python 101   '));
+ * // returns 'javascript-python-101'
+ */
 
-  return '&lt;a href=&quot;' + url + '&quot;>' + hash + '&lt;/a>'
+function convertNameToSlug(name) {
+    if (!name) {
+        return '';
+    }
+
+    // Convert to lower case and trim spaces
+    name = name.toLowerCase().trim();
+
+    // Replace spaces with dash
+    name = name.replace(/\s+/g, '-');
+
+    // Remove any special characters
+    name = name.replace(/[^\w\-]+/g, '');
+
+    // Remove dashes at the start and end
+    name = name.replace(/^-+|-+$/g, '');
+
+    // Ensure only single dash between words
+    name = name.replace(/-+/g, '-');
+
+    return name;
 }
-</code></pre>
-</div>
-<div class='ic'>
-<pre class="prettyprint source lang-mermaid"><code>---
-title: sequence diagram for the proccess
----
-gantt
-title Writing my thesis
-dateFormat  MM-DD
-axisFormat  %m-%d
-section Research
-Procrastinate           :a1, 01-01, 59d
-Do it     :after a1  , 10d
-section Write-up
-Should I start?     :03-01 , 20d
-Ugh ok      : 6d
-</code></pre>
-</div>
-</div>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Item</th>
-<th style="text-align:center">In Stock</th>
-<th style="text-align:right">Price</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Python Hat</td>
-<td style="text-align:center">True</td>
-<td style="text-align:right">23.99</td>
-</tr>
-<tr>
-<td style="text-align:left">SQL Hat</td>
-<td style="text-align:center">True</td>
-<td style="text-align:right">23.99</td>
-</tr>
-<tr>
-<td style="text-align:left">Codecademy Tee</td>
-<td style="text-align:center">False</td>
-<td style="text-align:right">19.99</td>
-</tr>
-<tr>
-<td style="text-align:left">Codecademy Hoodie</td>
-<td style="text-align:center">False</td>
-<td style="text-align:right">42.99</td>
-</tr>
-</tbody>
-</table>
-<h2>Examples</h2>
-<p>Here are some examples of how to use this project:</p>
-<ul>
-<li>To authenticate a user, use the NextAuth library.</li>
-<li>To manage state, use the Redux RTK Query library.</li>
-<li>To style the UI, use the Tailwind library.</li>
-<li>To store data, use the PostgreSQL database.</li>
-<li>To document the API, use the Swagger library.</li>
-</ul>
-<h2>Target Audience</h2>
-<p>This project is intended for developers who use ChatGPT and need long-term memory support for complex tasks such as coding a large application.</p>
-<h2>chart</h2>
-<pre class="prettyprint source lang-mermaid"><code>sequenceDiagram
-    participant U as User
-    participant F as Function
-    U->>F: Calls cleanCode(response)
-    F->>F: Checks validity of response
-    Note over F: If response is invalid, returns empty codeBlocks, cleanedResponse, noMarkdown
-    F->>F: Creates startMarker and endMarker
-    F->>F: Finds startMarkerIndex in response
-    F->>F: Creates cleanedInput by removing content before startMarker
-    F->>F: Finds endMarkerIndex in cleanedInput
-    F->>F: Removes everything after endMarker in cleanedInput
-    F->>F: Matches code blocks with regex
-    F->>F: Creates codeBlocks and cleanedResponse
-    F->>F: Matches any unmatched backticks in cleanedResponse
-    F->>F: Creates final cleanedResponse and noMarkdown
-    F-->>U: Returns CodeBlocks, cleanedResponse, noMarkdown
-</code></pre>
-<h2>License</h2>
-<p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
-</article>
 
-</section>
+module.exports = convertNameToSlug;
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
 
             </div>
             
@@ -265,11 +220,10 @@ Ugh ok      : 6d
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
-<script src="scripts/copycode.js"></script>
+<script src="scripts/codeHeader.js"></script>
 <script src="scripts/tapMenueDropDown.js"> </script>
 
 <script src="scripts/search.js"> </script>
-
 
 
 </body>

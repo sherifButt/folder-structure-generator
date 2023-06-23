@@ -84,7 +84,7 @@ async function getGpt(prompt) {
                 } else {
                     return initailResponse;
                 }
-            } else if (apiResponse.status === 429 && process.env.GPT_PREVENT_TOO_MANY_REQUESTS === 'true' && interval < process.env.GPT_COOLDOWN_MAX_TRIES - 1) {
+            } else if ((apiResponse.status === 429 || apiResponse.status === 500 || apiResponse.status === 503) && process.env.GPT_PREVENT_TOO_MANY_REQUESTS === 'true' && interval < process.env.GPT_COOLDOWN_MAX_TRIES - 1) {
                 console.log('\x1b[31m%s\x1b[0m', `#[${interval}/${process.env.GPT_COOLDOWN_MAX_TRIES}] - Too many requests to GPT API. Waiting for 5 seconds and trying again...`)
                 await cooldown();
                 console.log('\x1b[31m%s\x1b[0m', `Traying again to get a apiResponse...`)

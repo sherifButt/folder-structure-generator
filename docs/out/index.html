@@ -13,7 +13,7 @@
   
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -141,7 +141,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See <a href="tutorial-howtouse.html">01. How to use</a></a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See <a href="tutorial-howtouse.html">01. How to use</a></a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#convertNameToSlug">convertNameToSlug</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
@@ -176,7 +176,14 @@
 
     <section>
         <article><h1>Super Docs theme for JsDocs</h1>
-<p>Documentation toolbox for your <strong>javascript</strong> / <strong>typescript</strong> projects based on JSDoc3 with <strong>@category</strong>, <strong>@component</strong> and <strong>@optional</strong> plugins.</p>
+<p>Documentation toolbox for your <strong>javascript</strong> / <strong>typescript</strong> projects based on JSDoc3 with <strong>@category</strong> and <strong>@optional</strong> plugins.</p>
+<h3>Key features:</h3>
+<ul>
+<li>Openapi Swagger documentation out of the box, with beautiful theme</li>
+<li>Mermaid integration for flowcharts, sequence diagrams and more</li>
+<li>markdown tutorial pages generator.</li>
+<li>Responsive design</li>
+</ul>
 <p>This how it looks:</p>
 <div class='mdc' >
 <div class='ic'>
@@ -187,12 +194,7 @@
 </div>
 </div>
 <h2>Example</h2>
-<p>Example documentation can be found here: https://softwarebrothers.github.io/example-design-system/index.html</p>
-<h2>OpenSource sherifButt community</h2>
-<ul>
-<li><a href="https://join.slack.com/t/adminbro/shared_invite/zt-czfb79t1-0U7pn_KCqd5Ts~lbJK0_RA">Join the community</a> to get help and be inspired.</li>
-<li>subscribe to our <a href="http://opensource.softwarebrothers.co">newsletter</a></li>
-</ul>
+<p>Example documentation can be found here: https://sherifbutt.github.io/super-docs-documentation/</p>
 <h2>Installation</h2>
 <pre class="prettyprint source lang-sh"><code>npm install --save-dev super-docs
 </code></pre>
@@ -202,16 +204,22 @@
 <pre class="prettyprint source lang-sh"><code>jsdoc your-documented-file.js -t ./node_modules/super-docs
 </code></pre>
 <h3>With npm and configuration file</h3>
+<div class="mdc">
+<div class="ic">
 <p>In your projects package.json file - add a new script:</p>
 <pre class="prettyprint source lang-json"><code>&quot;script&quot;: {
   &quot;docs&quot;: &quot;jsdoc -c jsdoc.json&quot;
 }
 </code></pre>
+</div>
+<div class="ic">
 <p>in your <code>jsdoc.json</code> file, set the template:</p>
 <pre class="prettyprint source lang-json"><code>&quot;opts&quot;: {
   &quot;template&quot;: &quot;node_modules/super-docs&quot;
 }
 </code></pre>
+</div>
+</div>
 <h2>TypeScript support</h2>
 <p>super-docs has a plugin which allows you to generate documentation from your TypeScript codebase.</p>
 <h3>Usage</h3>
@@ -232,7 +240,7 @@
 <h3>How it works?</h3>
 <p>It performs 4 operations:</p>
 <ul>
-<li>First of all it transpiles all .ts and .tsx files to .js, so that all comments used by you are treated
+<li>First of all it transpilers all .ts and .tsx files to .js, so that all comments used by you are treated
 as a regular JSDoc comments.</li>
 </ul>
 <p>Furthermore it:</p>
@@ -368,252 +376,6 @@ class YourClass {
   ....
 }
 </code></pre>
-<h2>@component plugin [BETA]</h2>
-<p>Super-docs also allows you to document your <a href="https://reactjs.org/">React</a> and <a href="https://vuejs.org/">Vue</a> components automatically. The only thing you have to do is to add a <code>@component</code> tag. It will take all props from your components and along with an <code>@example</code> tag - will generate a <strong>live preview</strong>.</p>
-<h3>Installation instructions</h3>
-<p>Similar as before to add a plugin - you have to update the <code>plugins</code> section in your <code>jsdoc.json</code> file:</p>
-<pre class="prettyprint source"><code>...
-&quot;tags&quot;: {
-    &quot;allowUnknownTags&quot;: [&quot;component&quot;] //or true
-},
-&quot;plugins&quot;: [
-    &quot;node_modules/super-docs/component&quot;
-],
-...
-</code></pre>
-<p>Since <strong>component</strong> plugin uses <a href="https://parceljs.org">parcel</a> as a bundler you have to install it globally. To do this run:</p>
-<pre class="prettyprint source"><code>## if you use npm
-npm install -g parcel-bundler
-
-## or yarn
-yarn global add parcel-bundler
-</code></pre>
-<h3>Usage</h3>
-<p>To document components simply add <code>@component</code> in your JSDoc documentation:</p>
-<pre class="prettyprint source lang-jsx"><code>/**
- * Some documented component
- *
- * @component
- */
-const Documented = (props) => {
-  const { text } = props
-  return (
-    &lt;div>{text}&lt;/div>
-  )
-}
-
-Documented.propTypes = {
-  /**
-   * Text is a text
-   */
-  text: PropTypes.string.isRequired,
-}
-
-export default Documented
-</code></pre>
-<p>The plugin will take the information from your <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">PropTypes</a> and put them into an array.</p>
-<p>For Vue it looks similar:</p>
-<pre class="prettyprint source lang-vue"><code>&lt;script>
-/**
- * @component
- */
-export default {
-  name: 'ExampleComponent',
-  props: {
-    spent: {
-      type: Number,
-      default: 30,
-    },
-    remaining: {
-      type: Number,
-      default: 40,
-    }
-  },
-}
-&lt;/script>
-</code></pre>
-<p>In this case, props will be taken from <code>props</code> property.</p>
-<h3>Preview</h3>
-<p><code>@component</code> plugin also modifies the behaviour of <code>@example</code> tag in a way that it can generate an actual <strong>component preview</strong>. What you have to do is to add an <code>@example</code> tag and return component from it:</p>
-<p><strong>React example:</strong></p>
-<pre class="prettyprint source lang-jsx"><code>/**
- * Some documented component
- *
- * @component
- * @example
- * const text = 'some example text'
- * return (
- *   &lt;Documented text={text} />
- * )
- */
-const Documented = (props) => {
-  ///...
-}
-</code></pre>
-<p><strong>Vue example 1:</strong></p>
-<pre class="prettyprint source lang-vue"><code>&lt;script>
-/**
- * @component
- * @example
- * &lt;ExampleComponent :spent=&quot;100&quot; :remaining=&quot;50&quot;>&lt;/ExampleComponent>
- */
-export default {
-  name: 'ExampleComponent',
-  //...
-}
-&lt;/script>
-</code></pre>
-<p><strong>Vue example 2:</strong></p>
-<pre class="prettyprint source lang-vue"><code>&lt;script>
-/**
- * @component
- * @example
- * {
- *   template: `&lt;Box>
- *     &lt;ProgressBar :spent=&quot;spent&quot; :remaining=&quot;50&quot;>&lt;/ProgressBar>
- *     &lt;ProgressBar :spent=&quot;50&quot; :remaining=&quot;50&quot; style=&quot;margin-top: 20px&quot;>&lt;/ProgressBar>
- *   &lt;/Box>`,
- *   data: function() {
- *     return {spent: 223};
- *   }
- * }
- */
-export default {
-  name: 'ExampleComponent',
-  //...
-}
-&lt;/script>
-</code></pre>
-<p>You can put as many <code>@example</code> tags as you like in one component and &quot;caption&quot; each of them like this:</p>
-<pre class="prettyprint source lang-javascript"><code>/**
- * @component
- * @example &lt;caption>Example usage of method1.&lt;/caption>
- * // your example here
- */
-</code></pre>
-<h3>Mixing components in preview</h3>
-<p>Also you can use multiple components which are documented with <code>@component</code> tag together. So lets say you have 2 components and in the second component you want to use the first one as a wrapper like this:</p>
-<pre class="prettyprint source lang-javascript"><code>// component-1.js
-/**
- * Component 1
- * @component
- *
- */
-const Component1 = (props) => {...}
-
-// component-2.js
-/**
- * Component 2
- * @component
- * @example
- * return (
- *   &lt;Component1>
- *     &lt;Component2 prop1={'some value'}/>
- *     &lt;Component2 prop1={'some other value'}/>
- *   &lt;/Component1>
- * )
- */
-const Component2 = (props) => {...}
-</code></pre>
-<h3>Wrapper component [only React]</h3>
-<p>Most probably your components will have to be run within a particular context, like within redux store provider or with custom CSS libraries.
-You can simulate this by passing a <code>component.wrapper</code> in your <code>jsdoc.json</code>:
-<em>(To read more about passing options - scroll down to <strong>Customization</strong> section)</em></p>
-<pre class="prettyprint source lang-json"><code>// jsdoc.json
-{
-    &quot;opts&quot;: {...},
-    &quot;templates&quot;: {
-        &quot;super-docs&quot;: {
-            &quot;name&quot;: &quot;Sample Documentation&quot;,
-            &quot;component&quot;: {
-              &quot;wrapper&quot;: &quot;./path/to/your/wrapper-component.js&quot;,
-            },
-            &quot;...&quot;: &quot;...&quot;,
-        }
-    }
-}
-</code></pre>
-<p>Wrapper component can look like this:</p>
-<pre class="prettyprint source lang-javascript"><code>// wrapper-component.js
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-
-const store = createStore(() => ({}), {})
-
-const Component = (props) => {
-  return (
-    &lt;React.Fragment>
-      &lt;head>
-        &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css&quot; />
-      &lt;/head>
-      &lt;Provider store={store}>
-        &lt;BrowserRouter>
-          {props.children}
-        &lt;/BrowserRouter>
-      &lt;/Provider>
-    &lt;/React.Fragment>
-  )
-}
-
-export default Component
-</code></pre>
-<h3>Styling React examples</h3>
-<p>Super-docs inserts all examples within an <code>iframe</code>. This results in the following styling options:</p>
-<ol>
-<li>
-<p>If you pass styles inline - they will work right away.</p>
-</li>
-<li>
-<p>For <code>css modules</code> to work with <code>parcel</code> bundler - you have to install <code>postcss-modules</code> package:</p>
-</li>
-</ol>
-<pre class="prettyprint source"><code>yarn add postcss-modules
-</code></pre>
-<p>and create a <code>.postcssrc</code> file:</p>
-<pre class="prettyprint source lang-json"><code>// .postcssrc
-{
-	&quot;modules&quot;: true
-}
-</code></pre>
-<ol start="3">
-<li>For <a href="https://www.styled-components.com/">styled-components</a> you have to use wrapper component which looks like this:</li>
-</ol>
-<pre class="prettyprint source lang-jsx"><code>import React from 'react'
-import { StyleSheetManager } from 'styled-components'
-
-const Component = (props) => {
-  const { frameContext } = props
-  return (
-    &lt;StyleSheetManager target={frameContext.document.head}>
-      {props.children}
-    &lt;/StyleSheetManager>
-  )
-}
-
-export default Component
-</code></pre>
-<h3>Adding commands to bundle entry file</h3>
-<p><code>@component</code> plugin creates an entry file: <code>.entry.js</code> in your <em>docs</em> output folder. Sometimes you might want to add something to it. You can do this by passing: <code>component.entry</code> option, which is an array of strings.</p>
-<p>So let's say you want to add <code>babel-polyfill</code> and 'bulma.css' framework to your bundle. You can do it like this:</p>
-<pre class="prettyprint source lang-json"><code>// jsdoc.json
-{
-    &quot;opts&quot;: {...},
-    &quot;templates&quot;: {
-        &quot;super-docs&quot;: {
-            &quot;name&quot;: &quot;Sample Documentation&quot;,
-            &quot;component&quot;: {
-                &quot;entry&quot;: [
-                    &quot;import 'babel-polyfill';&quot;,
-                    &quot;import 'bulma/css/bulma.css';&quot;
-                ]
-            },
-            &quot;...&quot;: &quot;...&quot;,
-        }
-    }
-}
-</code></pre>
 <h2>Customization</h2>
 <p>First of all, let me state that super-docs extends the <code>default</code> template. That is why default template parameters are also handled.</p>
 <p>[BETA]: You must explicitly set the <code>search</code> option of the <code>default</code> template to <code>true</code> to enable search</p>
@@ -674,6 +436,103 @@ export default Component
     }
 }
 </code></pre>
+<h3>Explanation of Key Fields</h3>
+<p>Sure, here's the information converted into a markdown table:</p>
+<table>
+<thead>
+<tr>
+<th>Key Field</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tags</code></td>
+<td>Specifies the handling of unknown tags in the documentation. In this case, all unknown tags are allowed.</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>Specifies the source files to be included in the documentation. It includes all JavaScript and TypeScript files in the project, excluding those in the <code>node_modules</code> directory.</td>
+</tr>
+<tr>
+<td><code>plugins</code></td>
+<td>Lists the plugins used in the documentation generation process.</td>
+</tr>
+<tr>
+<td><code>opts</code></td>
+<td>Specifies various options for the documentation generation, such as the encoding, destination directory, and whether to include subdirectories.</td>
+</tr>
+<tr>
+<td><code>templates</code></td>
+<td>Specifies the settings for the templates used in the documentation. This includes settings for search functionality, link styles, and static files to be included.</td>
+</tr>
+<tr>
+<td><code>opts.encoding</code></td>
+<td>Specifies the encoding type for the files. In this case, it is set to &quot;utf8&quot;.</td>
+</tr>
+<tr>
+<td><code>opts.destination</code></td>
+<td>Specifies the output directory for the generated documentation. Here, it is set to &quot;docs/&quot;.</td>
+</tr>
+<tr>
+<td><code>opts.recurse</code></td>
+<td>When set to true, allows the documentation generator to traverse subdirectories.</td>
+</tr>
+<tr>
+<td><code>opts.verbose</code></td>
+<td>When set to false, suppresses the logging of non-essential information during the documentation generation process.</td>
+</tr>
+<tr>
+<td><code>opts.template</code></td>
+<td>Specifies the directory of the template to be used for the documentation. Here, it is set to the current directory &quot;./&quot;.</td>
+</tr>
+<tr>
+<td><code>opts.tutorials</code></td>
+<td>Specifies the directory of the tutorial files to be included in the documentation. Here, it is set to &quot;./fixtures/tutorials&quot;.</td>
+</tr>
+<tr>
+<td><code>opts.readme</code></td>
+<td>Specifies the file to be used as the README in the documentation. Here, it is set to &quot;./README.md&quot;.</td>
+</tr>
+<tr>
+<td><code>default.staticFiles.include</code></td>
+<td>Specifies the directory of static files to be included in the documentation. Here, it is set to &quot;./docs/statics&quot;.</td>
+</tr>
+<tr>
+<td><code>favicon</code></td>
+<td>Specifies the path to the favicon file for the documentation. Here, it is set to &quot;./images/favicon.png&quot;.</td>
+</tr>
+<tr>
+<td><code>super-docs.name</code></td>
+<td>Specifies the name for the &quot;Super Docs&quot; template.</td>
+</tr>
+<tr>
+<td><code>super-docs.logo</code></td>
+<td>Specifies the logo for the &quot;Super Docs&quot; template.</td>
+</tr>
+<tr>
+<td><code>super-docs.title</code></td>
+<td>Specifies the title for the &quot;Super Docs&quot; template.</td>
+</tr>
+<tr>
+<td><code>super-docs.css</code></td>
+<td>Specifies the CSS file for the &quot;Super Docs&quot; template.</td>
+</tr>
+<tr>
+<td><code>super-docs.hideGenerator</code></td>
+<td>When set to true, hides the documentation generator's information in the output documentation.</td>
+</tr>
+<tr>
+<td><code>super-docs.favicon</code></td>
+<td>Specifies the path to the favicon file for the &quot;Super Docs&quot; template.</td>
+</tr>
+<tr>
+<td><code>super-docs.faviconType</code></td>
+<td>Specifies the type of the favicon file for the &quot;Super Docs&quot; template.</td>
+</tr>
+</tbody>
+</table>
+<p>Please ensure that all paths and settings are correctly configured for your project's structure and requirements.</p>
 <h3>Extras</h3>
 <h4>typedef(import(...))</h4>
 <p>super-docs also has one extra plugin for handling typescript'like types imports like (it has to be one-liner):</p>
@@ -727,13 +586,8 @@ DOCS_COMMAND='npm run docs' DOCS=../src/**/*,../config/**/* DOCS_OUTPUT=../docs 
 </ul>
 <h2>License</h2>
 <p>super-docs is Copyright © 2019 sherifButt.co. It is free software and may be redistributed under the terms specified in the <a href="LICENSE">LICENSE</a> file - MIT.</p>
-<h2>About sherifButt.co</h2>
-<img src="https://softwarebrothers.co/assets/images/software-brothers-logo-full.svg" width=240>
-<p>We're an open, friendly team that helps clients from all over the world to transform their businesses and create astonishing products.</p>
-<ul>
-<li>We are available for <a href="https://softwarebrothers.co/contact">hire</a>.</li>
-<li>If you want to work for us - check out the <a href="https://softwarebrothers.co/career">career page</a>.</li>
-</ul></article>
+<h2>About <a href="https://portfolio-zeta-vert.vercel.app">sherifButt.co</a></h2>
+<p>We're an open, friendly team that helps clients from all over the world to transform their businesses and create astonishing products.</p></article>
     </section>
 
 

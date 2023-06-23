@@ -3,6 +3,7 @@
  * @property {string} codeBlocks - The code blocks extracted from the input string.
  * @property {string} cleanedResponse - The input string with the markdown and code blocks removed.
  * @property {string} noMarkdown - The input string with the markdown removed.
+ * @property {string} noGpt - The input string with the gpt human like generated text removed.
  */
 
 /**
@@ -19,13 +20,6 @@
  *   cleanCode:  "const a = 1;\nconst b = 2;\nconst c = a + b;\nconsole.log(c);",
  *   noMarkdown: "const a = 1;\nconst b = 2;\nconst c = a + b;\nconsole.log(c);"
  *   };
- * 
- * @mermaid
- *   graph TD;
- *     A-->B;
- *     A-->C;
- *     B-->D;
- *     C-->D;
  */
 function cleanCode(response) {
     if (!response || typeof response !== 'string' || response.length === 0) {
@@ -73,13 +67,19 @@ function cleanCode(response) {
     // let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.)\s.*/gm, '');
        let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|Here's|To|Here|Note:|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*/gm, '');
 
+       let noGpt = response.replace(/^(Sure,|Here's|It's|Let's|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|We|Once|After|Before|When|Given|Now)\s.*/gm, '');
+
+
     noMarkdown = noMarkdown.replace(/^```(?:\w+\n)?/, '');
     noMarkdown = noMarkdown.replace(/```$/, '');
 
+
+
     return {
-        codeBlocks,  
-        cleanedResponse,
-        noMarkdown // : cleanedInput 
+        codeBlocks,  // array of code blocks
+        cleanedResponse, // remove markdown and code blocks
+        noMarkdown, // remove markdown except code blocks
+        noGpt // remove gpt human like generated text such as "Sure, Here's, It's, Let's, Firstly, Next, Then, Finally, Don't, Remember, Be, Always, Also, We, Once, After, Before, When, Given, Now"
     };
 }
 

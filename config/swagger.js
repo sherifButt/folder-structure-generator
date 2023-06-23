@@ -23,10 +23,7 @@ const swaggerDefinition = {
             url: 'http://localhost:3000',
             description: 'Development server',
         },
-        {
-            url: 'https://folder-structure-generator-production.up.railway.app',
-            description: 'Test server',
-        },
+        
     ],
     components: {
         securitySchemes: {

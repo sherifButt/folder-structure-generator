@@ -6,12 +6,38 @@ const generateCode = require('./generateCode');
 
 /**
  * Main function that creates the directory structure based on the JSON or YAML file provided.
- *
+ * @function createStructure
  * @param {string} basePath - The path to the folder where the directory structure will be created.
  * @param {Object} structure - The directory structure to be created.
  * @throws {Error} - Throws an error if there is an issue while creating the structure.
  * @returns {Promise} - Returns a promise that resolves when the structure is created. 
+ * @mermaid
+ * sequenceDiagram
+ *   participant User as User
+ *   participant Func as createStructure Function
+ *   participant FS as File System
+ *   participant GPT as GPT-4 Model
+ *   participant WS as WebSocket Client
+ *
+ *   User->>Func: Call createStructure with path and structure
+ *   loop For each item in structure
+ *       Func->>FS: Check if item is file or folder
+ *       alt If item is a prompt
+ *           Func->>GPT: Request code generation with item details
+ *           GPT-->>Func: Return generated code
+ *           Func->>FS: Write code to file
+ *           Func->>WS: Update structure and messages
+ *       else If item is a folder
+ *           Func->>FS: Create a new folder
+ *           Func->>+Func: Call createStructure recursively with new path and sub-structure
+ *           Func-->>-Func: Return from recursive call
+ *       else If item is an empty file
+ *           Func->>FS: Create an empty file  
+ *       end
+ *   end
+ *
  */
+
 async function createStructure(basePath, structure, messages) {
 
     // check if messages is array of strings and convert it to array of objects
@@ -21,8 +47,9 @@ async function createStructure(basePath, structure, messages) {
     let _messages = [
         {
             role: "system",
-            // content: `You are a experianced nodejs developer with 10 years of coding experiance, Return only the JavaScript, html, css code only retrun markdown if instructed to do so. if you will provide any description or any other text exept code please start it with "//" to comment it in code. if you will confirm saying "// Sure, here's an"... etc start it with "//" `
-            content: `You are a experianced nodejs developer with 10 years of coding experiance, Return only the JavaScript, html, css code only retrun markdown if instructed to do so. provide jsDocs and swagger for routes.\n Note: don't provide svg tags only add comments {/**svg name /}, don't provide any description or any other text exept code. only provide markdow if you will inmplment ".md" file. if you will confirm saying "Sure, here's an" or comment saying "To", "Here is" ... etc start it with "//" to comment it out in code.`
+            // content: `You are a experienced nodejs developer with 10 years of coding experience, Return only the JavaScript, html, css code only return markdown if instructed to do so. if you will provide any description or any other text except code please start it with "//" to comment it in code. if you will confirm saying "// Sure, here's an"... etc start it with "//" `
+            // content: `You are a experienced nodejs developer with 10 years of coding experience, Return only the JavaScript, html, css code only return markdown if instructed to do so. provide jsDocs and swagger for routes.\n Note: don't provide svg tags only add comments {/**svg name /}, don't provide any description or any other text except code. only provide markdown if you will implement ".md" file. if you will confirm saying "Sure, here's an" or comment saying "To", "Here is" ... etc start it with "//" to comment it out in code.`
+            content: `You are ChatGPT-4, a large language model trained by OpenAI. As an experienced full stack web developer with 10 years of experience in nextjs, nextauth, stripe, redux rtk query, tailwind, postgresql, express, jsdoc @swagger Documentation and horizontal scaled architecture. You are tasked assist me to only implement in JavaScript, html, css code. Note: don't return markdown unless file is "README.md".. always provide jsDoc for functions, models, classes and jsdoc @swagger for routes.\n don't provide svg tags only add comments {/**svg name /}, don't provide any description or any other text except code. if you will confirm saying "Sure, here's an" or comment saying "To", "Here is" ... etc start it with "//" to comment it out in code.`
         },
         ...messages
     ];
@@ -39,26 +66,33 @@ async function createStructure(basePath, structure, messages) {
     // Iterate over the structure object
     for (const key in structure) {
         const item = structure[key];
-        const itemPath = path.join(basePath, key);
+        const itemPath = path.join(basePath, key);  
 
 
         try {
             // If the item is an object and has instructions and implemented properties, it is a prompt.
-            if (item && typeof item === 'object' && 'instructions' in item && 'implemented' in item) {
+            if ((item && typeof item === 'object' && 'instructions' in item && 'implemented' in item) || item && typeof item === 'string') {
 
-                // If the item is a file, create the file with the content generated by ChatGPT.
-                let userContent = `Implement ${key} by providing full code to the following instructions: `;
-                userContent += item.instructions
+                let userContent
+                if (item && typeof item === 'object') {
+                    // If the item is a file, create the file with the content generated by ChatGPT.
+                    userContent = `Your task is to use this information to implement file ${key} by providing full code, the file ${item}, refer as well to the following instructions: `;
+                    // userContent = ``
+                    userContent += item.instructions
+                    ƒ
+                    // add file name to user content 
+                    userContent += `\nFile name: ${key}`
 
-                // add file name to user content 
-                userContent += `\nFile name: ${key}`
-
-                // add dependencies to user content 
-                for (const [key, value] of Object.entries(item)) {
-                    if (Array.isArray(value) && value.length > 0) {
-                        userContent += `\n${key.charAt(0).toUpperCase() + key.slice(1)}: ${value.join(', ')}`
+                    // add dependencies to user content 
+                    for (const [key, value] of Object.entries(item)) {
+                        if (Array.isArray(value) && value.length > 0) {
+                            userContent += `\n${key.charAt(0).toUpperCase() + key.slice(1)}: ${value.join(', ')}`
+                        }
                     }
+                } else if (item && typeof item === 'string') {
+                    userContent = `you are tasked to Implement file ${key} by providing full code, the file ${item} `
                 }
+
                 const gptMessages = [..._messages, { role: "user", content: userContent }]
                 let code, usage;
 
@@ -67,7 +101,9 @@ async function createStructure(basePath, structure, messages) {
                     const { cleanCode, usage: _usage, code: _code } = await generateCode(gptMessages)
 
                     // clena code is cleand form markdown and comments .. etc
-                    code = (process.env.IS_CLEAN_CODE === 'true' && !userContent.toLowerCase().split(' ').includes('markdown')) ? cleanCode : _code;
+                    code = (process.env.IS_CLEAN_CODE === 'true' && !/(README.md|\b\w+\.md\b)/g.test(userContent)) ? cleanCode : _code;
+                    // contains ay word ends with .md
+
                     usage = _usage
                 }
                 else {
@@ -89,9 +125,9 @@ async function createStructure(basePath, structure, messages) {
 
                 // update messages if gpt-4 or usage.prompt_tokens < 2800  to include user 
                 // content as system message as token size can handel bigger messages
-                if (process.env.GPT_MODEL_ID === 'gpt-4' || usage.prompt_tokens < 2800) {
-                    _messages = [..._messages, { role: "system", content: userContent }]
-                }
+                // if (process.env.GPT_MODEL_ID === 'gpt-4' || usage.prompt_tokens < 2800) {
+                //     _messages = [..._messages, { role: "system", content: userContent }]
+                // }
 
 
             } else if (typeof item === 'object' && item !== null) {
@@ -102,7 +138,7 @@ async function createStructure(basePath, structure, messages) {
                     catch (err) { console.error('err while saving folder: ', err.message) }
                 }
 
-                await createStructure(itemPath, item, [..._messages]);
+                await createStructure(itemPath, item, [..._messages]); 
             } else {
 
                 // If the item is not an object, it might be an empty file or folder.

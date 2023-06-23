@@ -37,19 +37,27 @@ router.get('/', getAllTechnologies);
  *            required:
  *              - name
  *              - slug
+ *              - type
  *              - description
  *              - Projects
  *            properties:
  *              name:
  *                type: string
+ *                example: MERN + AWS
  *              slug:
  *                type: string
+ *                example: mern-aws
+ *              type:
+ *               type: string
+ *               example: Development Stack
  *              description:
  *                type: string
+ *                example: The development stack used in the project
  *              projects:
  *               type: array
  *               items: 
  *                 type: string
+ *                 example: 5f7f1b7a7e5f9a2b1c7d1b1a
  *    responses:
  *      200:
  *        description: Technology created successfully!

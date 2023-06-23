@@ -13,7 +13,7 @@
   
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -141,7 +141,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See <a href="tutorial-howtouse.html">01. How to use</a></a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See <a href="tutorial-howtouse.html">01. How to use</a></a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#convertNameToSlug">convertNameToSlug</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
@@ -575,6 +575,194 @@
   cleanCode:  "const a = 1;\nconst b = 2;\nconst c = a + b;\nconsole.log(c);",
   noMarkdown: "const a = 1;\nconst b = 2;\nconst c = a + b;\nconsole.log(c);"
   };</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="convertNameToSlug">
+        <a class="href-link" href="#convertNameToSlug">#</a>
+        
+        <span class="code-name">
+            
+                convertNameToSlug<span class="signature">(name)</span><span class="type-signature"> &rarr; {String}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Create slug from name function, with dash instead of spaces,
+lowercase, remove any special characters from the name,
+remove any spaces from the beginning or the end of the name
+and insure that one dash between words.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The name to create slug from</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_convertNameToSlug.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_convertNameToSlug.js.html">utils/convertNameToSlug.js</a>, <a href="utils_convertNameToSlug.js.html#line2">line 2</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The slug created from the name</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">String</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// returns 'tag-slug'
+const { convertNameToSlug } = require('../utils/convertNameToSlug');
+convertNameToSlug('tag slug');
+// returns 'tag-slug'
+console.log(convertNameToSlug('  JavaScript &amp; Python 101   '));
+// returns 'javascript-python-101'</code></pre>
     
 
 

@@ -47,7 +47,7 @@ TagSchema.pre('validate', function (next) {
         slug = slug.trim();
         slug = slug.toLowerCase().split(' ').join('-');
         // only keep one dash between words
-        this.slug = slug.replace(/-+/g, '-');
+        this.slug = slug.replace(/-+/g, '-'); 
     }
     next();
 });

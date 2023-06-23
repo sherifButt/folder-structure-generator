@@ -1,0 +1,105 @@
+{
+    "meta": {
+        "name": "DiagramApp",
+        "seo": {
+            "keywords": [
+                "diagram",
+                "collaboration",
+                "realtime",
+                "interactive",
+                "communication",
+                "planning"
+            ],
+            "title": "Interactive Real-Time Diagramming with DiagramApp",
+            "article": "Are you tired of non-interactive, complex diagramming tools that make collaboration a chore rather than a pleasure? How great would it be if there were an application that streamlines the entire process, providing real-time interaction and smooth collaboration? Enter DiagramApp, a solution designed to solve these problems. DiagramApp is a web application that allows users to create, edit and share diagrams in real-time. The right solution for teams seeking to improve communication, planning, and overall productivity. With key benefits such as easy-to-use interface, multi-user collaboration, instant sharing capabilities, and compatibility with various diagram types, DiagramApp is set to revolutionize the way teams interact with diagrams. Stop struggling with subpar tools. Try DiagramApp today for a seamless diagramming experience.",
+            "tags": "diagramming, collaboration, realtime, interactive, DiagramApp"
+        },
+        "description": "DiagramApp is a web application that allows users to create, edit, and share diagrams in real-time.",
+        "dependencies": [
+            "react",
+            "redux",
+            "react-flow",
+            "nextjs",
+            "mongoose",
+            "express",
+            "jsonwebtoken",
+            "tailwindcss",
+            "axios"
+        ],
+        "summary": "A collaborative, real-time diagramming web application.",
+        "tags": "diagramming, realtime, collaboration"
+    },
+    "messages": [
+        "DiagramApp is a collaborative, real-time diagramming web application.",
+        "npm install react @reduxjs/toolkit react-flow nextjs jsonwebtoken tailwindcss axios postgresql express ",
+        "Implementation steps include setting up the frontend with React and Next.js, setting up the backend with Express.js and PostgreSQL, integrating real-time features, and testing.",
+        "DiagramApp/{frontend/{src/{components, pages, redux, services, styles, tests}, public, package.json, README.md}, backend/{src/{config, controllers, middleware, models, routes, services, utils, tests}, database, package.json, README.md}}",
+        "Features include real-time collaboration, various diagram types, user authentication, sharing capabilities, and notifications.",
+        "specs: 1. **API Specs:** Use OpenAPI format. Endpoint `/api/register` (POST) - Expects: `{email, password}`, Returns: `{jwt}`. Endpoint `/api/diagram` (POST) - Expects: `{jwt, diagramData}`, Returns: `{status, diagramData}`. 2. **Auth:** JWT based authentication. User roles: 'admin', 'user'. 'Admin' has all permissions, 'user' can create/edit own diagrams, view shared diagrams. 3. **Error Handling:** Application employs try-catch logic. On failure, errors are logged server-side and a generic error message is returned to the client. 4. **Business Rules:** Nodes creation limited to 100 per user. Instructions priority determined by user at creation, can be adjusted later. Nodes are only editable by the creator user. 5. **Tech Stack:** Frontend - Nextjs, tailwind, redux rtk query, react-flow , Backend - Node.js with Express, Database - PostgreSQL, Avatar API - Python Flask, Job Queue - Redis, Storage - AWS S3. 6. **Test Cases:** Unit tests for each API endpoint. Integration test for user registration-login-diagram creation flow. End-to-end tests for user journeys.",
+        "sequenceDiagram actor U as User participant F as Frontend participant B as Backend participant D as Database participant AI as GPT-4 participant S as Image Storage participant Redis as Redis Job Queue participant A as Avatar Creation API U->>F: Inputs email and password F->>B: Sends registration request B->>D: Saves user data D-->>B: Acknowledges save B-->>F: Sends JWT U->>F: Inputs diagram data <br> persona description and diagram description F->>B: Sends diagram creation request B->>AI: Sends persona description AI->>B: Return processed description & features for avatar B->>A: Send processed description to Avatar API A->>B: Return generated avatar image B->>S: Store generated avatar image S->>B: Confirm storage and return image location B->>D: Saves diagram and avatar image D-->>B: Acknowledges save B->>AI: Sends diagram description AI-->>B: Returns initial diagram B->>D: Saves diagram D-->>B: Acknowledges save B-->>F: Returns initial diagram and avatar image link U->>F: Create multiple nodes in diagram Note over F: Display nodes as loading F->>B: Send batch request for node creation B->>AI: Forward request to GPT-4 AI-->>B: Return instructions for nodes B-->>F: Return created nodes data Note over F: Update nodes with returned data F->>U: Display updated nodes in diagram U->>F: Inputs new node prompt F->>B: Sends node addition request B->>AI: Sends node prompt AI-->>B: Returns new node B->>D: Updates diagram D-->>B: Acknowledges update B-->>F: Returns updated diagram U->>F: Edit or cancel the nodes/jobs in the diagram F->>B: Sends edit or cancel request B->>Redis: Modify or cancel the jobs in the queue Redis-->>B: Acknowledges modification/cancellation B-->>F: Returns updated status to Frontend U->>F: Shares diagram F->>B: Sends sharing request B->>D: Updates sharing settings D-->>B: Acknowledges update B-->>F: Returns updated sharing settings F->>B: Request to execute Diagram B->>D: Fetch Diagram B->>B: Translate Diagram to sequence of Instructions loop Each Instruction B->>D: Fetch Instruction details B->>B: Check type of Instruction alt If Instruction is to send email or perform immediate action B->>B: Execute Instruction immediately else If Instruction is to wait for a period of time B->>Redis: Schedule Job with delay else If Instruction is to wait until a certain time B->>Redis: Schedule Job with delay until specific time end end Redis->>B: Trigger Jobs as per the schedule B->>B: Execute the respective Instruction loop Each Instruction requiring GPT-4 B->>AI: Send Instruction details AI->>B: Respond with suggested Instruction end B->>F: Send back results/confirmation",
+        "The user registers for an account, and all user details, including hashed passwords, are stored in the PostgreSQL database.The user starts a new mind map by describing the persona of the mind map manager. This information is sent to the backend, which uses AI to generate a matching avatar. The avatar data is then sent back to the frontend and displayed to the user.The user provides a description of the mind map and any notes. This information is sent to the backend, which uses AI to generate the initial mind map. The mind map data (as a JSON object) is then sent back to the frontend and displayed to the user.As the user interacts with the mind map, adding nodes, creating links, etc., these changes are sent to the backend and stored in MongoDB. This allows for the mind map to be saved and retrieved in real-time.If the user decides to share the mind map with another user, the backend handles the sharing process by providing a link to the shared mind map or directly sending an invitation to the other user's email address.If the user decides to expand a node using AI, the mind map's current context is sent to the backend, which uses OpenAI GPT to generate the expanded node. The new node(s) is then sent back to the frontend and added to the mind map.The user can also download the full context of the mind map, which is retrieved from the backend.The user can decide to use the stored mind map as a starting point for other diagrams, such as a flow chart or marketing automation diagram.",
+        "Table users {  id serial [pk, increment]  username varchar [unique]  email varchar [unique]  password varchar  jwt varchar  created_at timestamp  updated_at timestamp}Table token_black_list {  id serial [pk, increment]  user_id integer  token_id varchar(255)  blacklisted_at timestamp  created_at timestamp  updated_at timestamp}Table diagrams {  id serial [pk, increment]  diagram_data jsonb  name varchar  slug varchar [unique]  description varchar  created_at timestamp  updated_at timestamp  created_by integer  sharing_settings varchar}Table nodes {  id serial [pk, increment]  diagram_id integer  position jsonb  type varchar  data jsonb  created_at timestamp  updated_at timestamp  created_by integer}Table edges {  id serial [pk,increment]  diagram_id integer  source integer  target integer  animated boolean  label varchar}Table node_edge {  id serial [pk, increment]  edge_id integer  node_id integer  created_at timestamp  updated_at timestamp}Table node_instructions {  id serial [pk, increment]  node_id integer  instruction_types_id integer  created_at timestamp  updated_at timestamp  created_by text}Table instruction_types {  id serial [pk,increment]  name varchar  slug varchar [unique]  description varchar  parameters varchar  priority integer  max_retry integer  created_at timestamp  updated_at timestamp  created_by integer}Table diagram_instructions {  id serial [pk, increment]  diagram_id integer  instruction_types_id integer   node_id integer  instruction_order integer  parameters jsonb  created_at timestamp  updated_at timestamp}Table jobs {  id serial [pk,increment]  instruction_types_id integer  diagram_id integer  node_id integer  scheduled_time timestamp  retry_count integer  trigger_time timestamp  created_at timestamp  updated_at timestamp}Table avatars {  id serial [pk,increment]  user_id integer  image_url varchar  created_at timestamp  updated_at timestamp}Table user_roles {  id serial [pk,increment]  user_id integer  role varchar}Table action_logs {  id serial [pk,increment]  user_id integer  action varchar  timestamp timestamp}Table password_resets {  id serial [pk,increment]  user_id integer  reset_token varchar  expiry_time timestamp}Table email_templates {  id serial [pk,increment]  template_name varchar  template_content varchar    created_at timestamp  updated_at timestamp  created_by integer}Table notifications {  id serial [pk,increment]  user_id integer  content varchar  created_at timestamp  is_read boolean} Ref: diagram_instructions.instruction_types_id > instruction_types.id Ref: diagrams.created_by > users.id Ref: instruction_types.created_by > users.id Ref: jobs.instruction_types_id > instruction_types.id Ref: jobs.diagram_id > diagrams.id Ref: avatars.user_id > users.id Ref: user_roles.user_id > users.id Ref: action_logs.user_id > users.id Ref: password_resets.user_id > users.id Ref: notifications.user_id > users.id"
+    ],
+    "folderStructure": {
+        "mind-flow": {
+            "frontend": {
+                "src": {
+                    "components": {
+                        "App.jsx": "React component that renders the main application, including the layout, routing, and other core features",
+                        "Header.jsx": "React component that displays the header/navigation bar",
+                        "Footer.jsx": "React component that displays the footer",
+                        "LoginForm.jsx": "React component that handles user login",
+                        "RegisterForm.jsx": "React component that handles user registration",
+                        "MindMap.jsx": "React component that renders the mind map using React-Flow, also includes the handlers for manipulating the mind map nodes and edges",
+                        "AvatarGenerator.jsx": "React component that handles avatar generation",
+                        "NodeForm.jsx": "React component that provides an interface to add/edit mind map nodes",
+                        "NodeButtons.jsx": "React component that displays the action buttons for a mind map node",
+                        "ShareForm.jsx": "React component that handles sharing of mind maps",
+                        "CrossNodeConnection.jsx": "React component that handles creating cross node connections",
+                        "FlowChart.jsx": "React component that handles conversion of mind maps to flowcharts or marketing automation diagrams"
+                    },
+                    "pages": {
+                        "index.jsx": "The landing page of the application",
+                        "login.jsx": "Page for user login",
+                        "register.jsx": "Page for user registration",
+                        "dashboard.jsx": "User's dashboard page, shows the list of their mind maps",
+                        "mindmap.jsx": "Page for creating/editing a mind map",
+                        "flowchart.jsx": "Page for creating/editing a flow chart or marketing automation diagram",
+                        "sharedMindmap.jsx": "Page for viewing a shared mind map"
+                    },
+                    "redux": {
+                        "store.js": "Redux store, set up with RTK Query",
+                        "slices": {
+                            "userSlice.js": "Redux slice for handling user-related state, including authentication",
+                            "mindmapSlice.js": "Redux slice for handling mind map related state",
+                            "avatarSlice.js": "Redux slice for handling avatar related state"
+                        },
+                        "api": {
+                            "userApi.js": "RTK Query API service for user-related API calls",
+                            "mindmapApi.js": "RTK Query API service for mindmap-related API calls",
+                            "avatarApi.js": "RTK Query API service for avatar-related API calls"
+                        }
+                    },
+                    "assets": {
+                        "styles": {
+                            "index.css": "Main stylesheet file, contains Tailwind directives and custom styles",
+                            "tailwind.config.js": "Tailwind CSS configuration file"
+                        },
+                        "images": "Contains images and icons used in the project"
+                    },
+                    "utils": {
+                        "auth.js": "Contains utility functions for handling authentication",
+                        "mindmap.js": "Contains utility functions for handling mind map operations",
+                        "avatar.js": "Contains utility functions for handling avatar generation"
+                    },
+                    "index.js": "Entry point of the application, mounts the React app to the DOM",
+                    "serviceWorker.js": "Service worker file for enabling PWA features"
+                },
+                "package.json": "Project metadata and dependency list",
+                "package-lock.json": "Automatically generated file for locking the versions of the project's dependencies",
+                ".gitignore": "Specifies which files and directories to ignore in Git",
+                "README.md": "Documentation for the project"
+            }
+        }
+    }
+}

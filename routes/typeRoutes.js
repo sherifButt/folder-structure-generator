@@ -24,20 +24,30 @@ router.get('/', getAllTypes);
  *    tags: [🎫 Types]
  *    summary: Create a new type.
  *    description: Create a new type.
- *    parameters:
- *      - in: body
- *        name: type
- *        description: The type to create.
+ *    requestBody:
+ *      required: true
+ *      content:
+ *       application/json:
  *        schema:
  *          type: object
  *          required:
  *            - name
- *            - description
+ *            - slug
  *          properties:
  *            name:
  *              type: string
+ *              example: Development Stack
+ *            slug:
+ *              type: string
+ *              example: development-stack
  *            description:
  *              type: string
+ *              example: The development stack used in the project
+ *            technologies:
+ *              type: array
+ *              items:
+ *               type: string
+ *               example: 5f7f1b7a7e5f9a2b1c7d1b1a
  *    responses:
  *      201:
  *        description: type created successfully!
@@ -74,7 +84,7 @@ router.get('/:id', getTypeById);
 /**
  * @swagger
  * /api/types/{id}:
- *  patch:
+ *  put:
  *    tags: [🎫 Types]
  *    summary: Update a type by id.
  *    description: Update a type by id.
@@ -91,19 +101,25 @@ router.get('/:id', getTypeById);
  *        schema:
  *          type: object
  *          required:
- *            - user_id
- *            - meta
- *            - messages
- *            - folderStructure
+ *            - name
+ *            - slug
+ *            - description
+ *            - technologies
  *          properties:
- *            user_id:
+ *            name:
  *              type: string
- *            meta:
- *              type: object
- *            messages:
+ *              example: Development Stack
+ *            slug:
+ *              type: string
+ *              example: development-stack
+ *            description:
+ *              type: string
+ *              example: The development stack used in the project
+ *            technologies:
  *              type: array
- *            folderStructure:
- *              type: object
+ *              items:
+ *               type: string
+ *               example: 5f7f1b7a7e5f9a2b1c7d1b1a
  *    responses:
  *      200:
  *        description: type updated successfully!

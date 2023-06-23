@@ -1,0 +1,178 @@
+{
+    "meta": {
+        "name": "DiagramApp",
+        "seo": {
+            "keywords": [
+                "diagram",
+                "collaboration",
+                "realtime",
+                "interactive",
+                "communication",
+                "planning"
+            ],
+            "title": "Interactive Real-Time Diagramming with DiagramApp",
+            "article": "Are you tired of non-interactive, complex diagramming tools that make collaboration a chore rather than a pleasure? How great would it be if there were an application that streamlines the entire process, providing real-time interaction and smooth collaboration? Enter DiagramApp, a solution designed to solve these problems. DiagramApp is a web application that allows users to create, edit and share diagrams in real-time. The right solution for teams seeking to improve communication, planning, and overall productivity. With key benefits such as easy-to-use interface, multi-user collaboration, instant sharing capabilities, and compatibility with various diagram types, DiagramApp is set to revolutionize the way teams interact with diagrams. Stop struggling with subpar tools. Try DiagramApp today for a seamless diagramming experience.",
+            "tags": "diagramming, collaboration, realtime, interactive, DiagramApp"
+        },
+        "description": "DiagramApp is a web application that allows users to create, edit, and share diagrams in real-time.",
+        "dependencies": [
+            "react",
+            "redux",
+            "react-flow",
+            "nextjs",
+            "mongoose",
+            "express",
+            "jsonwebtoken",
+            "tailwindcss",
+            "axios"
+        ],
+        "summary": "A collaborative, real-time diagramming web application.",
+        "tags": "diagramming, realtime, collaboration"
+    },
+    "messages": [
+        "DiagramApp is a collaborative, real-time diagramming web application.",
+        "npm install react @reduxjs/toolkit react-flow nextjs mongoose express jsonwebtoken tailwindcss axios",
+        "Implementation steps include setting up the frontend with React and Next.js, setting up the backend with Express.js and PostgreSQL, integrating real-time features, and testing.",
+        "DiagramApp/{frontend/{src/{components, pages, redux, services, styles, tests}, public, package.json, README.md}, backend/{src/{config, controllers, middleware, models, routes, services, utils, tests}, database, package.json, README.md}}",
+        "Features include real-time collaboration, various diagram types, user authentication, sharing capabilities, and notifications.",
+        "specs: 1. **API Specs:** Use OpenAPI format. Endpoint `/api/register` (POST) - Expects: `{email, password}`, Returns: `{jwt}`. Endpoint `/api/diagram` (POST) - Expects: `{jwt, diagramData}`, Returns: `{status, diagramData}`. 2. **Auth:** JWT based authentication. User roles: 'admin', 'user'. 'Admin' has all permissions, 'user' can create/edit own diagrams, view shared diagrams. 3. **Error Handling:** Application employs try-catch logic. On failure, errors are logged server-side and a generic error message is returned to the client. 4. **Business Rules:** Nodes creation limited to 100 per user. Instructions priority determined by user at creation, can be adjusted later. Nodes are only editable by the creator user. 5. **Tech Stack:** Frontend - Nextjs, tailwind, redux rtk query, react-flow , Backend - Node.js with Express, Database - PostgreSQL, Avatar API - Python Flask, Job Queue - Redis, Storage - AWS S3. 6. **Test Cases:** Unit tests for each API endpoint. Integration test for user registration-login-diagram creation flow. End-to-end tests for user journeys.",
+        "sequenceDiagram actor U as User participant F as Frontend participant B as Backend participant D as Database participant AI as GPT-4 participant S as Image Storage participant Redis as Redis Job Queue participant A as Avatar Creation API U->>F: Inputs email and password F->>B: Sends registration request B->>D: Saves user data D-->>B: Acknowledges save B-->>F: Sends JWT U->>F: Inputs diagram data <br> persona description and diagram description F->>B: Sends diagram creation request B->>AI: Sends persona description AI->>B: Return processed description & features for avatar B->>A: Send processed description to Avatar API A->>B: Return generated avatar image B->>S: Store generated avatar image S->>B: Confirm storage and return image location B->>D: Saves diagram and avatar image D-->>B: Acknowledges save B->>AI: Sends diagram description AI-->>B: Returns initial diagram B->>D: Saves diagram D-->>B: Acknowledges save B-->>F: Returns initial diagram and avatar image link U->>F: Create multiple nodes in diagram Note over F: Display nodes as loading F->>B: Send batch request for node creation B->>AI: Forward request to GPT-4 AI-->>B: Return instructions for nodes B-->>F: Return created nodes data Note over F: Update nodes with returned data F->>U: Display updated nodes in diagram U->>F: Inputs new node prompt F->>B: Sends node addition request B->>AI: Sends node prompt AI-->>B: Returns new node B->>D: Updates diagram D-->>B: Acknowledges update B-->>F: Returns updated diagram U->>F: Edit or cancel the nodes/jobs in the diagram F->>B: Sends edit or cancel request B->>Redis: Modify or cancel the jobs in the queue Redis-->>B: Acknowledges modification/cancellation B-->>F: Returns updated status to Frontend U->>F: Shares diagram F->>B: Sends sharing request B->>D: Updates sharing settings D-->>B: Acknowledges update B-->>F: Returns updated sharing settings F->>B: Request to execute Diagram B->>D: Fetch Diagram B->>B: Translate Diagram to sequence of Instructions loop Each Instruction B->>D: Fetch Instruction details B->>B: Check type of Instruction alt If Instruction is to send email or perform immediate action B->>B: Execute Instruction immediately else If Instruction is to wait for a period of time B->>Redis: Schedule Job with delay else If Instruction is to wait until a certain time B->>Redis: Schedule Job with delay until specific time end end Redis->>B: Trigger Jobs as per the schedule B->>B: Execute the respective Instruction loop Each Instruction requiring GPT-4 B->>AI: Send Instruction details AI->>B: Respond with suggested Instruction end B->>F: Send back results/confirmation",
+        "erDiagram USER ||--|{ DIAGRAM : creates USER ||--|{ INSTRUCTION : executes USER ||--|{ USER_ROLE : has USER ||--|{ ACTION_LOG : performs USER ||--|{ PASSWORD_RESET : requests USER ||--|{ NOTIFICATION : receives DIAGRAM ||--|{ DIAGRAM_INSTRUCTION : includes DIAGRAM_INSTRUCTION ||--|| INSTRUCTION : associated_with INSTRUCTION ||--|{ JOB : triggers JOB ||--|| INSTRUCTION : associated_with AVATAR ||--|| USER : represents AVATAR ||--o{ DIAGRAM : used_in EMAIL_TEMPLATE ||--|| ACTION_LOG : logs USER { int user_id string email string password string jwt datetime created_at datetime updated_at } DIAGRAM { int id string diagram_data string name string description datetime created_at datetime updated_at int created_by string sharing_settings } INSTRUCTION { int id int diagram_id string node_id string type string name string description json parameters int priority datetime scheduled_time int retry_count int max_retry datetime created_at datetime updated_at } JOB { int job_id int instruction_id datetime trigger_time datetime created_at datetime updated_at } DIAGRAM_INSTRUCTION { int diagram_id string node_id string node_type json parameters datetime created_at datetime updated_at } AVATAR { int id string image_url datetime created_at datetime updated_at } USER_ROLE { int user_id string role } ACTION_LOG { int id int user_id string action datetime timestamp } PASSWORD_RESET { int id int user_id string reset_token datetime expiry_time } EMAIL_TEMPLATE { int id string template_name string template_content } NOTIFICATION { int id int user_id string content datetime created_at boolean is_read }"
+    ],
+    "folderStructure": {
+        "mind-flow": {
+            "frontend": {
+                "public": {
+                    "index.html": "HTML template for the app, includes root div where the React App will mount.",
+                    "favicon.ico": "The favicon for the web app.",
+                    "manifest.json": "App manifest file for PWA setup."
+                },
+                "src": {
+                    "assets": {
+                        "images": {
+                            "logo.svg": "Logo image used throughout the app."
+                        },
+                        "styles": {
+                            "app.scss": "Global styles for the app."
+                        }
+                    },
+                    "components": {
+                        "MindMap.jsx": "React component for the Mind Map, includes logic for rendering nodes and connections. Exports the MindMap component, which is used in the Dashboard page. Implemented in JavaScript and JSX.",
+                        "Node.jsx": "Component for individual nodes in the mind map. Implemented in JavaScript and JSX. Exports the Node component, which is used in the MindMap component.",
+                        "Avatar.jsx": "Component for generating and displaying avatars. Implemented in JavaScript and JSX. Exports the Avatar component, which is used in the Node component.",
+                        "Button.jsx": "Reusable Button component. Implemented in JavaScript and JSX. Exported and used across multiple components and pages.",
+                        "TopNavBar.jsx": "For user-friendly navigation. It could include options for Home, Dashboard, Login/Logout, and User Profile.",
+                        "UserProfile.jsx": "A dedicated page where users can manage their account settings, such as updating their profile details, changing their password, managing API keys, etc.",
+                        "MindMapListView.jsx": "A page that lists all the mind maps a user has created or has access to, presented in a tabular or card format.",
+                        "SearchBar.jsx": "A component that allows users to search for public mind maps and filter them based on certain criteria (e.g., most recent, most popular).",
+                        "NotificationComponent.jsx": "To inform users about updates or changes, such as successful node creation, errors, map sharing notifications, etc.",
+                        "SharingModal.jsx": "A pop-up modal that facilitates sharing a mind map with other users, including options to set editing permissions.",
+                        "HelpTutorialComponent.jsx": "A dedicated section or even interactive walkthrough to help new users understand how to use the app and its features.",
+                        "MapExportOptions.jsx": "Allow users to export their mind maps in various formats (e.g., PDF, PNG, SVG) for sharing outside of the app.",
+                        "MobileNavigationMenu.jsx": "If the application is responsive, consider having a navigation menu tailored for mobile users.",
+                        "FeedbackBugReportComponent.jsx": "An easy way for users to provide feedback or report issues with the app, which can help with continual improvement of the platform."
+                    },
+                    "pages": {
+                        "Home.jsx": "Landing page component. Implemented in JavaScript and JSX. Displays app description and call-to-action buttons.",
+                        "Dashboard.jsx": "Dashboard component where users can create and interact with mind maps. Implemented in JavaScript and JSX.",
+                        "Register.jsx": "User registration page component. Implemented in JavaScript and JSX. Interacts with the backend API for user registration.",
+                        "Login.jsx": "User login page component. Implemented in JavaScript and JSX. Interacts with the backend API for user authentication."
+                    },
+                    "utils": {
+                        "api.js": "Functions for interacting with the backend API. Implemented in JavaScript.",
+                        "helpers.js": "Helper functions used across the app. Implemented in JavaScript."
+                    },
+                    "_app.jsx": "Main app component, wraps all pages. Implemented in JavaScript and JSX.",
+                    "index.js": "Entry point for the React app, renders the App component."
+                },
+                "package.json": "Project metadata and dependencies. Node.js and npm are required. Main dependencies include React, Next.js, redux rtk query and tailwind."
+            },
+            "backend": {
+                "src": {
+                    "api": {
+                        "controllers": {
+                            "userController.js": "Manages user actions (registration, login, etc.). Imports 'userModel.js' from '../models'. Contains functions 'registerUser', 'loginUser', 'resetPassword'. Exports functions for use in 'userRoutes.js'. Language: JavaScript.",
+                            "diagramController.js": "Manages diagram actions. Imports 'diagramModel.js' from '../models' and 'gpt4API.js' from '../../services'. Contains functions 'createDiagram', 'getDiagram', 'updateDiagram', 'deleteDiagram'. Exports functions for use in 'diagramRoutes.js'. Language: JavaScript.",
+                            "instructionController.js": "Manages instruction actions. Imports 'instructionModel.js' from '../models'. Contains functions 'createInstruction', 'getInstruction', 'updateInstruction', 'deleteInstruction'. Exports functions for use in 'instructionRoutes.js'. Language: JavaScript.",
+                            "avatarController.js": "Manages avatar creation. Imports 'avatarModel.js' from '../models' and 'avatarAPI.js' from '../../services'. Contains functions 'createAvatar', 'getAvatar'. Exports functions for use in 'avatarRoutes.js'. Language: JavaScript.",
+                            "jobController.js": "Manages jobs and queues. Imports 'redis.js' from '../../services' and 'jobModel.js' from '../models'. Contains functions 'createJob', 'getJob', 'updateJob', 'deleteJob'. Exports functions for use in 'jobRoutes.js'. Language: JavaScript.",
+                            "registerController.js": "Handles user registration. Imports 'userModel.js' from '../models' and 'jwtUtils.js' from '../../utils'. Contains functions 'postRegister'. Exports functions for use in 'userRoutes.js'. Language: JavaScript.",
+                            "authController.js": "Manages authentication. Imports 'userModel.js' from '../models' and 'jwtUtils.js' from '../../utils'. Contains functions 'postLogin', 'postLogout'. Exports functions for use in 'authRoutes.js'. Language: JavaScript.",
+                            "errorController.js": "Manages error handling. Contains function 'handleError'. Exports function for use in 'errorMiddleware.js'. Language: JavaScript.",
+                            "emailController.js": "Manages email sending. Contains function 'sendEmail','updateEmail','deleteEmail'. Exports function for use in 'jobController.js'. Language: JavaScript.",
+                            "nodeController.js": "Manages node actions. Imports 'nodeModel.js' from '../models'. Contains functions 'createNode', 'getNode', 'updateNode', 'deleteNode'. Exports functions for use in 'nodeRoutes.js'. Language: JavaScript."
+                        },
+                        "middleware": {
+                            "errorMiddleware.js": "Handles errors. Imports 'errorController.js' from '../controllers'. Contains function 'handleError'. Exports function for use in 'app.js'. Language: JavaScript.",
+                            "authMiddleware.js": "Handles authentication. Imports 'jwtUtils.js' from '../utils'. Contains function 'verifyToken'. Exports function for use in 'app.js'. Language: JavaScript.",
+                            "loggerMiddleware.js": "Handles logging. Imports 'morgan' from 'morgan'. Contains function 'logger'. Exports function for use in 'app.js'. Language: JavaScript.",
+                            "corsMiddleware.js": "Handles CORS. Imports 'cors' from 'cors'. Contains function 'cors'. Exports function for use in 'app.js'. Language: JavaScript.",
+                            "helmetMiddleware.js": "Handles security. Imports 'helmet' from 'helmet'. Contains function 'helmet'. Exports function for use in 'app.js'. Language: JavaScript."
+                        },
+                        "routes": {
+                            "userRoutes.js": "Defines routes for user actions. Imports express.Router from 'express' and 'userController.js' from '../controllers'. Contains route definitions '/user/register' (POST), '/user/login' (POST), '/user/resetPassword' (POST). Exports router for use in 'app.js'. Language: JavaScript.",
+                            "diagramRoutes.js": "Defines routes for diagram actions. Imports express.Router from 'express' and 'diagramController.js' from '../controllers'. Contains route definitions '/diagram/create' (POST), '/diagram/:id' (GET, PUT, DELETE). Exports router for use in 'app.js'. Language: JavaScript.",
+                            "instructionRoutes.js": "Defines routes for instruction actions. Imports express.Router from 'express' and 'instructionController.js' from '../controllers'. Contains route definitions '/instruction/create' (POST), '/instruction/:id' (GET, PUT, DELETE). Exports router for use in 'app.js'. Language: JavaScript.",
+                            "avatarRoutes.js": "Defines routes for avatar actions. Imports express.Router from 'express' and 'avatarController.js' from '../controllers'. Contains route definitions '/avatar/create' (POST), '/avatar/:id' (GET). Exports router for use in 'app.js'. Language: JavaScript.",
+                            "jobRoutes.js": "Defines routes for job actions. Imports express.Router from 'express' and 'jobController.js' from '../controllers'. Contains route definitions '/job/create' (POST), '/job/:id' (GET, PUT, DELETE). Exports router for use in 'app.js'. Language: JavaScript.",
+                            "authRoutes.js": "Defines routes for authentication actions. Imports express.Router from 'express' and 'authController.js' from '../controllers'. Contains route definitions '/auth/login' (POST), '/auth/logout' (POST). Exports router for use in 'app.js'. Language: JavaScript.",
+                            "index.js": " Defines routes for all actions. Imports express.Router from 'express' and all routes from './routes'. Contains route definitions for all routes. Exports router for use in 'app.js'. Language: JavaScript."
+                        },
+                        "models": {
+                            "userModel.js": "Defines the user model. Imports 'mongoose' from 'mongoose'. Contains the user model definition. Exports model for use in 'userController.js'. Language: JavaScript.",
+                            "diagramModel.js": "Defines the diagram model. Imports 'mongoose' from 'mongoose'. Contains the diagram model definition. Exports model for use in 'diagramController.js'. Language: JavaScript.",
+                            "instructionModel.js": "Defines the instruction model. Imports 'mongoose' from 'mongoose'. Contains the instruction model definition. Exports model for use in 'instructionController.js'. Language: JavaScript.",
+                            "jobModel.js": "Defines the job model. Imports 'mongoose' from 'mongoose'. Contains the job model definition. Exports model for use in 'jobController.js'. Language: JavaScript.",
+                            "avatarModel.js": "Defines the avatar model. Imports 'mongoose' from 'mongoose'. Contains the avatar model definition. Exports model for use in 'avatarController.js'. Language: JavaScript.",
+                            "actionLogModel.js": "This file defines the ActionLog model using mongoose. It specifies the schema for action logs and exports the ActionLog model.",
+                            "passwordResetModel.js": "This file defines the PasswordReset model using mongoose. It specifies the schema for password resets and exports the PasswordReset model.",
+                            "notificationModel.js": "This file defines the Notification model using mongoose. It specifies the schema for notifications and exports the Notification model."
+                        }
+                    },
+                    "utils": {
+                        "gpt4API.js": "Handles interactions with the GPT-4 API. Contains functions 'generateInstructions', 'generateDiagram', 'generateSequenceDiagram'. Used in 'diagramController.js'. Language: JavaScript.",
+                        "avatarAPI.js": "Handles interactions with the avatar generation API. Contains function 'generateAvatar'. Used in 'avatarController.js'. Language: JavaScript.",
+                        "redis.js": "Sets up interactions with Redis for job queuing. Contains functions 'createJob', 'getJob', 'updateJob', 'deleteJob'. Used in 'jobController.js'. Language: JavaScript.",
+                        "jwtUtils.js": "Handles JWT authentication. Contains functions 'generateToken', 'verifyToken'. Used in 'authController.js'. Language: JavaScript.",
+                        "errorHandler.js": "Handles errors. Contains function 'handleError'. Used in 'errorMiddleware.js'. Language: JavaScript.",
+                        "apiUtils.js": "This file contains utility functions for handling API requests and responses. Exports functions like handleSuccess(), handleFailure().",
+                        "databaseUtils.js": "This file contains utility functions for interacting with the database. Exports functions like connectDB(), closeDB().",
+                        "imageStorageService.js": "This file contains utility functions for interacting with the image storage service. Exports functions like uploadImage(), deleteImage(). Handles image storage. Used in avatarController.js"
+                    },
+                    "config": {
+                        "db.js": "Configuration file for setting up the database using mongoose. Contains a function to initialize and connect to the database. Language: JavaScript."
+                    },
+                    "app.js": "The main application file. Imports 'express' from 'express', 'cors' from 'cors', 'morgan' from 'morgan', 'helmet' from 'helmet', and all routes from './routes'. Sets up middleware and routes, and starts the server. Language: JavaScript."
+                },
+                "tests": {
+                    "unit": {
+                        "userModel.test.js": "This file contains unit tests for the User model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'userController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "diagramModel.test.js": "This file contains unit tests for the Diagram model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'diagramController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "instructionModel.test.js": "This file contains unit tests for the Instruction model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'instructionController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "jobModel.test.js": "This file contains unit tests for the Job model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'jobController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "avatarModel.test.js": "This file contains unit tests for the Avatar model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'avatarController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "actionLogModel.test.js": "This file contains unit tests for the ActionLog model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'actionLogController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "passwordResetModel.test.js": "This file contains unit tests for the PasswordReset model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'passwordResetController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "notificationModel.test.js": "This file contains unit tests for the Notification model. It uses mock data to test the model's methods and behaviors.Imports 'jest' for testing and 'notificationController.js' from '../src/api/controllers'. Language: JavaScript.",
+                        "gpt4API.test.js": "This file contains unit tests for the GPT-4 API. It uses mock data to test the API's methods and behaviors.Imports 'jest' for testing and 'gpt4API.js' from '../src/api/services'. Language: JavaScript."
+                    },
+                    "integration": {
+                        "registerController.test.js": "This file contains integration tests for the register controller. It simulates user registration requests and tests the controller's responses.",
+                        "diagramController.test.js": "This file contains integration tests for the diagram controller. It simulates diagram creation, updating, and deletion requests and tests the controller's responses.",
+                        "instructionController.test.js": "This file contains integration tests for the instruction controller. It simulates instruction creation, updating, and deletion requests and tests the controller's responses."
+                    },
+                    "logs": {
+                        "access.log": "Log file for access logs. Updated by morgan middleware. Language: Text.",
+                        "error.log": "Log file for error logs. Updated by errorHandler middleware. Language: Text."
+                    }
+                },
+                "package.json": "Describes the app and its dependencies. Lists all packages and scripts needed to run the project. Language: JSON.",
+                "README.md": "Provides information about the project including: project description, features, installation instructions, usage examples, API documentation, and license information. Contains a sequence diagram of backend and front-end interactions. Language: Markdown.",
+                ".env": "Contains environment variables. db keys, gpt4API. Language: Text.",
+                ".gitignore": "Contains files and folders to be ignored by git. Language: Text.",
+                "Dockerfile": "Contains instructions for building the Docker image. Language: Text.",
+                "docker-compose.yml": "Contains instructions for running the Docker image. Language: Text."
+            }
+        }
+    }
+}

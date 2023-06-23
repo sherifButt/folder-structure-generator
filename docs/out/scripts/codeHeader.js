@@ -19,12 +19,12 @@ preElements.forEach(function (preElement) {
     for (var i = 0; i < preElement.classList.length; i++) {
         if (preElement.classList[i].startsWith('lang-')) {
             langType = preElement.classList[i].split('-')[1];
-            console.log('langType :>> ', langType);
+            
             break;
         }
     }
 
-    console.log('langType :>> ', langType);
+
 
     // Create a new div with class "window"
     var windowDiv = document.createElement('div');
@@ -59,13 +59,13 @@ preElements.forEach(function (preElement) {
 
     var copyIcon = document.createElement('i');
     copyIcon.classList.add('far', 'fa-copy');
-    copyIcon.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
+    // copyIcon.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
     copyDiv.appendChild(copyIcon);
 
     var copyTextSpan = document.createElement('span');
     copyTextSpan.classList.add('hover-text');
     copyTextSpan.textContent = 'Copy code';
-    copyIcon.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
+    // copyTextSpan.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
     copyDiv.appendChild(copyTextSpan);
 
     // Append the spans to the buttons div
@@ -139,14 +139,14 @@ function successCopy(copyTextSpan, copyIcon, copyDiv) {
     copyTextSpan.textContent = 'Copied!'
     copyIcon.className = "";
     copyIcon.classList.add('far', 'fa-check');
-    copyIcon.style.color = 'green';
-    copyTextSpan.style.color = 'green';
+    // copyIcon.style.color = 'green';
+    // copyTextSpan.style.color = 'green';
     setTimeout(function () {
         copyTextSpan.textContent = 'Copy code';
         copyIcon.className = "";
         copyIcon.classList.add('far', 'fa-copy');
-        copyIcon.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
-    copyTextSpan.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
+        copyIcon.style.color = '';
+    copyTextSpan.style.color = '';
     }, 2000);
 }
 
@@ -160,7 +160,7 @@ function failedCopy(copyTextSpan, copyIcon, copyDiv) {
         copyTextSpan.textContent = 'Copy code';
         copyIcon.className = "";
         copyIcon.classList.add('far', 'fa-copy');
-        copyIcon.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
-    copyTextSpan.style.color = 'color(srgb 0.2901 0.2902 0.2902)';
+        copyIcon.style.color = '';
+    copyTextSpan.style.color = '';
     }, 2000);
 }

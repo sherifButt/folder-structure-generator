@@ -15,16 +15,17 @@ const TechnologySchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        validation:[validateSlug, 'Please fill a valid slug, got {VALUE}, Slug should be at least 3 characters long and contain only letters, numbers or dashes, but dashes not at the beginning or end.']
-    },
-    description: {
-        type: String,
-        max: 1000
+        validation: [validateSlug, 'Please fill a valid slug, got {VALUE}, Slug should be at least 3 characters long and contain only letters, numbers or dashes, but dashes not at the beginning or end.']
     },
     type: {
         type: Schema.Types.ObjectId,
         ref: 'Type'
     },
+    description: {
+        type: String,
+        max: 1000
+    },
+
     projects: [{
         type: Schema.Types.ObjectId,
         ref: 'Project'

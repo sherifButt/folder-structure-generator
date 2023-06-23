@@ -17,10 +17,6 @@
     {
       "url": "http://localhost:3000",
       "description": "Development server"
-    },
-    {
-      "url": "https://folder-structure-generator-production.up.railway.app",
-      "description": "Test server"
     }
   ],
   "components": {
@@ -906,23 +902,32 @@
                 "required": [
                   "name",
                   "slug",
+                  "type",
                   "description",
                   "Projects"
                 ],
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "MERN + AWS"
                   },
                   "slug": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "mern-aws"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Development Stack"
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "The development stack used in the project"
                   },
                   "projects": {
                     "type": "array",
                     "items": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "5f7f1b7a7e5f9a2b1c7d1b1a"
                     }
                   }
                 }
@@ -1128,28 +1133,41 @@
         ],
         "summary": "Create a new type.",
         "description": "Create a new type.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "type",
-            "description": "The type to create.",
-            "schema": {
-              "type": "object",
-              "required": [
-                "name",
-                "description"
-              ],
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "slug"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Development Stack"
+                  },
+                  "slug": {
+                    "type": "string",
+                    "example": "development-stack"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "The development stack used in the project"
+                  },
+                  "technologies": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "5f7f1b7a7e5f9a2b1c7d1b1a"
+                    }
+                  }
                 }
               }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "description": "type created successfully!"
@@ -1191,7 +1209,7 @@
           }
         }
       },
-      "patch": {
+      "put": {
         "tags": [
           "🎫 Types"
         ],
@@ -1214,23 +1232,30 @@
             "schema": {
               "type": "object",
               "required": [
-                "user_id",
-                "meta",
-                "messages",
-                "folderStructure"
+                "name",
+                "slug",
+                "description",
+                "technologies"
               ],
               "properties": {
-                "user_id": {
-                  "type": "string"
+                "name": {
+                  "type": "string",
+                  "example": "Development Stack"
                 },
-                "meta": {
-                  "type": "object"
+                "slug": {
+                  "type": "string",
+                  "example": "development-stack"
                 },
-                "messages": {
-                  "type": "array"
+                "description": {
+                  "type": "string",
+                  "example": "The development stack used in the project"
                 },
-                "folderStructure": {
-                  "type": "object"
+                "technologies": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "5f7f1b7a7e5f9a2b1c7d1b1a"
+                  }
                 }
               }
             }

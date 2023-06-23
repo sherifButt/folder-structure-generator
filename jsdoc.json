@@ -13,8 +13,7 @@
     "plugins/markdown",
     "jsdoc-mermaid",
     "docs/super-docs/typescript",
-    "docs/super-docs/category",
-    "docs/super-docs/component"
+    "docs/super-docs/category"
   ],
   "templates": {
     "cleverLinks": true,

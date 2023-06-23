@@ -1,3 +1,4 @@
 .env
 node_modules
 docs/super-docs
+public/output/

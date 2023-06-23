@@ -1,3 +1,4 @@
+const fs = require('fs');
 // @route DELETE api/projects/:id
 // @desc Delete a single project
 // @access Public

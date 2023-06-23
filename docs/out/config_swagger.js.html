@@ -15,7 +15,7 @@
   
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -143,7 +143,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2> <h2><a href="changelog.html">LOG</a></h2>  <h2><a href="swagger.html">API</a></h2> <div class="category"><h3>Modules</h3><ul><li><a href="module-isResponseComplete%2520-%2520See%2520%257B@tutorial%2520howtouse%257D.html">isResponseComplete - See {@tutorial howtouse}</a></li><li><a href="module-validators.html">validators</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cleanCode">cleanCode</a></li><li><a href="global.html#convertNameToSlug">convertNameToSlug</a></li><li><a href="global.html#cooldown">cooldown</a></li><li><a href="global.html#corsOptions">corsOptions</a></li><li><a href="global.html#createOutputDir">createOutputDir</a></li><li><a href="global.html#createStructure">createStructure</a></li><li><a href="global.html#getGpt">getGpt</a></li><li><a href="global.html#getPayloadFromFile">getPayloadFromFile</a></li><li><a href="global.html#parsePayload">parsePayload</a></li><li><a href="global.html#swaggerDefinition">swaggerDefinition</a></li><li><a href="global.html#zipFolder">zipFolder</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Global</h3><ul><li><a href="global.html#getGeneratedCode">getGeneratedCode</a></li></ul></div>
                 
             </nav>
         </div>
@@ -185,10 +185,7 @@ const swaggerDefinition = {
             url: 'http://localhost:3000',
             description: 'Development server',
         },
-        {
-            url: 'https://folder-structure-generator-production.up.railway.app',
-            description: 'Test server',
-        },
+        
     ],
     components: {
         securitySchemes: {

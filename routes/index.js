@@ -11,4 +11,4 @@ router.use('/tags',jwtReadOnlyMiddleware, require('./tagRouts'));
 router.use('/dependencies',jwtReadOnlyMiddleware, require('./dependenceRouts'));
 router.use('/auth', require('./authRouts'));
 router.use('/swagger.json', require('./swaggerRouts'));
-module.exports = router;
+module.exports = router; 
