@@ -40,8 +40,8 @@ function cleanCode(response) {
     const endMarkerIndex = cleanedInput.indexOf(endMarker);
 
     // Marker found,remove everything after it and the marker itself
-     cleanedInput = response.substring(0, endMarkerIndex);
-    
+    cleanedInput = response.substring(0, endMarkerIndex); 
+
 
     // Regular expression to match inline code blocks (e.g. `code`) and code blocks with multiple lines (e.g. ```code```).
     const codeRegex = /(```[^`]+```|`[^`]+`)/g;
@@ -57,17 +57,19 @@ function cleanCode(response) {
         // Remove any characters between unmatched backticks.
         cleanedResponse = cleanedResponse.replace(/`[^`]*`/g, match => {
             const backtickCount = match.match(/`/g).length;
-            return backtickCount === unmatchedBackticksCount ? match : '';
-        }); 
+            return backtickCount === unmatchedBackticksCount ? match : ''; 
+        });
         // Remove any remaining unmatched backticks.
-        cleanedResponse = cleanedResponse.replace(/`/g, ''); 
-    }
+        cleanedResponse = cleanedResponse.replace(/`/g, '');
+    } 
 
     // remove entire lines if sarted with markdonw
     // let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.)\s.*/gm, '');
-       let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|Here's|To|Here|Note:|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*/gm, '');
+    //    let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|These|Here's|To|Here|Note:|Inside the|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*/gm, '');
+    let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|These|Here's|To|Here|Note:|Inside the|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```|```javascript|```markdown|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*(\r?\n|$)/gm, '');
 
-       let noGpt = response.replace(/^(Sure,|Here's|It's|Let's|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|We|Once|After|Before|When|Given|Now)\s.*/gm, '');
+
+    let noGpt = response.replace(/^(Sure,|Here's|It's|Let's|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|We|Once|After|Before|When|Given|Now)\s.*/gm, '');
 
 
     noMarkdown = noMarkdown.replace(/^```(?:\w+\n)?/, '');
@@ -75,7 +77,7 @@ function cleanCode(response) {
 
 
 
-    return {
+    return {  
         codeBlocks,  // array of code blocks
         cleanedResponse, // remove markdown and code blocks
         noMarkdown, // remove markdown except code blocks
