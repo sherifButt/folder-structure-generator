@@ -5,7 +5,11 @@ exports.getAllDependencies =  async (req, res, next) => {
         // Get all dependenceDependencies
         const dependenceDependencies = await Dependence.find().populate('projects');
         // Send the data
-        res.sendData(dependenceDependencies);
+        res.data = dependenceDependencies
+        res.statusCode = 201
+        res.message = 'Diagram created successfully!'
+        next()
+        
     } catch (err) {
         next(err); // Pass the error to Express
     }

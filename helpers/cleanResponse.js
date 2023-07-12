@@ -63,10 +63,13 @@ function cleanCode(response) {
         cleanedResponse = cleanedResponse.replace(/`/g, '');
     } 
 
-    // remove entire lines if sarted with markdonw
+    // remove entire lines if started with markdown
     // let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.)\s.*/gm, '');
     //    let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|These|Here's|To|Here|Note:|Inside the|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```.*|```|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*/gm, '');
-    let noMarkdown = response.replace(/^(#|##|###|####|#####|######|Sure,|Note|This|These|Here's|To|Here|Note:|Inside the|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```|```javascript|```markdown|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*(\r?\n|$)/gm, '');
+    let noMarkdown = response.replace(
+       /^(#|##|###|####|#####|######|Sure,|Note|This|These|Here's|To|Here|Note:|Inside the|Please|Keep|In|It's|Let's|The|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|You|We|Once|After|Before|When|If|Given|Now|At|For|While|With|Without|Using|During|This|Here's|To|Here|Note:|```|```javascript|```markdown|```json|```jsx|```js|```yaml|```css|---|___|\+|\-|\d\.|\d\)|\d\.|As|From|Consider|Such|However,|Indeed,|Importantly,|Make|Ensure|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Start|End|Above|Below|Beside|Under|Over|Within|Outside|Since|Until|Of|By|Into|Through|During|Before|After|Between|Because|So|According|Although|Despite|Regarding|Concerning|Whether|While|Where|There|Here|Can|Could|Would|Should|Must|May|Might|Will|And|Or|But|Not|That|Which|Who|Whom|Whose|Why|How|What|Wherever|Whenever|Whoever|Whichever|However|Whatever|Whenever)\s.*(\r?\n|$)/gm,
+       ''
+    )
 
 
     let noGpt = response.replace(/^(Sure,|Here's|It's|Let's|Firstly|Next,|Then,|Finally,|Don't|Remember|Be|Always|Also,|We|Once|After|Before|When|Given|Now)\s.*/gm, '');
@@ -74,7 +77,6 @@ function cleanCode(response) {
 
     noMarkdown = noMarkdown.replace(/^```(?:\w+\n)?/, '');
     noMarkdown = noMarkdown.replace(/```$/, '');
-
 
 
     return {  

@@ -10,7 +10,8 @@ module.exports = function (req, res, next) {
         };
 
         // Send the response
-        res.json(response);
+        res.json( response );
+        
     };
 
     // Call the next middleware function
