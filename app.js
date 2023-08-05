@@ -36,7 +36,7 @@ app.use(express.json())
  * properties:
  */
 const corsOptions = {
-   origin: 'http://192.168.1.181:3000', // replace with your client's origin
+   origin: `http://192.168.1.181:${process.env.PORT}`, // replace with your client's origin
    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 

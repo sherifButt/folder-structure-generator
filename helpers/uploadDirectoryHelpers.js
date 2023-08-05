@@ -27,6 +27,8 @@ exports.unzipDirectory = zipPath => {
  * @param {String} filePath - The path of the file.
  * @returns {Promise<Object>} - An object containing the file's path, extension, content, and a technical description.
  */
+let fileNumber = 0;
+
 const readFileContent = async filePath => {
    try {
       const fileContent = fs.readFileSync(filePath, 'utf8')
@@ -50,11 +52,28 @@ const readFileContent = async filePath => {
       // const { response, usage } = await getGpt(messages)
       // const description = response
       const description = 'This is a technical description'
+
+       if (fileName === null || fileName === undefined) {
+          throw new Error(
+             `File name for path "${filePath}" cannot be null or undefined`
+          )
+       }
+
+       if (extension === null || extension === undefined) {
+          throw new Error(
+             `Extension for file "${fileName}" cannot be null or undefined`
+          )
+       }
       return {
+         id: '' ,
          path: filePath,
          extension,
          fileContent,
          description,
+         position: {
+            x: 0,
+            y: 0,
+         },
       }
       // return {
       //    light: {
@@ -86,6 +105,10 @@ const readFileContent = async filePath => {
 const readDirectory = async dirPath => {
    try {
       const directoryData = {}
+
+       if (dirPath === null || dirPath === undefined) {
+            throw new Error('Directory path cannot be null or undefined');
+        }
       // Get the list of files and sub-directories from the current directory
       const files = fs.readdirSync(dirPath)
 

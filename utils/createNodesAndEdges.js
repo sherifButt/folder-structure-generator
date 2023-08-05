@@ -39,18 +39,17 @@ function createNodesAndEdges(obj, parentId = null, depth = 0) {
          id: newNodeId,
          data: {
             label: `${key} (${data.extension || 'dir'})`,
-            description: data.description,
-            fileContent: data.fileContent,
-            summary: data.summary,
+            ...data,
          },
-         position: { x: depth * 100, y: nodes.length * 100 },
+         position: { x: depth * 200, y: nodes.length * 100 },
       })
 
       if (parentId) {
          edges.push({
             id: `edge${parentId}-${newNodeId}`,
             source: parentId,
-            target: newNodeId,
+             target: newNodeId,
+            type: "smoothstep",
          })
       }
 
@@ -68,12 +67,6 @@ function createNodesAndEdges(obj, parentId = null, depth = 0) {
    return { nodes, edges }
 }
 
-try {
-   const { nodes, edges } = createNodesAndEdges(snippet)
-   console.log({ nodes, edges })
-} catch (error) {
-   console.error(error.message)
-}
 
 
-const { nodes, edges } = createNodesAndEdges(snippet)
+module.exports = createNodesAndEdges

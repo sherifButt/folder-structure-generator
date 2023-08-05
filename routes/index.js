@@ -11,5 +11,6 @@ router.use('/tags',jwtReadOnlyMiddleware, require('./tagRoutes'));
 router.use('/dependencies',jwtReadOnlyMiddleware, require('./dependenceRoutes'));
 router.use('/auth', require('./authRoutes'));
 router.use( '/swagger.json', require( './swaggerRoutes' ) );
-router.use( '/directory-upload',jwtMiddleware, require('./uploadDirectoryRoutes'))
+router.use( '/directory-upload', jwtMiddleware, require( './uploadDirectoryRoutes' ) )
+router.use( '/diagrams', jwtMiddleware, require( './diagramRoutes' ) )
 module.exports = router; 

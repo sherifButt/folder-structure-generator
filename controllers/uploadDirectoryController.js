@@ -179,7 +179,7 @@ exports.getAllDirectories = async (req, res, next) => {
       if (req.query.lightVersion === 'true') {
          directories.map(directory => {
             if (directory.snippet) {
-               emptyNestedStrings(directory.snippet, ['extension'])
+               emptyNestedStrings(directory.snippet, ['extension','id'])
             }
          })
       }
