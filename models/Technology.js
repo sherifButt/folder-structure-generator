@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const { validateName, validateSlug } = require("../utils/validators");
+const convertNameToSlug = require( '../utils/convertNameToSlug' )
 
 // create Technology Schema
 const TechnologySchema = new Schema({
@@ -34,17 +35,10 @@ const TechnologySchema = new Schema({
 
 // if there is not slug inserted by user , create a slug from the name of the tag before saving it to the database if the name contain spaces replace them with dashes and make it lowercase
 TechnologySchema.pre('validate', function (next) {
-    if (!this.slug) {
-        let slug
-        // remove any ting that is not a letter or a number or a space
-        slug = this.name.replace(/[^a-zA-Z0-9 ]/g, "");
-        // trim the name 
-        slug = slug.trim();
-        slug = slug.toLowerCase().split(' ').join('-');
-        // only keep one dash between words
-        this.slug = slug.replace(/-+/g, '-');
-    }
-    next();
+     if (!this.slug) {
+        this.slug = convertNameToSlug(this.name)
+     }
+     next()
 });
 
 // create Technology model

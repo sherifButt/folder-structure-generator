@@ -3,12 +3,14 @@ const router = express.Router();
 const jwtMiddleware = require('../middleware/jwtMiddleware');
 const jwtReadOnlyMiddleware = require('../middleware/jwtReadOnlyMiddleware');
 
-router.use('/users',jwtMiddleware, require('./userRouts'));
-router.use('/generate-structure',jwtReadOnlyMiddleware, require('./generateStructureRouts'));
+router.use('/users',jwtMiddleware, require('./userRoutes'));
+router.use('/generate-structure',jwtReadOnlyMiddleware, require('./generateStructureRoutes'));
 router.use('/types',jwtReadOnlyMiddleware, require('./typeRoutes'));
-router.use('/technologies',jwtReadOnlyMiddleware, require('./technologyRouts'));
-router.use('/tags',jwtReadOnlyMiddleware, require('./tagRouts'));
-router.use('/dependencies',jwtReadOnlyMiddleware, require('./dependenceRouts'));
-router.use('/auth', require('./authRouts'));
-router.use('/swagger.json', require('./swaggerRouts'));
+router.use('/technologies',jwtReadOnlyMiddleware, require('./technologyRoutes'));
+router.use('/tags',jwtReadOnlyMiddleware, require('./tagRoutes'));
+router.use('/dependencies',jwtReadOnlyMiddleware, require('./dependenceRoutes'));
+router.use('/auth', require('./authRoutes'));
+router.use( '/swagger.json', require( './swaggerRoutes' ) );
+router.use( '/directory-upload', jwtMiddleware, require( './uploadDirectoryRoutes' ) )
+router.use( '/diagrams', jwtMiddleware, require( './diagramRoutes' ) )
 module.exports = router; 

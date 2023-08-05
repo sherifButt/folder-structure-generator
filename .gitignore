@@ -2,3 +2,6 @@
 node_modules
 docs/super-docs
 public/output/
+public/output/
+public/uploads/
+public/cache/

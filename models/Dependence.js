@@ -1,6 +1,7 @@
 // create Dependencies schema for mongoose
 const mongoose = require('mongoose');
 const { validateDependence, validateDependenceSlug } = require('../utils/validators');
+const convertNameToSlug = require( '../utils/convertNameToSlug' )
 
 const DependenceSchema = new mongoose.Schema({
     name: {
@@ -32,17 +33,10 @@ const DependenceSchema = new mongoose.Schema({
 
 // if there is not slug inserted by user , create a slug from the name of the dependence before saving it to the database if the name contain spaces replace them with dashes and make it lowercase
 DependenceSchema.pre('validate', function (next) {
-    if (!this.slug) {
-        let slug
-        // remove any ting that is not a letter or a number or a space
-        slug = this.name.replace(/[^a-zA-Z0-9 ]/g, "");
-        // trim the name 
-        slug = slug.trim();
-        slug = slug.toLowerCase().split(' ').join('-');
-        // only keep one dash between words
-        this.slug = slug.replace(/-+/g, '-');
-    }
-    next();
+     if (!this.slug) {
+        this.slug = convertNameToSlug(this.name)
+     }
+     next()
 });
 
 

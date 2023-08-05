@@ -1,8 +1,6 @@
 const fs = require('fs')
-// @route DELETE api/projects/:id
-// @desc Delete a single project
-// @access Public
-exports.createFolderStructure = (req, res) => {
+// @route POST api/readFolderStructure
+exports.readFolderStructure = (req, res) => {
    res.download(req.zipPath, err => {
       if (err) {
          res.status(500).send({
