@@ -2,6 +2,7 @@ const unzipper = require('unzipper')
 const fs = require('fs')
 const path = require('path')
 const getGpt = require('./getGpt')
+const sharp = require('sharp');
 
 /**
  * Unzips a directory and returns the path of the unzipped directory.
@@ -97,26 +98,36 @@ const readFileContent = async filePath => {
 }
 
 /**
- * Reads a directory and returns an object representing its structure.
- * @param {String} dirPath - The path of the directory.
- * @returns {Promise<Object>} - An object representing the structure of the directory.
+ * Asynchronously reads the content of a specified directory, including sub-directories,
+ * and returns an object containing the data.
+ * The function ignores the '__MACOSX' folder and '.git' folder while reading the directory.
+ * 
+ * @async
+ * @function
+ * @param {string} dirPath - The path to the directory that needs to be read. Cannot be null or undefined.
+ * @returns {Object} directoryData - An object containing the content of the directory. The keys are filenames without extensions, and the values are objects containing the file content and extension.
+ * @throws {Error} Throws an error if the directory path is null or undefined or if there is an issue reading the directory.
+ * 
+ * @example
+ * const data = await readDirectory('/path/to/directory');
+ * console.log(data);
  */
 
 const readDirectory = async dirPath => {
    try {
       const directoryData = {}
 
-       if (dirPath === null || dirPath === undefined) {
+      if (dirPath === null || dirPath === undefined) {
             throw new Error('Directory path cannot be null or undefined');
-        }
+      }
+
       // Get the list of files and sub-directories from the current directory
       const files = fs.readdirSync(dirPath)
 
       // Iterate through the list of files and sub-directories
       for (let file of files) {
-         // Ignore __MACOSX folder
-         if (file === '__MACOSX') continue
-         if (file === '.git') continue
+         // Ignore __MACOSX folder and .git folder
+         if (file === '__MACOSX' || file === '.git') continue
 
          // Construct the full path of the current file or sub-directory
          const filePath = path.join(dirPath, file)
@@ -136,6 +147,30 @@ const readDirectory = async dirPath => {
 
             // extensionWithoutDot holds the extension without the dot
             const extensionWithoutDot = parsedPath.ext.slice(1)
+
+            // Check if the file is an image
+            if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff'].includes(extensionWithoutDot.toLowerCase())) {
+               try {
+                  // Replace the image content with a dummy content
+                  // const image = sharp(filePath);
+                  // const { width, height } = await image.metadata();
+                  // create dummyImages hex64 string and write to file
+                   
+
+
+                  const dummyImage = new Buffer([
+                     0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00, 0x01, 0x00, 0x80,
+                     0xff, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x2c, 0x00, 0x00,
+                     0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x02, 0x02, 0x44, 0x01,
+                     0x00, 0x3b,
+                   ]);
+                  fs.writeFileSync(filePath, dummyImage);
+               } catch (error) {
+                  console.error(`Error processing image ${filePath}: ${error.message}`);
+                  // You can decide whether to continue processing other files or stop here
+                  // For now, we'll just log the error and continue
+               }
+            }
 
             directoryData[fileNameWithoutExtension] = {
                ...(await readFileContent(filePath)),

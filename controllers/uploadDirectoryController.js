@@ -10,14 +10,25 @@ const Directory = require('../models/Directory')
 const emptyNestedStrings = require( '../utils/emptyNestedStrings' )
 
 /**
- * Handles the uploaded directory and stores its structure in the database.
- * @param {Object} req - Express request object, contains either a file or a url in the body.
- * @param {Object} res - Express response object.
- * @param {Function} next - Express next middleware function.
- * @returns {Promise<void>}
- * @throws {Object} - Returns an error object with a message and status if something goes wrong.
+ * @function uploadedDirectoryHandler
  * @async
+ * @param {Object} req - Express request object containing the uploaded directory information.
+ * @param {Object} req.file - File object containing information about the uploaded file, if present.
+ * @param {string} req.body.url - URL string pointing to a GitHub repository or a zip file, if present.
+ * @param {Object} res - Express response object used to send the response.
+ * @param {function} next - Express next middleware function.
+ * 
+ * @description
+ * This function handles the upload of a directory structure. It supports three different scenarios:
+ * 1. Handling a file upload, where the uploaded zip file is unzipped, and its directory structure is created.
+ * 2. Handling a GitHub repository URL, where the repository is cloned, and its directory structure is created.
+ * 3. Handling a zip file URL, where the zip file is downloaded, unzipped, and its directory structure is created.
+ * 
+ * The directory structure is then saved to the database, and a success response is sent.
+ * 
+ * @throws {Object} Throws an error object with a message and status code if no directory or URL is provided, or if storing the directory structure to the database fails.
  */
+
 exports.uploadedDirectoryHandler = async (req, res, next) => {
    try {
       let directoryData, directoryEntry, result, zipPath, unzippedDirectoryPath
@@ -26,7 +37,6 @@ exports.uploadedDirectoryHandler = async (req, res, next) => {
          // Handling file upload case
          zipPath = req.file.path
          unzippedDirectoryPath = await unzipDirectory(zipPath)
-
          directoryData = await createDirectoryStructure(unzippedDirectoryPath)
       } else if (req.body.url) {
          // Handling url input case
@@ -50,7 +60,7 @@ exports.uploadedDirectoryHandler = async (req, res, next) => {
             // Since we cannot determine the size and name of the cloned repository, we are omitting them
             req.file = {
                originalname: repoName,
-               destination: 'public/catch/',
+               destination: 'public/cache/',
                filename: repoName,
                path: localPath,
                description: repoDescription,
@@ -67,9 +77,7 @@ exports.uploadedDirectoryHandler = async (req, res, next) => {
             fs.writeFileSync(tempZipPath, buffer)
 
             unzippedDirectoryPath = await unzipDirectory(tempZipPath)
-            directoryData = await createDirectoryStructure(
-               unzippedDirectoryPath
-            )
+            directoryData = await createDirectoryStructure(unzippedDirectoryPath)
          }
       } else {
          throw {

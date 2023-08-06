@@ -4,9 +4,19 @@ const {
    uploadedDirectoryHandler, getAllDirectories, getDirectoryById, updateDirectoryById, deleteDirectoryById
 } = require('../controllers/uploadDirectoryController')
 const multer = require('multer')
+const path = require('path')
 
+const storage = multer.diskStorage({
+   destination: function (req, file, cb) {
+     cb(null, 'public/cache/');
+   },
+   filename: function (req, file, cb) {
+     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+   }
+ });
+ 
 // Configure Multer to store the uploaded file in the local filesystem
-const upload = multer({ dest: 'public/cache/' })
+const upload = multer({ storage: storage });
 
 /**
  * @swagger
